@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # (no :confirmable)
   enum role: { user: 0, admin: 1 }
 
-  has_many :products, dependent: :nullify
+  has_many :products, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: 30 }
 end
