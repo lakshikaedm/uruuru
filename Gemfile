@@ -81,3 +81,10 @@ gem "factory_bot_rails", "~> 6.5", groups: [:development, :test]
 gem "faker", "~> 3.5", group: :test
 
 gem "webdrivers", "~> 5.2", group: :test
+
+gem "rubocop", "~> 1.80", groups: [:development, :test]
+gem "rubocop-rails", "~> 2.33", groups: [:development, :test]
+
+gem "rubocop-capybara", "~> 2.22", groups: [:development, :test]
+gem "rubocop-factory_bot", "~> 2.27", groups: [:development, :test]
+gem "rubocop-rspec", "~> 3.7", groups: [:development, :test]

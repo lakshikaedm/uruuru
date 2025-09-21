@@ -1,0 +1,23 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+  - rubocop-capybara
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+RSpec/MultipleExpectations:
+  Max: 5
+  Exclude:
+    - 'spec/system/**/*'
+
+RSpec/ExampleLength:
+  Max: 25
+  Exclude:
+    - 'spec/system/**/*'
+
+RSpec/MultipleExpectations:
+  Max: 3

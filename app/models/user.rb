@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # (no :confirmable)
-  enum role: { user: 0, admin: 1 }
+  enum :role, { user: 0, admin: 1 }
 
   has_many :products, dependent: :destroy
 

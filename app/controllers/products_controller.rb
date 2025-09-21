@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
     if @product.save
-      redirect_to @product, notice: "Product was successfully created."
+      redirect_to @product, notice: t('.created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: "Product was successfully updated.", status: :see_other }
+        format.html { redirect_to @product, notice: t('.updated'), status: :see_other }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
     @product.destroy!
 
     respond_to do |format|
-      format.html { redirect_to products_path, notice: "Product was successfully destroyed.", status: :see_other }
+      format.html { redirect_to products_path, notice: t('.destroyed'), status: :see_other }
       format.json { head :no_content }
     end
   end
@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
     end
 
     def authorize_owner!
-      redirect_to @product, alert: "Not authorized." unless @product.user_id == current_user&.id
+      redirect_to @product, alert: t('products.not_authorized') unless @product.user_id == current_user&.id
     end
 
     def product_params

@@ -18,6 +18,6 @@ RSpec.describe Product, type: :model do
   end
 
   it "has expected statuses mapping" do
-    expect(Product.statuses).to eq({ "draft" => 0, "publish" => 1, "sold" => 2 })
+    expect(described_class.statuses).to eq({ "draft" => 0, "publish" => 1, "sold" => 2 })
   end
 end

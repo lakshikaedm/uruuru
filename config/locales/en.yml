@@ -28,4 +28,12 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  products:
+    not_authorized: "Not authorized"
+    create:
+      created: "Product was successfully created"
+    update:
+      updated: "Product was successfully updated"
+    destroy:
+      destroyed: "Product was successfully destroyed"
+

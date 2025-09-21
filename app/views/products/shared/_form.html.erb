@@ -41,6 +41,7 @@
     <%= form.select :status,
       options_for_select(Product.statuses.keys.map { |k| [k.titleize, k] }, (product.status.presence || "draft")),
       {},
+      id: "product_status",
       class: [
         "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
         {"border-gray-400 focus:outline-blue-600": product.errors[:status].none?,
