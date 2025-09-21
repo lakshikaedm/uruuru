@@ -73,3 +73,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "rspec-rails", "~> 7.1", groups: [:development, :test]
+
+gem "factory_bot_rails", "~> 6.5", groups: [:development, :test]
+
+gem "faker", "~> 3.5", group: :test
+
+gem "webdrivers", "~> 5.2", group: :test
