@@ -82,7 +82,7 @@ end
 
 #Capybara
 require 'capybara/rspec'
-
+require 'pundit/rspec'
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :rack_test

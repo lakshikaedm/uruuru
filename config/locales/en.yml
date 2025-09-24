@@ -37,3 +37,6 @@ en:
     destroy:
       destroyed: "Product was successfully destroyed"
 
+en:
+  common:
+    not_authorized: "Not authorized."
