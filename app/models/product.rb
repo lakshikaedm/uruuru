@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
+  belongs_to :category, optional: true
   has_many_attached :images
   enum :status, { draft: 0, publish: 1, sold: 2 }
 
