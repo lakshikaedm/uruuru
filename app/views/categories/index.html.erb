@@ -1,0 +1,9 @@
+<h1 class="text-2xl font-semibold mb-4">Categories</h1>
+
+<ul class="space-y-2">
+  <% @categories.each do |cat| %>
+    <li>
+      <%= link_to cat.name, category_path(cat), class: "text-blue-600 underline hover:no-underline" %>
+    </li>
+  <% end %>
+</ul>
