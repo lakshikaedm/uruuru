@@ -1,3 +1,9 @@
+<% if params[:q].present? %>
+  <h2 class="text-xl font-semibold mb-4">
+    Results for "<%= params[:q] %>"
+  </h2>
+<% end %>
+
 <% if @products.any? %>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-stretch">
     <%= render partial: "products/shared/card",
