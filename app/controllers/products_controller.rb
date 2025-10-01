@@ -3,42 +3,48 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :authorize_owner!, only: %i[edit update destroy]
 
-  # GET /products or /products.json
   def index
     @products = Product.all
   end
 
-  # GET /products/1 or /products/1.json
   def show
   end
 
-  # GET /products/new
   def new
     @product = Product.new
     authorize @product
   end
 
-  # GET /products/1/edit
   def edit
     authorize @product
   end
 
-  # POST /products or /products.json
   def create
-    @product = current_user.products.build(product_params)
+    attrs = product_params.to_h
+    files = attrs.delete("images") || []
+    files = Array.wrap(files).reject(&:blank?)
+    @product = current_user.products.build(attrs)
     authorize @product
     if @product.save
+      if files.present?
+        files.each { |f| @product.images.attach(f) }
+      end
       redirect_to @product, notice: t('.created')
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /products/1 or /products/1.json
   def update
     authorize @product
+    attrs = product_params.to_h
+    files = attrs.delete("images") || []
+    files = Array.wrap(files).reject(&:blank?)
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update(attrs)
+        if files.present?
+          files.each { |f| @product.images.attach(f) }
+        end
         format.html { redirect_to @product, notice: t('.updated'), status: :see_other }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -48,7 +54,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1 or /products/1.json
   def destroy
     authorize @product
     @product.destroy!
@@ -69,9 +74,17 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(
-        :title, :description, :price, :status, 
+      permitted = params.require(:product).permit(
+        :title, :description, :price, :status, :category_id, 
         images: []
         )
+      if permitted[:images].is_a?(Array)
+        permitted[:images].compact!
+        permitted[:images].reject!(&:blank?)
+
+        permitted.delete(:images) if permitted[:images].empty?
+      end
+
+      permitted
     end
 end
