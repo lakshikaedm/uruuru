@@ -1,3 +1,4 @@
+# Renders category pages and their product listings.
 class CategoriesController < ApplicationController
   def index
     @categories = Category.order(:name)
@@ -6,7 +7,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @products = @category.products
-                .includes(:category, :user)
-                .order(created_at: :desc)
+                         .includes(:category, :user)
+                         .order(created_at: :desc)
   end
 end

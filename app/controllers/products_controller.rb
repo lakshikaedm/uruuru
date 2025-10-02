@@ -4,11 +4,11 @@ class ProductsController < ApplicationController
   before_action :authorize_owner!, only: %i[edit update destroy]
 
   def index
-    if params[:q].present?
-      @products = Product.where("title ILIKE ? OR description ILIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
-    else
-      @products = Product.all
-    end
+    @products = if params[:q].present?
+      Product.where("title ILIKE ? OR description ILIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
+                else
+      Product.all
+                end
   end
 
   def show
@@ -26,13 +26,11 @@ class ProductsController < ApplicationController
   def create
     attrs = product_params.to_h
     files = attrs.delete("images") || []
-    files = Array.wrap(files).reject(&:blank?)
+    files = Array.wrap(files).compact_blank
     @product = current_user.products.build(attrs)
     authorize @product
     if @product.save
-      if files.present?
-        files.each { |f| @product.images.attach(f) }
-      end
+      files.each { |f| @product.images.attach(f) } if files.present?
       redirect_to @product, notice: t('.created')
     else
       render :new, status: :unprocessable_entity
@@ -43,12 +41,10 @@ class ProductsController < ApplicationController
     authorize @product
     attrs = product_params.to_h
     files = attrs.delete("images") || []
-    files = Array.wrap(files).reject(&:blank?)
+    files = Array.wrap(files).compact_blank
     respond_to do |format|
       if @product.update(attrs)
-        if files.present?
-          files.each { |f| @product.images.attach(f) }
-        end
+        files.each { |f| @product.images.attach(f) } if files.present?
         format.html { redirect_to @product, notice: t('.updated'), status: :see_other }
         format.json { render :show, status: :ok, location: @product }
       else

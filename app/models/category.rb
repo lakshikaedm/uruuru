@@ -1,3 +1,4 @@
+# Category groups products for browsing/filtering.
 class Category < ApplicationRecord
   has_many :products, dependent: :nullify
 
@@ -5,6 +6,7 @@ class Category < ApplicationRecord
   before_validation :set_slug, if: -> { slug.blank? && name.present? }
 
   private
+
   def set_slug
     self.slug = name.parameterize
   end

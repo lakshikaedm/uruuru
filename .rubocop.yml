@@ -21,3 +21,11 @@ RSpec/ExampleLength:
 
 RSpec/MultipleExpectations:
   Max: 3
+
+Style/Documentation:
+  Enabled: false
+
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'db/migrate/**/*'
