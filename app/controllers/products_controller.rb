@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.search(params[:q])
-      .by_category(params[:category_id])
-      .by_status(params[:status])
-      .order(created_at: :desc)
+                       .by_category(params[:category_id])
+                       .by_status(params[:status])
+                       .order(created_at: :desc)
   end
 
   def show
