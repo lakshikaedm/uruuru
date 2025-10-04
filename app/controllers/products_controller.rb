@@ -4,11 +4,10 @@ class ProductsController < ApplicationController
   before_action :authorize_owner!, only: %i[edit update destroy]
 
   def index
-    @products = if params[:q].present?
-      Product.where("title ILIKE ? OR description ILIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
-                else
-      Product.all
-                end
+    @products = Product.search(params[:q])
+      .by_category(params[:category_id])
+      .by_status(params[:status])
+      .order(created_at: :desc)
   end
 
   def show

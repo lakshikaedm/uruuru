@@ -1,0 +1,24 @@
+<div class="border border-orange-600 p-2 flex flex-wrap items-center gap-4">
+  <%= form_with url: products_path, method: :get, local: true, class: "flex flex-wrap items-center gap-4 w-full" do |f| %>
+    <%= f.hidden_field :q, value: params[:q] %>
+
+    <div class="flex-1">
+      <label class="block text-sm font-medium mb-1">Category</label>
+      <%= f.collection_select :category_id, Category.order(:name), :id, :name,
+            { include_blank: "All" },
+            { class: "select select-bordered w-full" } %>
+    </div>
+
+    <div class="flex-1">
+      <label class="block text-sm font-medium mb-1">Status</label>
+      <%= f.select :status,
+            options_for_select(Product.statuses.keys.map { |s| [s.humanize, s] }, selected: params[:status]),
+            { include_blank: "All" },
+            { class: "select select-bordered w-full" } %>
+    </div>
+
+    <div class="ml-auto self-end">
+      <%= f.submit "Apply", class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm transition-colors duration-200" %>
+    </div>
+  <% end %>
+</div>
