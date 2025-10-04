@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Products", type: :request do
   let(:owner) { create(:user) }
+  let!(:category) { create(:category, name: "Cameras") }
   let!(:product) { create(:product, user: owner) }
 
   describe "GET/products" do
@@ -22,7 +23,7 @@ RSpec.describe "Products", type: :request do
     it "creates with login" do
       sign_in owner
       expect {
-        post products_path, params: { product: { title: "New", price: 100, status: :draft } }
+        post products_path, params: { product: { title: "New", price: 100, status: :draft, category_id: category.id } }
       }.to change(Product, :count).by(1)
       expect(response).to redirect_to(product_path(Product.last))
     end

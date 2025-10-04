@@ -4,6 +4,7 @@ include ActionView::Helpers::NumberHelper
 
 RSpec.describe "Products UI", type: :system do
   let(:user) { create(:user) }
+  let!(:category) { create(:category, name: "Cameras") }
 
   it "creates a product with an image" do
     sign_in user
@@ -12,6 +13,7 @@ RSpec.describe "Products UI", type: :system do
     fill_in "Title", with: "Camera"
     fill_in "Price", with: "1234.56"
     fill_in "Description", with: "Nice one"
+    select "Cameras", from: "Category"
 
     attach_file "Image", Rails.root.join("spec/fixtures/files/sample.jpg")
 
