@@ -19,6 +19,7 @@ gem 'devise', '~> 4.9'
 
 gem "image_processing", "~> 1.2"
 
+gem "ancestry", "~> 4.3"
 gem 'pundit'
 gem 'pundit-matchers'
 

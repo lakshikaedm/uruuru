@@ -38,9 +38,17 @@
                     <a href="#" class="text-gray-900 dark:text-white hover:underline">Team</a>
                 </li>
                 <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Features</a>
+                    <%= link_to "Categories", categories_path, class: "text-gray-900 dark:text-white hover:underline" %>
                 </li>
                 
+            </ul>
+            <ul class="flex items-center space-x-2 ml-6">
+                <%= form_with url: products_path, method: :get, local: true, class: "flex items-center space-x-2" do %>
+                    <%= text_field_tag :q, params[:q], placeholder: "Search...",
+                        class: "text-gray-900 dark:text-white rounded-md border border-gray-300 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
+                    <%= submit_tag "Search",
+                        class: "rounded-md bg-orange-600 hover:bg-orange-500 px-3 py-1 text-sm text-white font-medium cursor-pointer" %>
+                <% end %>
             </ul>
             <ul class="flex font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm ml-auto" >
                 <li>

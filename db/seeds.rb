@@ -1,9 +1,23 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+%w[Clothing Caps Bags Mugs Electronics].each do |name|
+  Category.find_or_create_by!(name: name)
+end
+
+# db/seeds.rb
+
+# --- Categories (ancestry) ---
+clothing = Category.find_or_create_by!(name: "Clothing")
+tops     = clothing.children.find_or_create_by!(name: "Tops")
+tees     = tops.children.find_or_create_by!(name: "T-Shirts")
+
+user = User.find_or_initialize_by(email: "demo@example.com")
+user.username ||= "demo"
+user.password ||= "password"
+user.save!
+
+product = Product.find_or_initialize_by(title: "Demo Tee", user: user)
+product.assign_attributes(
+  price: 1000,
+  status: :publish,
+  category: tees
+)
+product.save!
