@@ -1,0 +1,17 @@
+<% items = local_assigns.fetch(:items) %>
+
+<nav aria-label="Breadcrumb" class="mb-4">
+  <ol class="flex flex-wrap items-center gap-1 text-sm">
+    <% items.each_with_index do |item, i| %>
+      <% last = (i == items.length - 1) %>
+      <li class="flex items-center">
+        <% if item[:url] && !last %>
+          <%= link_to item[:label], item[:url], class: "hover:underline" %>
+        <% else %>
+          <span class="<%= last ? 'font-medium' : '' %>"><%= item[:label] %></span>
+        <% end %>
+        <% unless last %><span class="mx-2">/</span><% end %>
+      </li>
+    <% end %>
+  </ol>
+</nav>
