@@ -19,9 +19,9 @@ gem 'devise', '~> 4.9'
 
 gem "image_processing", "~> 1.2"
 
+gem "ancestry", "~> 4.3"
 gem 'pundit'
 gem 'pundit-matchers'
-gem "ancestry", "~> 4.3"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"

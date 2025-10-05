@@ -16,8 +16,8 @@ user.save!
 
 product = Product.find_or_initialize_by(title: "Demo Tee", user: user)
 product.assign_attributes(
-  price:    1000,
-  status:   :publish,
+  price: 1000,
+  status: :publish,
   category: tees
 )
 product.save!
