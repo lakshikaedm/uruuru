@@ -5,10 +5,10 @@ RSpec.describe Favorite, type: :model do
     user = create(:user)
     product = create(:product)
 
-    Favorite.create!(user:, product:)
+    described_class.create!(user:, product:)
     expect(product.reload.favorites_count).to eq 1
 
-    Favorite.find_by(user:, product:).destroy
+    described_class.find_by(user:, product:).destroy
     expect(product.reload.favorites_count).to eq 0
   end
 end

@@ -10,3 +10,9 @@ en:
 
   common:
     not_authorized: "Not authorized."
+
+  favorites:
+    create:
+      added: "Added to favorites"
+    destroy:
+      removed: "Removed from favorites"

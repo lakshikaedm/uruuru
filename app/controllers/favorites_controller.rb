@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     @product.reload
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_back fallback_location: product_path(@product), notice: "Added to favorites" }
+      format.html { redirect_back fallback_location: product_path(@product), notice: t(".added") }
     end
   end
 
@@ -16,13 +16,13 @@ class FavoritesController < ApplicationController
     @product.reload
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_back fallback_location: product_path(@product), notice: "Removed from favorites" }
+      format.html { redirect_back fallback_location: product_path(@product), notice: t(".removed") }
     end
   end
 
   private
+
   def set_product
     @product = Product.find(params[:product_id])
   end
 end
-    

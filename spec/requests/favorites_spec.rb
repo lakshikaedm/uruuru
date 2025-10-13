@@ -6,14 +6,18 @@ RSpec.describe "Favorites", type: :request do
 
   before { sign_in user }
 
-  it "creates and deletes a favorite" do
-    #like
+  it "adds a product to favorites" do
     post product_favorite_path(product)
+
     expect(Favorite.exists?(user:, product:)).to be true
     expect(product.reload.favorites_count).to eq 1
+  end
 
-    #unlike
+  it "removes a product from favorites" do
+    create(:favorite, user:, product:)
+
     delete product_favorite_path(product)
+
     expect(Favorite.exists?(user:, product:)).to be false
     expect(product.reload.favorites_count).to eq 0
   end
