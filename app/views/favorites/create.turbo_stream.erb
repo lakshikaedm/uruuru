@@ -1,0 +1,3 @@
+<%= turbo_stream.replace dom_id(@product, :favorite_button) do %>
+  <%= render "favorites/button", product: @product %>
+<% end %>

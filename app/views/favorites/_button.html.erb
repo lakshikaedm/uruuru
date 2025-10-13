@@ -1,0 +1,26 @@
+<% red = "fill-red-500" %>
+<% gray = "fill-gray-300" %>
+
+<% if favorited?(product) %>
+  <%= button_to product_favorite_path(product),
+                method: :delete,
+                form: { data: { turbo: true, turbo_submits_with: "..." } },
+                class: "favorite-button",
+                data: { controller: "favorite", action: "click->favorite#toggle" } do %>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         class="h-6 w-6 <%= red %>" data-favorite-target="icon">
+      <path d="M12 21s-6.716-4.19-9.333-7.333C.667 11.333 1.333 7.333 4.667 6 7.333 5 9.333 6.667 12 9.333 14.667 6.667 16.667 5 19.333 6 22.667 7.333 23.333 11.333 21.333 13.667 18.716 16.81 12 21 12 21Z"/>
+    </svg>
+  <% end %>
+<% else %>
+  <%= button_to product_favorite_path(product),
+                method: :post,
+                form: { data: { turbo: true } },
+                class: "favorite-button",
+                data: { controller: "favorite", action: "click->favorite#toggle" } do %>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         class="h-6 w-6 <%= gray %>" data-favorite-target="icon">
+      <path d="M12 21s-6.716-4.19-9.333-7.333C.667 11.333 1.333 7.333 4.667 6 7.333 5 9.333 6.667 12 9.333 14.667 6.667 16.667 5 19.333 6 22.667 7.333 23.333 11.333 21.333 13.667 18.716 16.81 12 21 12 21Z"/>
+    </svg>
+  <% end %>
+<% end %>

@@ -8,6 +8,9 @@ class Product < ApplicationRecord
   scope :by_category, ->(id) { where(category_id: id) if id.present? }
   scope :by_status, ->(s) { where(status: s) if s.present? }
 
+  has_many :favorites, dependent: :destroy
+  has_many :fans, through: :favorites, source: :user
+
   validates :title, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 end
