@@ -1,3 +1,4 @@
+<%= render "shared/breadcrumbs", items: breadcrumb_items_for_category(@category) %>
 <h1 class="text-2xl font-semibold mb-4"><%= @category.name %></h1>
 
 <% if @products.any? %>
