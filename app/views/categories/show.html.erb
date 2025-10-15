@@ -2,16 +2,8 @@
 
 <% if @products.any? %>
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    <% @products.each do |p| %>
-      <div class="border rounded-lg p-3">
-        <% if p.images.attached? %>
-          <%= image_tag p.images.first, class: "w-full h-40 object-cover mb-2" %>
-        <% else %>
-          <%= image_tag "placeholder.png", class: "w-full h-40 object-cover mb-2" %>
-        <% end %>
-        <h2 class="font-medium"><%= link_to p.title, product_path(p) %></h2>
-        <p class="text-sm text-gray-600">¥<%= number_with_delimiter(p.price) %></p>
-      </div>
+    <% @products.each do |product| %>
+      <%= render "products/shared/card", product: product %>
     <% end %>
   </div>
 <% else %>
