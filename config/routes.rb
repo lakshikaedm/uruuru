@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: [:index]
 
+  resource :profile, only: :show, controller: "users"
+
   root "products#index"
 
   get "up" => "rails/health#show", as: :rails_health_check

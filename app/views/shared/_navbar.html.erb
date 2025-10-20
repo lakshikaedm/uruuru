@@ -7,8 +7,8 @@
         <% end %>
         <div class="flex items-center space-x-6 rtl:space-x-reverse">
           <% if user_signed_in? %>
-            <span class="text-sm text-gray-500 dark:text-white">
-              Hi, <%= current_user.username || current_user.email %>
+            <span class="text-sm text-gray-500 dark:text-white hover:underline">
+              Hi, <%= link_to display_name(current_user), profile_path %>
             </span>
             <%= link_to "Edit Account", edit_user_registration_path,
                 class: "text-sm text-blue-600 dark:text-blue-500 hover:underline" %>

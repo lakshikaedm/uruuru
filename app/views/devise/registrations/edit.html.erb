@@ -42,6 +42,15 @@
     </div>
 
     <div class="mb-5">
+      <%= f.label :avatar, "Avatar", class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.file_field :avatar, accept: "image/*",
+        class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"%>
+      <% if resource.avatar&.attached? && resource.avatar.blob&.persisted? %>
+        <div class="mt-2"><%= image_tag resource.avatar.variant(resize_to_fill: [64, 64]), class: "rounded-full border" %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-5">
       <%= f.submit "Update", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mr-4" %>
     </div>
   <% end %>
