@@ -31,7 +31,8 @@ class FavoritesController < ApplicationController
   private
 
   def set_product
-    return unless params[:product_id].present?
+    return if params[:product_id].blank?
+
     @product = Product.find(params[:product_id])
   end
 end
