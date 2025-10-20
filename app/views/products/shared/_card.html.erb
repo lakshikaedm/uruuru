@@ -4,8 +4,7 @@
 <div id="<%= dom_id(product, :card) %>" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col h-full overflow-hidden">
   <%= link_to product_path(product) do %>
     <% if thumb %>
-      <%= image_tag product.images.first.variant(resize_to_limit: [300, 300]), 
-          class: "mt-2 mx-auto w-30 h-30 object-cover rounded" %>
+      <%= image_tag thumb, class: "mt-2 mx-auto w-30 h-30 object-cover rounded" %>
     <% else %>
       <%= image_tag "placeholder.png", class: "mt-2 mx-auto w-30 h-30 object-cover rounded" %>
     <% end %>
