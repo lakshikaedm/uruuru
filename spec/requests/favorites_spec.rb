@@ -21,4 +21,11 @@ RSpec.describe "Favorites", type: :request do
     expect(Favorite.exists?(user:, product:)).to be false
     expect(product.reload.favorites_count).to eq 0
   end
+
+  it "lists liked products" do
+    Favorite.create!(user:, product:)
+    get favorites_path
+    expect(response).to have_http_status(:ok)
+    expect(response.body).to include(product.title)
+  end
 end
