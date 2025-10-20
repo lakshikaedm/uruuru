@@ -1,6 +1,14 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_product
+  before_action :set_product, only: %i[create destroy]
+
+  def index
+    @products =
+      Product.joins(:favorites)
+             .where(favorites: { user_id: current_user.id })
+             .with_attached_images
+             .order('favorites.created_at DESC')
+  end
 
   def create
     current_user.favorites.find_or_create_by!(product: @product)
@@ -23,6 +31,7 @@ class FavoritesController < ApplicationController
   private
 
   def set_product
+    return unless params[:product_id].present?
     @product = Product.find(params[:product_id])
   end
 end

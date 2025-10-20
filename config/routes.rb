@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :products
   devise_for :users
+  resources :categories, only: %i[show index]
 
-  resources :categories, only: %i[index show]
-
-  resources :products, only: %i[index show create new edit update destroy] do
-    resource :favorite, only: %i[create destroy]
+  resources :products, only: [:index, :show] do
+    resource :favorite, only: [:create, :destroy], controller: 'favorites'
   end
+  resources :favorites, only: [:index]
 
   root "products#index"
 
