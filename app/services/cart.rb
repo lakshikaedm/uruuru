@@ -49,6 +49,10 @@ class Cart
     line_items.sum(&:line_total)
   end
 
+  def total_quantity
+    @data.values.map(&:to_i).sum
+  end
+
   private
 
   def normalize!

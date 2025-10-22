@@ -52,6 +52,14 @@
             </ul>
             <ul class="flex font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm ml-auto" >
                 <li>
+                    <%= link_to cart_path, class: "rounded-md px-3.5 py-1.5 text-white bg-orange-600 hover:bg-orange-500 font-medium" do %>
+                        <span>Cart</span>
+                        <span class="rounded-md px-3.5 py-1.5 text-white bg-orange-600 hover:bg-orange-500 font-medium">
+                            <%= current_cart.total_quantity %>
+                        </span>
+                    <% end %>
+                </li>
+                <li>
                     <%= link_to "Add Product", new_product_path, 
                         class: "rounded-md px-3.5 py-1.5 text-white bg-orange-600 hover:bg-orange-500 font-medium" %>
                 </li>

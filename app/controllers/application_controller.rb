@@ -5,10 +5,16 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  helper_method :current_cart
+
   private
 
   def user_not_authorized
     redirect_to(request.referer || root_path, alert: t('common.not_authorized'))
+  end
+
+  def current_cart
+    @current_cart ||= Cart.new(session)
   end
 
   protected
