@@ -41,7 +41,7 @@
 
       <div class="mt-2 flex items-center justify-between">
         <span class="text-3xl font-bold text-gray-900">¥<%= number_to_currency(product.price, unit: "", precision: 0) %></span>
-          <%= form_with url: cart_item_create_path(product), method: :post, local: true, class: "flex items-center gap-2" do |f| %>
+          <%= form_with url: create_cart_item_path(product), method: :post, local: true, class: "flex items-center gap-2" do |f| %>
             <%= number_field_tag "cart_item[quantity]", 1, min: 1,
                 class: "w-20 border rounded p-1 text-sm" %>
             <%= f.submit "Add to cart",
