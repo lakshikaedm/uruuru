@@ -10,6 +10,14 @@ Rails.application.routes.draw do
 
   resource :profile, only: :show, controller: "users"
 
+  resource :cart, only: :show
+
+  resource :cart_item, only: [] do
+    post ":product_id", to: "cart_items#create", as: :create
+    patch ":product_id", to: "cart_items#update", as: :update
+    delete ":product_id", to: "cart_items#destroy", as: :destroy
+  end
+
   root "products#index"
 
   get "up" => "rails/health#show", as: :rails_health_check

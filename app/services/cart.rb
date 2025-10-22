@@ -1,4 +1,5 @@
 class Cart
+  CartItem = Struct.new(:product, :quantity, :line_total, keyword_init: true)
   SESSION_KEY = "cart".freeze
 
   def initialize(session)
