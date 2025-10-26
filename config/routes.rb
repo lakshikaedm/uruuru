@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :products
   devise_for :users,
              controllers: {
-               session: "users/sessions"
+               sessions: "users/sessions"
              }
   resources :categories, only: %i[show index]
 

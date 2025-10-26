@@ -8,7 +8,8 @@ class Cart < ApplicationRecord
 
   def add(product_id, quantity = 1)
     item = cart_items.find_or_initialize_by(product_id: product_id)
-    item.quantity = item.quantity.to_i + quantity.to_i
+    base = item.persisted? ? item.quantity.to_i : 0
+    item.quantity = base + quantity.to_i
     item.save!
   end
 
