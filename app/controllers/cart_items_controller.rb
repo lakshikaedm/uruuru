@@ -25,11 +25,16 @@ class CartItemsController < ApplicationController
   private
 
   def set_cart
-    @cart = Cart.new(session)
+    @cart =
+      if user_signed_in?
+        DbCart.new(current_user.cart || current_user.create_cart!)
+      else
+        SessionCart.new(session)
+      end
   end
 
   def quantity_param
-    q = params.dig(:cart_item, :quantity)
+    q = params.dig(:cart_item, :quantity) || params[:quantity]
     q.present? ? q.to_i : nil
   end
 end

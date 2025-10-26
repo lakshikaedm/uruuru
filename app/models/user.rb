@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_products, through: :favorites, source: :product
   has_one_attached :avatar
+  has_one :cart, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: 30 }
 end
