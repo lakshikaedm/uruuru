@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_26_055416) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_27_123522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,36 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_26_055416) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "unit_price_yen"
+    t.integer "quantity"
+    t.integer "line_total_yen"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "subtotal_yen"
+    t.integer "shipping_yen"
+    t.integer "total_yen"
+    t.string "status"
+    t.string "shipping_name"
+    t.string "shipping_phone"
+    t.string "shipping_postal_code"
+    t.string "shipping_prefecture"
+    t.string "shipping_city"
+    t.string "shipping_address1"
+    t.string "shipping_address2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -117,6 +147,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_26_055416) do
   add_foreign_key "carts", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
 end
