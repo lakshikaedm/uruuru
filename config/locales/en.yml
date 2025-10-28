@@ -16,3 +16,10 @@ en:
       added: "Added to favorites"
     destroy:
       removed: "Removed from favorites"
+
+  orders:
+    create:
+      success: "Order Placed."
+  
+  cart:
+    empty: "Your cart is empty."
