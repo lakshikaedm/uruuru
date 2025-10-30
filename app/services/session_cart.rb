@@ -28,7 +28,9 @@ class SessionCart
     normalize!
   end
 
-  delegate :empty?, to: :@data
+  def clear
+    @session[SESSION_KEY] = {}
+  end
 
   CartItemVO = Struct.new(:product, :quantity, :line_total, keyword_init: true)
 

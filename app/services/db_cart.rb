@@ -11,7 +11,13 @@ class DbCart
     @cart.update_item(product_id, quantity)
   end
 
-  delegate :remove, to: :@cart
+  def remove(product_id)
+    @cart.cart_items.where(product_id: product_id).delete_all
+  end
+
+  def clear
+    @cart.cart_items.delete_all
+  end
 
   def empty?
     @cart.cart_items.none?
@@ -35,4 +41,10 @@ class DbCart
   end
 
   delegate :total_quantity, to: :@cart
+
+  def add(product_id, qty = 1)
+    item = @cart.cart_items.find_or_initialize_by(product_id: product_id)
+    item.quantity = item.quantity.to_i + qty.to_i
+    item.save!
+  end
 end
