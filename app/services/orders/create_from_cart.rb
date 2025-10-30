@@ -41,7 +41,8 @@ module Orders
         order.order_items.build(
           product: product,
           unit_price_yen: product.price,
-          quantity: quantity
+          quantity: quantity,
+          line_total_yen: product.price * quantity
         )
       end
     end
