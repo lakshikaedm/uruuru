@@ -43,8 +43,15 @@
     </div>
 
     <div class="mt-4 flex justify-end items-center gap-6">
-      <div class="text-lg">Subtotal: <span class="font-semibold"><%= money(@cart.subtotal) %></span></div>
-      <%= link_to "Checkout (stub)", "#", class: "px-4 py-2 border rounded opacity-60 cursor-not-allowed" %>
+      <div class="text-lg">
+        Subtotal: <span class="font-semibold"><%= money(@cart.subtotal) %></span>
+      </div>
+
+      <% if @cart.empty? %>
+        <%= link_to "Checkout", "#", class: "px-4 py-2 border rounded opacity-60 cursor-not-allowed" %>
+      <% else %>
+        <%= link_to "Checkout", new_order_path, class: "px-4 py-2 border rounded bg-black text-white hover:bg-gray-800" %>
+      <% end %>
     </div>
   <% end %>
 </div>

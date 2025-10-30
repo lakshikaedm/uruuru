@@ -1,0 +1,40 @@
+<div class="mx-auto max-w-2xl p-6">
+  <h1 class="text-2xl font-semibold mb-4">Checkout</h1>
+
+  <%= form_with model: @order, url: orders_path, class: "space-y-4" do |f| %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <%= f.label :shipping_name, "Full name", class: "block text-sm font-medium" %>
+        <%= f.text_field :shipping_name, class: "mt-1 block w-full border rounded p-2" %>
+      </div>
+      <div>
+        <%= f.label :shipping_phone, "Phone", class: "block text-sm font-medium" %>
+        <%= f.text_field :shipping_phone, class: "mt-1 block w-full border rounded p-2" %>
+      </div>
+      <div>
+        <%= f.label :shipping_postal_code, "Postal code", class: "block text-sm font-medium" %>
+        <%= f.text_field :shipping_postal_code, class: "mt-1 block w-full border rounded p-2" %>
+      </div>
+      <div>
+        <%= f.label :shipping_prefecture, "Prefecture", class: "block text-sm font-medium" %>
+        <%= f.text_field :shipping_prefecture, class: "mt-1 block w-full border rounded p-2" %>
+      </div>
+      <div class="md:col-span-2">
+        <%= f.label :shipping_city, "City", class: "block text-sm font-medium" %>
+        <%= f.text_field :shipping_city, class: "mt-1 block w-full border rounded p-2" %>
+      </div>
+      <div class="md:col-span-2">
+        <%= f.label :shipping_address1, "Address line 1", class: "block text-sm font-medium" %>
+        <%= f.text_field :shipping_address1, class: "mt-1 block w-full border rounded p-2" %>
+      </div>
+      <div class="md:col-span-2">
+        <%= f.label :shipping_address2, "Address line 2 (optional)", class: "block text-sm font-medium" %>
+        <%= f.text_field :shipping_address2, class: "mt-1 block w-full border rounded p-2" %>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <%= f.submit "Place order", class: "px-4 py-2 rounded bg-black text-white" %>
+    </div>
+  <% end %>
+</div>
