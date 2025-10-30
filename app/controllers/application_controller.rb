@@ -14,7 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    @current_cart ||= Cart.new(session)
+    return @current_cart if defined?(@current_user)
+    if user_signed_in?
+      user_cart = current_user.cart || current_user.create_cart!
+      @current_cart = DbCart.new(user_cart)
+    else
+      @current_cart = SessionCart.new(session)
+    end
   end
 
   protected
