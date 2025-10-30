@@ -5,7 +5,7 @@ class OrderItem < ApplicationRecord
   validates :unit_price_yen, :quantity, :line_total_yen, presence: true
   validates :quantity, numericality: { greater_than: 0 }
 
-  before validation :set_line_total, if: -> { unit_price_yen.present? && quantity.present? }
+  before_validation :set_line_total, if: -> { unit_price_yen.present? && quantity.present? }
 
   private
 
