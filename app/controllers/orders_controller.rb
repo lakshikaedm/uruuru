@@ -15,13 +15,13 @@ class OrdersController < ApplicationController
       user: current_user,
       cart: current_cart,
       shipping_params: order_params
-      ).call
+    ).call
 
     redirect_to order_path(order), notice: t(".success")
-    rescue ActiveRecord::RecordInvalid, ArgumentError => e
-      @order = Order.new(order_params)
-      flash.now[:alert] = e.message
-      render :new, status: :unprocessable_entity
+  rescue ActiveRecord::RecordInvalid, ArgumentError => e
+    @order = Order.new(order_params)
+    flash.now[:alert] = e.message
+    render :new, status: :unprocessable_entity
   end
 
   private
@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
 
   def current_cart
     return @current_cart if defined?(@current_user)
+
     if user_signed_in?
       user_cart = current_user.cart || current_user.create_cart!
       @current_cart = DbCart.new(user_cart)
