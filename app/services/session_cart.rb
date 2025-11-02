@@ -28,6 +28,10 @@ class SessionCart
     normalize!
   end
 
+  def empty?
+    @session[SESSION_KEY].values.map(&:to_i).sum.zero?
+  end
+
   def clear
     @session[SESSION_KEY] = {}
   end
