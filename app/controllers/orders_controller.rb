@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
     order = Orders::CreateFromCart.new(
       user: current_user,
       cart: current_cart,
-      shipping_params: order_params
+      shipping_params: shipping_yen.present? ? order_params.merge(shipping_yen:) : order_params
     ).call
 
     redirect_to order_path(order), notice: t(".success")
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
   end
 
   def current_cart
-    return @current_cart if defined?(@current_user)
+    return @current_cart if defined?(@current_cart)
 
     if user_signed_in?
       user_cart = current_user.cart || current_user.create_cart!
