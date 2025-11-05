@@ -9,6 +9,6 @@ class Order < ApplicationRecord
 
   def recalculate_totals!
     self.subtotal_yen = order_items.to_a.sum { |i| i.line_total_yen.to_i }
-    self.total_yen    = subtotal_yen + shipping_yen
+    self.total_yen    = subtotal_yen.to_i + shipping_yen.to_i
   end
 end
