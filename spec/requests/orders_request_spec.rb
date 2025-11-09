@@ -59,7 +59,7 @@ RSpec.describe "Orders", type: :request do
     it "calculate totals" do
       order = Order.last
       expect(order.subtotal_yen).to eq(1200 * 3)
-      expect(order.total_yen).to eq(order.subtotal_yen)
+      expect(order.total_yen).to eq(order.subtotal_yen + order.shipping_yen)
     end
 
     it "clears cart" do
