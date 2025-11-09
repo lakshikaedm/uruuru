@@ -29,7 +29,8 @@ class DbCart
 
   def add(product_id, qty = 1)
     item = @cart.cart_items.find_or_initialize_by(product_id: product_id)
-    item.quantity = item.quantity.to_i + qty.to_i
+    base = item.persisted? ? item.quantity.to_i : 0
+    item.quantity = base + qty.to_i
     item.save!
   end
 
