@@ -11,6 +11,9 @@ class OrdersController < ApplicationController
   end
 
   def create
+    pref = params.dig(:order, :shipping_prefecture)
+    shipping_yen = pref.present? ? ShippingCalculator.new.call(prefecture: pref) : nil
+
     order = Orders::CreateFromCart.new(
       user: current_user,
       cart: current_cart,
