@@ -32,6 +32,7 @@ module Orders
         shipping_address1: @shipping[:shipping_address1],
         shipping_address2: @shipping[:shipping_address2].to_s
       )
+      order.shipping_yen = @shipping["shipping_yen"].to_i if @shipping.key?("shipping_yen")
     end
 
     def add_items(order)
