@@ -8,7 +8,7 @@
         <div class="p-3 flex items-center justify-between">
           <div>
             <div class="font-medium"><%= item.product.title %></div>
-            <div class="text-sm text-gray-600">x <%= item.quantity %></div>
+            <div class="text-sm text-gray-600", id="item-quantity">x <%= item.quantity %></div>
           </div>
           <div class="font-medium"><%= yen(item.line_total_yen) %></div>
         </div>
