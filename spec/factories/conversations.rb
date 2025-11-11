@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :conversation do
-    association :product
-    association :buyer, factory: :user
-    association :seller, factory: :user
+    product
+    buyer factory: %i[user]
+    seller factory: %i[user]
   end
 end
