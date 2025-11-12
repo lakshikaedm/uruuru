@@ -12,7 +12,7 @@ RSpec.describe Conversation, type: :model do
     subject(:conversation) { build(:conversation) }
 
     it "is valid with product, buyer, seller" do
-      expect(:conversation).to be_valid
+      expect(conversation).to be_valid
     end
 
     it "is invalid without product" do
@@ -42,7 +42,7 @@ RSpec.describe Conversation, type: :model do
         seller: existing.seller
       )
       expect(dup).to be_invalid
-      expect(dup.errors[:product]).to include(a_string_matching(/taken|既に/i))
+      expect(dup.errors[:product_id]).to include(a_string_matching(/taken|既に/i))
     end
   end
 
