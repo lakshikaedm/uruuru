@@ -20,7 +20,7 @@ RSpec.describe Message, type: :model do
     end
 
     it "rejects overly long body" do
-      message.body - "a" * 501
+      message.body = "a" * 501
       expect(message).to be_invalid
       expect(message.errors[:body]).to be_present
     end
