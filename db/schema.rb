@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_05_094005) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_12_104706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_05_094005) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
     t.index ["name"], name: "index_categories_on_name", unique: true
     t.index ["slug"], name: "index_categories_on_slug"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "buyer_id", null: false
+    t.bigint "seller_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_conversations_on_buyer_id"
+    t.index ["product_id", "buyer_id", "seller_id"], name: "unique_conversation_per_product_and_users", unique: true
+    t.index ["product_id"], name: "index_conversations_on_product_id"
+    t.index ["seller_id"], name: "index_conversations_on_seller_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -146,6 +158,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_05_094005) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "conversations", "products"
+  add_foreign_key "conversations", "users", column: "buyer_id"
+  add_foreign_key "conversations", "users", column: "seller_id"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "order_items", "orders"
