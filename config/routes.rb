@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: %i[new create show]
 
+  resources :conversations, only: %i[index show create]
+
   root "products#index"
 
   get "up" => "rails/health#show", as: :rails_health_check
