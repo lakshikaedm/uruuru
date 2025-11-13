@@ -30,12 +30,10 @@ RSpec.describe Message, type: :model do
     it "returns messages oldest -> newest when ordered by created_at" do
       conversation = create(:conversation)
       message1     = create(:message, conversation: conversation, created_at: 2.minutes.ago)
-      message2     = create(:message, conversation: conversation, created_at: 1.minutes.ago)
+      message2     = create(:message, conversation: conversation, created_at: 1.minute.ago)
       message3     = create(:message, conversation: conversation, created_at: Time.current)
 
-      if Message.respond_to?(:by_oldest)
-        expect(conversation.messages.by_oldest.pluck(:id)).to eq([message1.id, message2.id, message3.id])
-      end
+      expect(conversation.messages.by_oldest.pluck(:id)).to eq([message1.id, message2.id, message3.id]) if described_class.respond_to?(:by_oldest)
     end
   end
 end
