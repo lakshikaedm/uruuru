@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :orders, dependent: :nullify
   has_one :cart, dependent: :destroy
+  has_many :conversation_participants, dependent: :destroy
+  has_many :conversations, through: :conversation_participants
 
   validates :username, presence: true, length: { maximum: 30 }
 end
