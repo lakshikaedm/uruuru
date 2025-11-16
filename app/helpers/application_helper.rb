@@ -6,4 +6,12 @@ module ApplicationHelper
       SessionCart.new(session).total_quantity
     end
   end
+
+  def field_state_classes(record, attribute)
+    if record.errors[attribute].any?
+      "border-red-400 focus:outline-red-600"
+    else
+      "border-gray-400 focus:outline-blue-600"
+    end
+  end
 end
