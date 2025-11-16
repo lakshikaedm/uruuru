@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_many :conversation_participants, dependent: :destroy
   has_many :conversations, through: :conversation_participants
+  has_many :messages, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: 30 }
 end
