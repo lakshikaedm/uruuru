@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: %i[new create show]
 
-  resources :conversations, only: %i[index show create]
+  resources :conversations, only: %i[index show create] do
+    resources :messages, only: :create
+  end
 
   root "products#index"
 
