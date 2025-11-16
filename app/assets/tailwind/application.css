@@ -20,4 +20,9 @@
   .btn-cart {
     @apply ml-2 inline-flex min-w-[1.75rem] items-center justify-center rounded-md bg-orange-500 hover:bg-orange-400 px-1.5 text-xs font-semibold text-white;
   }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center rounded-md px-3.5 py-1.5
+           text-sm font-medium bg-red-600 text-white hover:bg-red-500;
+  }
 }

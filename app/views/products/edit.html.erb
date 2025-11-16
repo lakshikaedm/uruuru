@@ -1,12 +1,19 @@
 <% content_for :title, "Editing product" %>
 
-<div class="md:w-2/3 w-full">
+<div class="md:w-2/3 w-full space-y-6">
   <h1 class="font-bold text-4xl">Editing product</h1>
 
   <%= render "products/shared/form", product: @product %>
 
-  <%= button_to "Destroy this product", @product, method: :delete,
-          class: "rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium",
-          data: { turbo_confirm: "Are you sure?" } %>
-  <%= link_to "Back to products", products_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-orange-500 hover:bg-orange-450 inline-block font-medium" %>
+  <div class="flex flex-wrap items-center gap-3">
+    <%= button_to "Delete Product",
+          @product,
+          method: :delete,
+          data: { turbo_confirm: "Are you sure?" },
+          class: "btn-danger" %>
+
+    <%= link_to "Back to products",
+          products_path,
+          class: "btn btn-primary inline-block" %>
+  </div>
 </div>
