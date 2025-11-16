@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_path(@conversation)
     else
-      @messages = @conversation.messages.includes(:user)
+      @messages = @conversation.messages.includes(:user).order(:created_at)
       flash.now[:alert] = t("messages.blank_error")
       render "conversations/show", status: :unprocessable_content
     end
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
   private
 
   def set_conversation
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = current_user.conversations.find(params[:conversation_id])
   end
 
   def ensure_participant!

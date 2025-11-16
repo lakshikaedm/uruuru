@@ -7,7 +7,10 @@ class ConversationsController < ApplicationController
     @conversations = current_user.conversations.includes(:product)
   end
 
-  def show; end
+  def show
+    @messages = @conversation.messages.includes(:user).order(:created_at)
+    @message  = @conversation.messages.build
+  end
 
   def create
     participant = User.find_by(id: params[:participant_id])
@@ -20,15 +23,15 @@ class ConversationsController < ApplicationController
 
     @conversation = Conversation.find_by(
       product: product,
-      buyer: buyer,
-      seller: seller
+      buyer:   buyer,
+      seller:  seller
     )
 
     unless @conversation
       @conversation = Conversation.new(
         product: product,
-        buyer: buyer,
-        seller: seller
+        buyer:   buyer,
+        seller:  seller
       )
 
       @conversation.participants << buyer
@@ -43,7 +46,7 @@ class ConversationsController < ApplicationController
   private
 
   def set_conversation
-    @conversation = Conversation.find(params[:id])
+    @conversation = current_user.conversations.find(params[:id])
   end
 
   def ensure_participating!
