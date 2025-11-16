@@ -23,15 +23,15 @@ class ConversationsController < ApplicationController
 
     @conversation = Conversation.find_by(
       product: product,
-      buyer:   buyer,
-      seller:  seller
+      buyer: buyer,
+      seller: seller
     )
 
     unless @conversation
       @conversation = Conversation.new(
         product: product,
-        buyer:   buyer,
-        seller:  seller
+        buyer: buyer,
+        seller: seller
       )
 
       @conversation.participants << buyer
