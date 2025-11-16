@@ -71,3 +71,4 @@ yarn-debug.log*
 # Ignore built Tailwind CSS files
 /app/assets/builds/*
 !/app/assets/builds/.keep
+.vscode/
