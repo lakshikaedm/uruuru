@@ -36,7 +36,7 @@ RSpec.describe "Messages", type: :request do
 
         expect { post conversation_messages_path(conversation), params: { message: { body: "I should not post" } } }
           .not_to change(Message, :count)
-        expect(response).to have_http_status(:forbidden)
+        expect(response).to have_http_status(:not_found)
       end
     end
 
