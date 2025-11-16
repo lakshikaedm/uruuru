@@ -1,67 +1,67 @@
-
-
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-white border-gray-200">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-        <%= link_to products_path, class: "flex items-center space-x-3 rtl:space-x-reverse" do %>
+        <!-- Logo -->
+        <%= link_to products_path, class: "flex items-center space-x-3" do %>
           <%= image_tag "uruuru.png", class: "h-7", alt: "UruUru Logo" %>
         <% end %>
-        <div class="flex items-center space-x-6 rtl:space-x-reverse">
+
+        <!-- Auth -->
+        <div class="flex items-center space-x-6">
           <% if user_signed_in? %>
-            <span class="text-sm text-gray-500 dark:text-white hover:underline">
-              Hi, <%= link_to display_name(current_user), profile_path %>
+            <span class="text-sm text-gray-600">
+              Hi, <%= link_to display_name(current_user), profile_path, class: "btn-link" %>
             </span>
             <%= link_to "Edit Account", edit_user_registration_path,
-                class: "text-sm text-blue-600 dark:text-blue-500 hover:underline" %>
+                class: "btn-link" %>
             <%= button_to "Sign Out", destroy_user_session_path,
                 method: :delete,
-                class: "text-sm text-blue-600 dark:text-blue-500 hover:underline" %>
+                class: "btn-link" %>
           <% else %>
             <%= link_to "Sign Up", new_user_registration_path,
-                class: "text-sm text-blue-600 dark:text-blue-500 hover:underline" %>
+                class: "btn-link" %>
             <%= link_to "Log In", new_user_session_path,
-                class: "text-sm text-blue-600 dark:text-blue-500 hover:underline" %>
+                class: "btn-link" %>
           <% end %>
         </div>
     </div>
 </nav>
-<nav class="bg-gray-50 dark:bg-gray-700">
+
+<!-- Main navigation -->
+<nav class="bg-white border-b border-gray-200">
     <div class="max-w-screen-xl px-4 py-3 mx-auto">
         <div class="flex items-center">
-            <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+            <ul class="flex flex-row font-medium mt-0 space-x-8 text-sm">
                 <li>
-                    <%= link_to "Home", products_path, class: "text-gray-900 dark:text-white hover:underline" %>
+                    <%= link_to "Home", products_path, class: "text-gray-900 hover:underline" %>
                 </li>
                 <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Company</a>
-                </li>
-                <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Team</a>
-                </li>
-                <li>
-                    <%= link_to "Categories", categories_path, class: "text-gray-900 dark:text-white hover:underline" %>
-                </li>
-                
+                    <%= link_to "Categories", categories_path, class: "text-gray-900 hover:underline" %>
+                </li> 
             </ul>
+
+            <!-- Search -->
             <ul class="flex items-center space-x-2 ml-6">
                 <%= form_with url: products_path, method: :get, local: true, class: "flex items-center space-x-2" do %>
                     <%= text_field_tag :q, params[:q], placeholder: "Search...",
-                        class: "text-gray-900 dark:text-white rounded-md border border-gray-300 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
+                        class: "text-gray-900 rounded-md border border-orange-400 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
                     <%= submit_tag "Search",
-                        class: "rounded-md bg-orange-600 hover:bg-orange-500 px-3 py-1 text-sm text-white font-medium cursor-pointer" %>
+                        class: "rounded-md bg-orange-500 hover:bg-orange-400 px-3 py-1 text-sm text-white font-medium cursor-pointer" %>
                 <% end %>
             </ul>
-            <ul class="flex font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm ml-auto" >
+
+            <!-- Cart & Add product -->
+            <ul class="flex font-medium mt-0 space-x-8 text-sm ml-auto" >
                 <li>
-                    <%= link_to cart_path, class: "rounded-md px-3.5 py-1.5 text-white bg-orange-600 hover:bg-orange-500 font-medium" do %>
+                    <%= link_to cart_path, class: "btn btn-cart" do %>
                         <span>Cart</span>
-                        <span class="rounded-md px-3.5 py-1.5 text-white bg-orange-600 hover:bg-orange-500 font-medium">
+                        <span class="btn-cart">
                             <%= header_cart_count %>
                         </span>
                     <% end %>
                 </li>
                 <li>
                     <%= link_to "Add Product", new_product_path, 
-                        class: "rounded-md px-3.5 py-1.5 text-white bg-orange-600 hover:bg-orange-500 font-medium" %>
+                        class: "btn btn-cart" %>
                 </li>
             </ul>
         </div>
