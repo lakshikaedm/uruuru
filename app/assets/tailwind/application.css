@@ -13,6 +13,11 @@
     @apply bg-orange-500 text-white hover:bg-orange-400;
   }
 
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md px-3.5 py-1.5
+          text-sm font-medium bg-gray-300 text-slate-700 hover:bg-gray-50;
+  }
+
   .btn-link {
     @apply text-sm text-blue-600 hover:underline;
   }
