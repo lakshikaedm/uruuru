@@ -65,11 +65,9 @@
         <% end %>
       </div>
 
-      <div class="mt-3">
-        <%= turbo_frame_tag dom_id(product, :favorite_button) do %>
-          <%= render "favorites/button", product: product %>
-        <% end %>
-      </div>
+      <%= turbo_frame_tag dom_id(product, :favorite_button) do %>
+        <%= render "favorites/button", product: product %>
+      <% end %>
 
       <p class="mt-4 text-slate-700 leading-7">
         <%= product.description %>

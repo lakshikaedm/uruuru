@@ -22,3 +22,6 @@ en:
       empty: "Your cart is empty."
     create:
       success: "Order placed."
+
+  messages:
+    blank_error: "Message can't be blank"
