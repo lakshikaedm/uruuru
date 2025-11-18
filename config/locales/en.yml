@@ -28,6 +28,9 @@ en:
         main_image_alt: "Main image of %{title}"
         thumb_image_alt: "Thumbnail image of %{title}"
         placeholder_image_alt: "No image available"
+        ask_seller: "Ask the seller"
+        sign_in: "Sign in"
+        ask_prompt: "to ask the seller a question."
       product:
         image_label: "Image:"
         title_label: "Title:"

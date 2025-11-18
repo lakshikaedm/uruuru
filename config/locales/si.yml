@@ -28,6 +28,9 @@ si:
         main_image_alt: "%{title} හි ප්‍රධාන රූපය"
         thumb_image_alt: "%{title} හි කුඩා රූපය"
         placeholder_image_alt: "රූපයක් නොමැත"
+        ask_seller: "විකුණුම්කරුගෙන් විමසන්න"
+        sign_in: "ලොග් වන්න"
+        ask_prompt: "විකුණුම්කරුගෙන් ප්‍රශ්නයක් ඇසීමට."
       product:
         image_label: "රූපය:"
         title_label: "ශීර්ෂය:"

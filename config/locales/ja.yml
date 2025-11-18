@@ -28,6 +28,10 @@ ja:
         main_image_alt: "%{title}のメイン画像"
         thumb_image_alt: "%{title}のサムネイル画像"
         placeholder_image_alt: "画像がありません"
+        detail:
+        ask_seller: "出品者に質問する"
+        sign_in: "ログイン"
+        ask_prompt: "して出品者に質問できます。"
       product:
         image_label: "画像:"
         title_label: "タイトル:"

@@ -74,6 +74,26 @@
         <%= render "favorites/button", product: product %>
       <% end %>
 
+      <!-- Chat -->
+      <% if user_signed_in? && current_user != @product.user %>
+        <%= button_to t("products.detail.ask_seller"),
+              conversations_path,
+              method: :post,
+              params: {
+                product_id:     @product.id,
+                participant_id: @product.user.id
+              },
+              class: "mt-4 inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700" %>
+
+      <% elsif !user_signed_in? %>
+        <p class="mt-4 text-sm text-gray-600">
+          <%= link_to t("products.detail.sign_in"),
+                new_user_session_path,
+                class: "text-blue-600 underline" %>
+            <%= t("products.detail.ask_prompt") %>
+        </p>
+      <% end %>
+
       <p class="mt-4 text-slate-700 leading-7">
         <%= product.description %>
       </p>
