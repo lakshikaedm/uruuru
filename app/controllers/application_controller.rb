@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
   include Pundit::Authorization
 
@@ -22,6 +23,22 @@ class ApplicationController < ActionController::Base
     else
       @current_cart = SessionCart.new(session)
     end
+  end
+
+  def set_locale
+    locale = params[:locale] || session[:locale] || I18n.default_locale
+    locale = locale.to_sym
+
+    if I18n.available_locales.include?(locale)
+      I18n.locale = locale
+      session[:locale] = locale
+    else
+      I18n.locale = I18n.default_locale
+    end
+  end
+
+  def default_url_options
+    { locale: (I18n.locale == I18n.default_locale ? nil : I18n.locale) }
   end
 
   protected
