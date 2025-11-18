@@ -1,8 +1,13 @@
 <div class="max-w-lg mx-auto mt-12 p-6 bg-white shadow rounded-xl">
-  <h1 class="text-2xl font-semibold mb-4">Start a Conversation</h1>
+  <% content_for :title, t("conversations.new.title") %>
 
-  <p class="text-red-600 mb-4">Invalid participants or product.</p>
+  <h1 class="text-2xl font-semibold mb-4"><%= t("conversations.new.heading") %></h1>
 
-  <%= link_to "Back", conversations_path,
-    class: "inline-block mt-4 text-blue-600 hover:underline" %>
+  <p class="text-red-600 mb-4">
+    <%= t("conversations.new.invalid") %>
+  </p>
+
+  <%= link_to t("conversations.new.back"),
+        conversations_path,
+        class: "inline-block mt-4 text-blue-600 hover:underline" %>
 </div>

@@ -2,7 +2,8 @@
 
 <% if params[:q].present? %>
   <h2 class="text-xl font-semibold text-slate-800 my-4">
-    Results for "<span class="font-medium"><%= params[:q] %></span>"
+    <%= t("products.index.results_for") %>
+    "<span class="font-medium"><%= params[:q] %></span>"
   </h2>
 <% end %>
 
@@ -13,5 +14,7 @@
               as: :product %>
   </div>
 <% else %>
-  <p class="text-center my-10 text-gray-500">No products found.</p>
+  <p class="text-center my-10 text-gray-500">
+    <%= t("products.index.none") %>
+  </p>
 <% end %>

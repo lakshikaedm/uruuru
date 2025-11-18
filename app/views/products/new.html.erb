@@ -1,13 +1,13 @@
 <div class="max-w-sm mx-auto py-4 space-y-6">
-  <% content_for :title, "New product" %>
+  <% content_for :title, t("products.new.title") %>
 
   <div class="md:w-2/3 w-full">
-    <h1 class="font-bold text-4xl">New product</h1>
+    <h1 class="font-bold text-4xl"><%= t("products.new.heading") %></h1>
 
     <%= render "products/shared/form", product: @product %>
   </div>
 
-  <%= link_to "Back to products",
+  <%= link_to t("products.new.back"),
         products_path,
         class: "btn btn-primary inline-block" %>
 </div>

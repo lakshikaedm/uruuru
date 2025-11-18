@@ -6,11 +6,20 @@
       <p class="text-gray-600"><%= @user.email %></p>
     </div>
   </div>
+
   <div class="mt-6 grid gap-3 sm:grid-cols-2">
-    <%= link_to "❤️ Favorites", favorites_path, class: "block rounded-xl border p-4 hover:shadow" %>
-    <%= link_to "➕ Add a Product", new_product_path, class: "block rounded-xl border p-4 hover:shadow" %>
-    <%= link_to "✏️ Edit Profile", edit_user_registration_path, class: "block rounded-xl border p-4 hover:shadow" %>
-    <%= button_to "🚪 Log Out", destroy_user_session_path, method: :delete,
-                              class: "block w-full rounded-xl border p-4 text-left hover:shadow" %>
+    <%= link_to t("users.show.favorites"), favorites_path,
+        class: "block rounded-xl border p-4 hover:shadow" %>
+
+    <%= link_to t("users.show.add_product"), new_product_path,
+        class: "block rounded-xl border p-4 hover:shadow" %>
+
+    <%= link_to t("users.show.edit_profile"), edit_user_registration_path,
+        class: "block rounded-xl border p-4 hover:shadow" %>
+
+    <%= button_to t("users.show.log_out"),
+        destroy_user_session_path,
+        method: :delete,
+        class: "block w-full rounded-xl border p-4 text-left hover:shadow" %>
   </div>
 </div>

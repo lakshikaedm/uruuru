@@ -1,9 +1,11 @@
 <div class="w-full max-w-6xl mx-auto px-4">
+  <% content_for :title, t("products.show.title", title: @product.title) %>
+
   <%= render "shared/breadcrumbs", items: breadcrumb_items_for(@product) %>
   <%= render "products/shared/detail", product: @product %>
 
   <div class="mt-6 flex flex-wrap gap-2">
-    <%= link_to "Edit Product",
+    <%= link_to t("products.show.edit"),
           edit_product_path(@product),
           class: "btn-secondary" %>
   </div>

@@ -1,20 +1,28 @@
 <div class="max-w-2xl mx-auto mt-10">
-  <h1 class="text-2xl font-semibold mb-6">Conversations</h1>
+  <% content_for :title, t("conversations.index.title") %>
+
+  <h1 class="text-2xl font-semibold mb-6"><%= t("conversations.index.heading") %></h1>
 
   <% if @conversations.any? %>
     <ul class="space-y-3">
       <% @conversations.each do |conversation| %>
         <li>
-          <%= link_to conversation_path(conversation), class: "block p-4 bg-white shadow-sm rounded-lg hover:bg-gray-50 transition" do %>
-            <div class="text-lg font-medium"><%= conversation.product.title %></div>
+          <%= link_to conversation_path(conversation),
+                class: "block p-4 bg-white shadow-sm rounded-lg hover:bg-gray-50 transition" do %>
+
+            <div class="text-lg font-medium">
+              <%= conversation.product.title %>
+            </div>
+
             <div class="text-sm text-gray-500 mt-1">
               <%= conversation.participants.map(&:username).join(", ") %>
             </div>
+
           <% end %>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p class="text-gray-600">You have no conversations yet.</p>
+    <p class="text-gray-600"><%= t("conversations.index.empty") %></p>
   <% end %>
 </div>

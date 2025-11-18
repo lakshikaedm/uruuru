@@ -1,10 +1,16 @@
 <div class="max-w-4xl mx-auto p-6">
-  <h1 class="text-2xl font-semibold mb-4">Your Cart</h1>
+  <% content_for :title, t("cart.show.title") %>
+
+  <h1 class="text-2xl font-semibold mb-4">
+    <%= t("cart.show.heading") %>
+  </h1>
 
   <% if @cart.empty? %>
-    <p class="text-gray-600">Your cart is empty.</p>
+    <p class="text-gray-600"><%= t("cart.show.empty") %></p>
     <div class="mt-4">
-      <%= link_to "Continue shopping", products_path, class: "inline-block px-4 py-2 border rounded" %>
+      <%= link_to t("cart.show.continue"),
+            products_path,
+            class: "inline-block px-4 py-2 border rounded" %>
     </div>
   <% else %>
     <div class="divide-y border rounded bg-white">
@@ -12,26 +18,44 @@
         <div class="p-4 flex items-center gap-4">
           <div class="w-16 h-16 flex-shrink-0 bg-gray-100 overflow-hidden rounded">
             <% if item.product.respond_to?(:images) && item.product.images.attached? %>
-              <%= image_tag item.product.images.first.variant(resize_to_fill: [128,128]), class: "w-full h-full object-cover" %>
+              <%= image_tag item.product.images.first.variant(resize_to_fill: [128, 128]),
+                    class: "w-full h-full object-cover" %>
             <% elsif item.product.respond_to?(:image) && item.product.image.attached? %>
-              <%= image_tag item.product.image.variant(resize_to_fill: [128,128]), class: "w-full h-full object-cover" %>
+              <%= image_tag item.product.image.variant(resize_to_fill: [128, 128]),
+                    class: "w-full h-full object-cover" %>
             <% else %>
-              <div class="w-full h-full grid place-items-center text-xs text-gray-400">No image</div>
+              <div class="w-full h-full grid place-items-center text-xs text-gray-400">
+                <%= t("cart.show.no_image") %>
+              </div>
             <% end %>
           </div>
 
           <div class="flex-1">
-            <div class="font-medium"><%= link_to item.product.title, product_path(item.product) %></div>
-            <div class="text-sm text-gray-600"><%= money(item.product.price) %> each</div>
+            <div class="font-medium">
+              <%= link_to item.product.title, product_path(item.product) %>
+            </div>
+            <div class="text-sm text-gray-600">
+              <%= money(item.product.price) %> <%= t("cart.show.each") %>
+            </div>
           </div>
 
           <div class="flex items-center gap-2">
-            <%= form_with url: update_cart_item_path(item.product), method: :patch, scope: :cart_item, local: true, class: "flex items-center gap-2" do |f| %>
-              <%= f.number_field :quantity, value: item.quantity, min: 0, class: "w-20 border rounded p-1" %>
-              <%= f.submit "Update", class: "px-3 py-1 border rounded" %>
+            <%= form_with url: update_cart_item_path(item.product),
+                          method: :patch,
+                          scope: :cart_item,
+                          local: true,
+                          class: "flex items-center gap-2" do |f| %>
+              <%= f.number_field :quantity,
+                    value: item.quantity,
+                    min: 0,
+                    class: "w-20 border rounded p-1" %>
+              <%= f.submit t("cart.show.update"),
+                    class: "px-3 py-1 border rounded" %>
             <% end %>
 
-            <%= button_to "Remove", destroy_cart_item_path(item.product), method: :delete,
+            <%= button_to t("cart.show.remove"),
+                  destroy_cart_item_path(item.product),
+                  method: :delete,
                   class: "px-3 py-1 border rounded" %>
           </div>
 
@@ -44,13 +68,18 @@
 
     <div class="mt-4 flex justify-end items-center gap-6">
       <div class="text-lg">
-        Subtotal: <span class="font-semibold"><%= money(@cart.subtotal) %></span>
+        <%= t("cart.show.subtotal_label") %>
+        <span class="font-semibold"><%= money(@cart.subtotal) %></span>
       </div>
 
       <% if @cart.empty? %>
-        <%= link_to "Checkout", "#", class: "px-4 py-2 border rounded opacity-60 cursor-not-allowed" %>
+        <%= link_to t("cart.show.checkout"),
+              "#",
+              class: "px-4 py-2 border rounded opacity-60 cursor-not-allowed" %>
       <% else %>
-        <%= link_to "Checkout", new_order_path, class: "px-4 py-2 border rounded bg-black text-white hover:bg-gray-800" %>
+        <%= link_to t("cart.show.checkout"),
+              new_order_path,
+              class: "px-4 py-2 border rounded bg-black text-white hover:bg-gray-800" %>
       <% end %>
     </div>
   <% end %>

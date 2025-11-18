@@ -1,43 +1,51 @@
 <div class="mx-auto max-w-2xl p-6">
-  <h1 class="text-2xl font-semibold mb-4">Checkout</h1>
+  <% content_for :title, t("orders.new.title") %>
+
+  <h1 class="text-2xl font-semibold mb-4"><%= t("orders.new.heading") %></h1>
 
   <%= form_with model: @order, url: orders_path, class: "space-y-4" do |f| %>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <%= f.label :shipping_name, "Full name", class: "block text-sm font-medium" %>
+        <%= f.label :shipping_name, t("orders.new.shipping_name"), class: "block text-sm font-medium" %>
         <%= f.text_field :shipping_name, class: "mt-1 block w-full border rounded p-2" %>
       </div>
+
       <div>
-        <%= f.label :shipping_phone, "Phone", class: "block text-sm font-medium" %>
+        <%= f.label :shipping_phone, t("orders.new.shipping_phone"), class: "block text-sm font-medium" %>
         <%= f.text_field :shipping_phone, class: "mt-1 block w-full border rounded p-2" %>
       </div>
+
       <div>
-        <%= f.label :shipping_postal_code, "Postal code", class: "block text-sm font-medium" %>
+        <%= f.label :shipping_postal_code, t("orders.new.shipping_postal_code"), class: "block text-sm font-medium" %>
         <%= f.text_field :shipping_postal_code, class: "mt-1 block w-full border rounded p-2" %>
       </div>
+
       <div>
-        <%= f.label :shipping_prefecture, "Prefecture", class: "block text-sm font-medium" %>
+        <%= f.label :shipping_prefecture, t("orders.new.shipping_prefecture"), class: "block text-sm font-medium" %>
         <%= f.select :shipping_prefecture,
-             JapanPrefectures::LIST,
-             { prompt: "Select Prefecture" },
+             JapanPrefectures.list_for(I18n.locale),
+             { prompt: t("orders.new.prefecture_prompt") },
              class: "mt-1 block w-full rounded border border-gray-600 bg-white p-2.5 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500" %>
       </div>
+
       <div class="md:col-span-2">
-        <%= f.label :shipping_city, "City", class: "block text-sm font-medium" %>
+        <%= f.label :shipping_city, t("orders.new.shipping_city"), class: "block text-sm font-medium" %>
         <%= f.text_field :shipping_city, class: "mt-1 block w-full border rounded p-2" %>
       </div>
+
       <div class="md:col-span-2">
-        <%= f.label :shipping_address1, "Address line 1", class: "block text-sm font-medium" %>
+        <%= f.label :shipping_address1, t("orders.new.shipping_address1"), class: "block text-sm font-medium" %>
         <%= f.text_field :shipping_address1, class: "mt-1 block w-full border rounded p-2" %>
       </div>
+
       <div class="md:col-span-2">
-        <%= f.label :shipping_address2, "Address line 2 (optional)", class: "block text-sm font-medium" %>
+        <%= f.label :shipping_address2, t("orders.new.shipping_address2"), class: "block text-sm font-medium" %>
         <%= f.text_field :shipping_address2, class: "mt-1 block w-full border rounded p-2" %>
       </div>
     </div>
 
     <div class="mt-6">
-      <%= f.submit "Place order", class: "px-4 py-2 rounded bg-black text-white" %>
+      <%= f.submit t("orders.new.submit"), class: "px-4 py-2 rounded bg-black text-white" %>
     </div>
   <% end %>
 </div>

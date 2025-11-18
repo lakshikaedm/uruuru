@@ -1,7 +1,11 @@
 <div class="mx-auto max-w-7xl px-4 py-8">
+  <% content_for :title, t("favorites.index.title") %>
+
   <div class="mb-6 flex items-baseline justify-between">
-    <h1 class="text-2xl font-semibold">Liked Items</h1>
-    <%= link_to "Back to Products", products_path, class: "text-sm underline" %>
+    <h1 class="text-2xl font-semibold"><%= t("favorites.index.heading") %></h1>
+    <%= link_to t("favorites.index.back"),
+          products_path,
+          class: "text-sm underline" %>
   </div>
 
   <% if @products.any? %>
@@ -11,6 +15,6 @@
       <% end %>
     </div>
   <% else %>
-    <p class="text-gray-500">No liked items yet.</p>
+    <p class="text-gray-500"><%= t("favorites.index.empty") %></p>
   <% end %>
 </div>

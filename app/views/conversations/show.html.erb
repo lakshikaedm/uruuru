@@ -1,11 +1,13 @@
 <div class="max-w-2xl mx-auto mt-10 space-y-6">
+  <% content_for :title, t("conversations.show.title", product: @conversation.product.title) %>
+
   <div class="bg-white shadow rounded-xl p-6">
     <h1 class="text-xl font-semibold mb-2">
       <%= @conversation.product.title %>
     </h1>
 
     <p class="text-gray-700">
-      <span class="font-medium">Participants:</span>
+      <span class="font-medium"><%= t("conversations.show.participants_label") %></span>
       <%= @conversation.participants.map(&:username).join(", ") %>
     </p>
   </div>
@@ -30,7 +32,7 @@
         <% end %>
       <% else %>
         <p class="text-gray-500 text-sm">
-          No messages yet. Start the conversation 👋
+          <%= t("conversations.show.empty") %>
         </p>
       <% end %>
     </div>
@@ -38,21 +40,23 @@
 
   <div class="bg-white shadow rounded-xl p-4">
     <h2 class="text-sm font-medium mb-2">
+      <%= t("conversations.show.form_heading") %>
+    </h2>
 
     <%= form_with model: [@conversation, @message], local: true do |f| %>
       <div class="flex gap-2">
         <%= f.text_area :body,
               rows: 2,
               class: "flex-1 rounded-lg border-gray-300 text-sm",
-              placeholder: "Write a message..." %>
-        <%= f.submit "Send",
+              placeholder: t("conversations.show.placeholder") %>
+        <%= f.submit t("conversations.show.send"),
               class: "self-end px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700" %>
       </div>
     <% end %>
   </div>
 
   <div>
-    <%= link_to "Back to Conversations",
+    <%= link_to t("conversations.show.back"),
           conversations_path,
           class: "text-blue-600 hover:underline text-sm" %>
   </div>

@@ -24,60 +24,63 @@
         <div class="flex items-center space-x-6">
           <% if user_signed_in? %>
             <span class="text-sm text-gray-600">
-              Hi, <%= link_to display_name(current_user), profile_path, class: "btn-link" %>
+              <%= t("navbar.hi") %>
+              <%= link_to display_name(current_user), profile_path, class: "btn-link" %>
             </span>
-            <%= link_to "Edit Account", edit_user_registration_path,
-                class: "btn-link" %>
-            <%= button_to "Sign Out", destroy_user_session_path,
-                method: :delete,
-                class: "btn-link" %>
+            <%= link_to t("navbar.edit_account"), edit_user_registration_path,
+                        class: "btn-link" %>
+            <%= button_to t("navbar.sign_out"), destroy_user_session_path,
+                          method: :delete,
+                          class: "btn-link" %>
           <% else %>
-            <%= link_to "Sign Up", new_user_registration_path,
-                class: "btn-link" %>
-            <%= link_to "Log In", new_user_session_path,
-                class: "btn-link" %>
+            <%= link_to t("navbar.sign_up"), new_user_registration_path,
+                        class: "btn-link" %>
+            <%= link_to t("navbar.log_in"), new_user_session_path,
+                        class: "btn-link" %>
           <% end %>
         </div>
     </div>
 </nav>
 
-<!-- Main navigation -->
 <nav class="bg-white border-b border-gray-200">
     <div class="max-w-screen-xl px-4 py-3 mx-auto">
         <div class="flex items-center">
+            <!-- Main navigation -->
             <ul class="flex flex-row font-medium mt-0 space-x-8 text-sm">
-                <li>
-                    <%= link_to "Home", products_path, class: "text-gray-900 hover:underline" %>
-                </li>
-                <li>
-                    <%= link_to "Categories", categories_path, class: "text-gray-900 hover:underline" %>
-                </li> 
+              <li>
+                <%= link_to t("navbar.home"), products_path, class: "text-gray-900 hover:underline" %>
+              </li>
+              <li>
+                <%= link_to t("navbar.categories"), categories_path, class: "text-gray-900 hover:underline" %>
+              </li>
             </ul>
 
             <!-- Search -->
             <ul class="flex items-center space-x-2 ml-6">
-                <%= form_with url: products_path, method: :get, local: true, class: "flex items-center space-x-2" do %>
-                    <%= text_field_tag :q, params[:q], placeholder: "Search...",
-                        class: "text-gray-900 rounded-md border border-orange-400 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
-                    <%= submit_tag "Search",
-                        class: "rounded-md bg-orange-500 hover:bg-orange-400 px-3 py-1 text-sm text-white font-medium cursor-pointer" %>
-                <% end %>
+              <%= form_with url: products_path, method: :get, local: true, class: "flex items-center space-x-2" do %>
+                <%= text_field_tag :q,
+                                  params[:q],
+                                  placeholder: t("navbar.search_placeholder"),
+                                  class: "text-gray-900 rounded-md border border-orange-400 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
+                <%= submit_tag t("navbar.search_button"),
+                              class: "rounded-md bg-orange-500 hover:bg-orange-400 px-3 py-1 text-sm text-white font-medium cursor-pointer" %>
+              <% end %>
             </ul>
 
             <!-- Cart & Add product -->
-            <ul class="flex font-medium mt-0 space-x-8 text-sm ml-auto" >
-                <li>
-                    <%= link_to cart_path, class: "btn btn-cart" do %>
-                        <span>Cart</span>
-                        <span class="btn-cart">
-                            <%= header_cart_count %>
-                        </span>
-                    <% end %>
-                </li>
-                <li>
-                    <%= link_to "Add Product", new_product_path, 
-                        class: "btn btn-cart" %>
-                </li>
+            <ul class="flex font-medium mt-0 space-x-8 text-sm ml-auto">
+              <li>
+                <%= link_to cart_path, class: "btn btn-cart" do %>
+                  <span><%= t("navbar.cart") %></span>
+                  <span class="btn-cart">
+                    <%= header_cart_count %>
+                  </span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to t("navbar.add_product"), new_product_path,
+                            class: "btn btn-cart" %>
+              </li>
             </ul>
         </div>
     </div>
