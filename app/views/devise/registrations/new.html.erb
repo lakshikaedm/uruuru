@@ -1,47 +1,66 @@
 <div class="max-w-sm mx-auto pt-4 space-y-6">
+  <% content_for :title, t("devise.registrations.new.title") %>
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <h2 class="text-xl font-semibold">Sign up</h2>
+    <h2 class="text-xl font-semibold"><%= t("devise.registrations.new.heading") %></h2>
+
     <div class="mb-5">
-      <%= f.label :email, "Email", class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.label :email,
+                  t("devise.registrations.new.email"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= f.email_field :email,
-        class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
-        autofocus: true, autocomplete: "email", placeholder: "name@example.com" %>
+            class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
+            autofocus: true,
+            autocomplete: "email",
+            placeholder: t("devise.registrations.new.email_placeholder") %>
     </div>
 
     <div class="mb-5">
-      <%= f.label :username, "Username", class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.label :username,
+                  t("devise.registrations.new.username"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= f.text_field :username,
-          class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
-          autofocus: true, autocomplete: "username", placeholder: "username" %>
+            class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
+            autofocus: true,
+            autocomplete: "username",
+            placeholder: t("devise.registrations.new.username_placeholder") %>
     </div>
 
     <div class="mb-5">
-      <%= f.label :password, "Password", class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.label :password,
+                  t("devise.registrations.new.password"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %>
       <% if @minimum_password_length %>
-      <em class="block mb-2 text-xs font-medium text-gray-900">(<%= @minimum_password_length %> characters minimum)</em>
+        <em class="block mb-2 text-xs font-medium text-gray-900">
+          <%= t("devise.registrations.new.minimum_length", count: @minimum_password_length) %>
+        </em>
       <% end %>
       <%= f.password_field :password,
-          class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
-          autocomplete: "new-password" %>
+            class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
+            autocomplete: "new-password" %>
     </div>
 
     <div class="mb-5">
-      <%= f.label :password_confirmation, "Confirm Password", class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.label :password_confirmation,
+                  t("devise.registrations.new.password_confirmation"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= f.password_field :password_confirmation,
-        class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
-        autocomplete: "new-password" %>
+            class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
+            autocomplete: "new-password" %>
     </div>
 
     <div class="mb-5">
-      <%= f.submit "Sign up", class: "text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5" %>
+      <%= f.submit t("devise.registrations.new.submit"),
+            class: "text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5" %>
     </div>
-
   <% end %>
 
-  <div class= "flex items-center space-x-4 text-base font-medium mb-4">
-      <p>Already a member?</p>
-      <%= button_to "Log in", new_user_session_path, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5" %>
+  <div class="flex items-center space-x-4 text-base font-medium mb-4">
+    <p><%= t("devise.registrations.new.already_member") %></p>
+    <%= button_to t("devise.registrations.new.log_in"),
+          new_user_session_path,
+          class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5" %>
   </div>
-<div>
+</div>

@@ -1,73 +1,111 @@
 <div class="max-w-sm mx-auto pt-4 space-y-6"> 
-  <h2 class="text-xl font-semibold">Edit Account</h2>
+  <% content_for :title, t("devise.registrations.edit.title") %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <h2 class="text-xl font-semibold"><%= t("devise.registrations.edit.heading") %></h2>
+
+  <%= form_for(resource,
+               as: resource_name,
+               url: registration_path(resource_name),
+               html: { method: :put }) do |f| %>
+
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="mb-5">
-      <%= f.label :email, "Email", class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.label :email,
+                  t("devise.registrations.edit.email"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= f.email_field :email,
-        class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
-         autofocus: true, autocomplete: "email" %>
+          class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
+          autofocus: true,
+          autocomplete: "email" %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div class="mb-3 text-xs text-gray-700">
+        <%= t("devise.registrations.edit.pending_reconfirmation",
+              email: resource.unconfirmed_email) %>
+      </div>
     <% end %>
 
     <div class="mb-5">
-      <%= f.label :password, "Password", class: "block mb-2 text-sm font-medium text-gray-900" %> 
-      <i class="block mb-2 text-xs font-medium text-gray-900">(leave blank if you don't want to change it)</i>
+      <%= f.label :password,
+                  t("devise.registrations.edit.password"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %> 
+      <i class="block mb-2 text-xs font-medium text-gray-900">
+        <%= t("devise.registrations.edit.password_hint") %>
+      </i>
       <%= f.password_field :password,
           class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
-           autocomplete: "new-password" %>
+          autocomplete: "new-password" %>
       <% if @minimum_password_length %>
-        <em class="block mb-2 text-xs font-medium text-gray-900"><%= @minimum_password_length %> characters minimum</em>
+        <em class="block mb-2 text-xs font-medium text-gray-900">
+          <%= t("devise.registrations.edit.minimum_length",
+                 count: @minimum_password_length) %>
+        </em>
       <% end %>
     </div>
 
     <div class="mb-5">
-      <%= f.label :password_confirmation, "Confirm Password", class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.label :password_confirmation,
+                  t("devise.registrations.edit.password_confirmation"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %>
       <%= f.password_field :password_confirmation, 
           class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
           autocomplete: "new-password" %>
     </div>
 
     <div class="mb-5">
-      <%= f.label :current_password, "Current password", class: "block mb-2 text-sm font-medium text-gray-900" %> 
-      <i class="block mb-2 text-xs font-medium text-gray-900">(we need your current password to confirm your changes)</i>
+      <%= f.label :current_password,
+                  t("devise.registrations.edit.current_password"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %> 
+      <i class="block mb-2 text-xs font-medium text-gray-900">
+        <%= t("devise.registrations.edit.current_password_hint") %>
+      </i>
       <%= f.password_field :current_password, 
           class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
           autocomplete: "current-password" %>
     </div>
 
     <div class="mb-5">
-      <%= f.label :avatar, "Avatar", class: "block mb-2 text-sm font-medium text-gray-900" %>
-      <%= f.file_field :avatar, accept: "image/*",
-        class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"%>
+      <%= f.label :avatar,
+                  t("devise.registrations.edit.avatar"),
+                  class: "block mb-2 text-sm font-medium text-gray-900" %>
+      <%= f.file_field :avatar,
+          accept: "image/*",
+          class: "bg-blue-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
       <% if resource.avatar&.attached? && resource.avatar.blob&.persisted? %>
-        <div class="mt-2"><%= image_tag resource.avatar.variant(resize_to_fill: [64, 64]), class: "rounded-full border" %></div>
+        <div class="mt-2">
+          <%= image_tag resource.avatar.variant(resize_to_fill: [64, 64]),
+                class: "rounded-full border" %>
+        </div>
       <% end %>
     </div>
 
     <div class="mb-5">
-      <%= f.submit "Update", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mr-4" %>
+      <%= f.submit t("devise.registrations.edit.update"),
+          class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mr-4" %>
     </div>
   <% end %>
-  <%= link_to "Back to Home", root_path, class: "text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2" %>
 
-  <div class= "text-base font-medium mb-4">
+  <%= link_to t("devise.registrations.edit.back_to_home"),
+      root_path,
+      class: "text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2" %>
+
+  <div class="text-base font-medium mb-4 mt-6">
     <div class="flex items-center my-6">
       <div class="flex-grow border-t border-red-700"></div>
-      <span class="mx-4 text-red-600 font-semibold">Danger Zone</span>
+      <span class="mx-4 text-red-600 font-semibold">
+        <%= t("devise.registrations.edit.danger_zone") %>
+      </span>
       <div class="flex-grow border-t border-red-700"></div>
     </div>
-    <p>Deleting your account is permanent and cannot be undone.</p><br/>
-    <%= button_to "Permanently Delete my account",
-      registration_path(resource_name),
-      method: :delete,
-      data: { confirm: "Are you sure?" },
-      class: "text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300
-              font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5" %>
+
+    <p><%= t("devise.registrations.edit.delete_warning") %></p><br/>
+
+    <%= button_to t("devise.registrations.edit.delete_button"),
+        registration_path(resource_name),
+        method: :delete,
+        data: { confirm: t("devise.registrations.edit.delete_confirm") },
+        class: "text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5" %>
   </div>
 </div>
