@@ -1,9 +1,10 @@
-<div id="<%= dom_id(product, :detail) %>" data-controller="product-gallery" class="w-full">
+<div id="<%= dom_id(product, :detail) %>"
+     data-controller="product-gallery"
+     class="w-full">
   <div class="flex flex-col md:flex-row md:gap-6 w-full">
     <div class="w-full md:w-1/2">
       <% if product.images.attached? %>
         <div class="md:flex md:gap-4">
-        
           <!-- Thumbnails (vertical on md+, hidden on mobile) -->
           <div class="hidden md:flex md:flex-col md:gap-2 md:w-20">
             <% product.images.each do |img| %>
@@ -13,6 +14,7 @@
                       action: "click->product-gallery#switch",
                       product_gallery_target: "thumb"
                     },
+                    alt: t(".thumb_image_alt", title: product.title),
                     class: "rounded-md w-20 h-20 object-cover border border-gray-200 cursor-pointer hover:opacity-80" %>
             <% end %>
           </div>
@@ -22,6 +24,7 @@
             <%= image_tag product.images.first.variant(resize_to_limit: [1200, 1200]),
                   id: dom_id(product, :main_image),
                   data: { product_gallery_target: "main" },
+                  alt: t(".main_image_alt", title: product.title),
                   class: "w-full object-cover rounded-lg border border-gray-200" %>
           </div>
         </div>
@@ -35,11 +38,13 @@
                     action: "click->product-gallery#switch",
                     product_gallery_target: "thumb"
                   },
+                  alt: t(".thumb_image_alt", title: product.title),
                   class: "rounded-md w-20 h-20 object-cover border border-gray-200 cursor-pointer hover:opacity-80" %>
           <% end %>
         </div>
       <% else %>
         <%= image_tag "placeholder.png",
+              alt: t(".placeholder_image_alt"),
               class: "w-full rounded-lg object-contain border border-gray-200 bg-white" %>
       <% end %>
     </div>
@@ -60,7 +65,7 @@
                 class: "w-20 rounded-md border border-gray-300 px-2 py-1 text-sm
                         focus:outline-none focus:ring-2 focus:ring-orange-500" %>
 
-          <%= f.submit "Add to cart",
+          <%= f.submit t(".add_to_cart"),
                 class: "btn btn-primary" %>
         <% end %>
       </div>

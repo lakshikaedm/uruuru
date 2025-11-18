@@ -1,7 +1,10 @@
 <%= form_with(model: product, class: "contents") do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2>
+        <%= pluralize(product.errors.count, "error") %>
+        <%= t("products.form.error_header") %>
+      </h2>
 
       <ul class="list-disc ml-6">
         <% product.errors.each do |error| %>
@@ -15,25 +18,27 @@
 
   <%# Title %>
   <div class="my-5">
-    <%= form.label :title, "Title", class: "form-label" %>
+    <%= form.label :title, t("products.form.title"), class: "form-label" %>
     <%= form.text_field :title,
           class: "#{base_field_classes} #{field_state_classes(product, :title)}" %>
   </div>
 
   <%# Images %>
   <div class="my-5">
-    <%= form.label :images, "Images", class: "form-label" %>
+    <%= form.label :images, t("products.form.images"), class: "form-label" %>
     <%= form.file_field :images,
           multiple: true,
           accept: "image/*",
           class: base_field_classes,
           direct_upload: true %>
-    <p class="text-xs text-gray-500 mt-1">You can select multiple images.</p>
+    <p class="text-xs text-gray-500 mt-1">
+      <%= t("products.form.images_hint") %>
+    </p>
   </div>
 
   <%# Description %>
   <div class="mb-5">
-    <%= form.label :description, "Description", class: "form-label" %>
+    <%= form.label :description, t("products.form.description"), class: "form-label" %>
     <%= form.text_area :description,
           rows: 4,
           class: "#{base_field_classes} #{field_state_classes(product, :description)}" %>
@@ -41,17 +46,17 @@
 
   <%# Price %>
   <div class="mb-5">
-    <%= form.label :price, "Price", class: "form-label" %>
+    <%= form.label :price, t("products.form.price"), class: "form-label" %>
     <%= form.text_field :price,
           class: "#{base_field_classes} #{field_state_classes(product, :price)}" %>
   </div>
 
   <%# Status %>
   <div class="mb-5">
-    <%= form.label :status, "Status", class: "form-label" %>
+    <%= form.label :status, t("products.form.status"), class: "form-label" %>
     <%= form.select :status,
           options_for_select(
-            Product.statuses.keys.map { |k| [k.titleize, k] },
+            Product.statuses.keys.map { |k| [k.titleize, k] }, # can i18n later
             (product.status.presence || "draft")
           ),
           {},
@@ -61,16 +66,16 @@
 
   <%# Category %>
   <div class="mb-5">
-    <%= form.label :category_id, "Category", class: "form-label" %>
+    <%= form.label :category_id, t("products.form.category"), class: "form-label" %>
     <%= form.collection_select :category_id,
           Category.order(:name), :id, :name,
-          { include_blank: "Select a Category" },
+          { include_blank: t("products.form.category_placeholder") },
           class: base_field_classes %>
   </div>
 
   <%# Submit %>
   <div class="inline">
-    <%= form.submit "Save Product",
+    <%= form.submit t("products.form.save"),
           class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

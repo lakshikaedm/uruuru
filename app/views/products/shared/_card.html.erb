@@ -10,9 +10,13 @@
   <%= link_to product_path(product) do %>
     <div class="mx-auto mt-2 h-48 w-full flex items-center justify-center border border-gray-300 rounded-md bg-white">
       <% if thumb %>
-        <%= image_tag thumb, class: "h-44 object-contain" %>
+        <%= image_tag thumb,
+              class: "h-44 object-contain",
+              alt: t(".product_image_alt", title: product.title) %>
       <% else %>
-        <%= image_tag "placeholder.png", class: "h-44 object-contain" %>
+        <%= image_tag "placeholder.png",
+              class: "h-44 object-contain",
+              alt: t(".placeholder_image_alt") %>
       <% end %>
     </div>
   <% end %>
@@ -37,7 +41,7 @@
               class: "w-16 rounded-md border border-gray-300 px-2 py-1 text-sm
                       focus:outline-none focus:ring-2 focus:ring-orange-500" %>
 
-        <%= f.submit "Add to cart",
+        <%= f.submit t(".add_to_cart"),
               class: "btn btn-primary" %>
       <% end %>
     </div>

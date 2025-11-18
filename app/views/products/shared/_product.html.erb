@@ -1,30 +1,39 @@
 <div id="<%= dom_id product %>" class="w-full sm:w-auto my-5 space-y-5">
   <div>
-    <strong class="block font-medium mb-1">Image:</strong>
+    <strong class="block font-medium mb-1"><%= t(".image_label") %></strong>
     <% if product.images.attached? %>
-      <%= image_tag product.images.first.variant(resize_to_limit: [600, 600]).processed %>
+      <%= image_tag product.images.first.variant(resize_to_limit: [600, 600]).processed,
+            alt: t(".product_image_alt", title: product.title),
+            class: "w-48 h-48 object-cover rounded" %>
     <% else %>
-      <%= image_tag "placeholder.png", class: "w-48 h-48 object-cover rounded" %>
+      <%= image_tag "placeholder.png",
+            alt: t(".placeholder_image_alt"),
+            class: "w-48 h-48 object-cover rounded" %>
     <% end %>
   </div>
+
   <div>
-    <strong class="block font-medium mb-1">Title:</strong>
+    <strong class="block font-medium mb-1"><%= t(".title_label") %></strong>
     <%= product.title %>
   </div>
+
   <div>
-    <strong class="block font-medium mb-1">Description:</strong>
+    <strong class="block font-medium mb-1"><%= t(".description_label") %></strong>
     <%= product.description %>
   </div>
+
   <div>
-    <strong class="block font-medium mb-1">Price:</strong>
+    <strong class="block font-medium mb-1"><%= t(".price_label") %></strong>
     <%= product.price %>
   </div>
+
   <div>
-    <strong class="block font-medium mb-1">Status:</strong>
+    <strong class="block font-medium mb-1"><%= t(".status_label") %></strong>
     <%= product.status %>
   </div>
+
   <div>
-    <strong class="block font-medium mb-1">User:</strong>
+    <strong class="block font-medium mb-1"><%= t(".user_label") %></strong>
     <%= product.user_id %>
   </div>
 </div>
