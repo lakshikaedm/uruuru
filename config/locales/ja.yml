@@ -1,0 +1,35 @@
+ja:
+  products:
+    form:
+      error_header: "この商品は保存できませんでした："
+      title: "タイトル"
+      images: "画像"
+      images_hint: "複数の画像を選択できます。"
+      description: "説明"
+      price: "価格"
+      status: "ステータス"
+      category: "カテゴリ"
+      category_placeholder: "カテゴリーを選択"
+      save: "商品を保存"
+
+    shared:
+      card:
+        add_to_cart: "カートに追加"
+        product_image_alt: "%{title}の画像"
+        placeholder_image_alt: "画像はありません"
+
+      detail:
+        add_to_cart: "カートに追加"
+        main_image_alt: "%{title}のメイン画像"
+        thumb_image_alt: "%{title}のサムネイル画像"
+        placeholder_image_alt: "画像はありません"
+
+      product:
+        image_label: "画像："
+        title_label: "タイトル："
+        description_label: "説明："
+        price_label: "価格："
+        status_label: "ステータス："
+        user_label: "ユーザー："
+        product_image_alt: "%{title}の画像"
+        placeholder_image_alt: "画像はありません"

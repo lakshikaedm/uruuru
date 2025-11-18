@@ -1,0 +1,35 @@
+si:
+  products:
+    form:
+      error_header: "මෙම නිෂ්පාදනය සුරැකීම වලක්වා ඇත:"
+      title: "ශීර්ෂය"
+      images: "රූප"
+      images_hint: "ඔබට රූප කිහිපයක් තෝරාගත හැක."
+      description: "විස්තරය"
+      price: "මිල"
+      status: "තත්ත්වය"
+      category: "වර්ගය"
+      category_placeholder: "වර්ගයක් තෝරන්න"
+      save: "නිෂ්පාදනය සුරකින්න"
+
+    shared:
+      card:
+        add_to_cart: "කූඩයට දාන්න"
+        product_image_alt: "%{title} හි රූපය"
+        placeholder_image_alt: "රූපයක් නොමැත"
+
+      detail:
+        add_to_cart: "කූඩයට දාන්න"
+        main_image_alt: "%{title} හි ප්‍රධාන රූපය"
+        thumb_image_alt: "%{title} හි අතුරු රූපය"
+        placeholder_image_alt: "රූපයක් නොමැත"
+
+      product:
+        image_label: "රූපය:"
+        title_label: "මාතෘකාව:"
+        description_label: "විස්තරය:"
+        price_label: "මිල:"
+        status_label: " තත්ත්වය:"
+        user_label: "පරිශීලකයා:"
+        product_image_alt: "%{title} හි රූපය"
+        placeholder_image_alt: "රූපයක් නොමැත"

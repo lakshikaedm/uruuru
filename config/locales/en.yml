@@ -25,3 +25,41 @@ en:
 
   messages:
     blank_error: "Message can't be blank"
+
+  # config/locales/en.yml
+en:
+  products:
+    form:
+      error_header: "prohibited this product from being saved:"
+      title: "Title"
+      images: "Images"
+      images_hint: "You can select multiple images."
+      description: "Description"
+      price: "Price"
+      status: "Status"
+      category: "Category"
+      category_placeholder: "Select a Category"
+      save: "Save Product"
+
+    shared:
+      card:
+        add_to_cart: "Add to cart"
+        product_image_alt: "Image of %{title}"
+        placeholder_image_alt: "No image available"
+
+      detail:
+        add_to_cart: "Add to cart"
+        main_image_alt: "Main image of %{title}"
+        thumb_image_alt: "Thumbnail image of %{title}"
+        placeholder_image_alt: "No image available"
+
+      product:
+        image_label: "Image:"
+        title_label: "Title:"
+        description_label: "Description:"
+        price_label: "Price:"
+        status_label: "Status:"
+        user_label: "User:"
+        product_image_alt: "Image of %{title}"
+        placeholder_image_alt: "No image available"
+  
