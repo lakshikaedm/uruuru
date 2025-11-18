@@ -1,7 +1,14 @@
 ja:
   products:
+    not_authorized: "権限がありません"
+    create:
+      created: "商品が正常に作成されました"
+    update:
+      updated: "商品が正常に更新されました"
+    destroy:
+      destroyed: "商品が正常に削除されました"
     form:
-      error_header: "この商品は保存できませんでした："
+      error_header: "次のエラーにより商品を保存できませんでした:"
       title: "タイトル"
       images: "画像"
       images_hint: "複数の画像を選択できます。"
@@ -9,27 +16,250 @@ ja:
       price: "価格"
       status: "ステータス"
       category: "カテゴリ"
-      category_placeholder: "カテゴリーを選択"
-      save: "商品を保存"
-
+      category_placeholder: "カテゴリを選択してください"
+      save: "商品を保存する"
     shared:
       card:
-        add_to_cart: "カートに追加"
+        add_to_cart: "カートに入れる"
         product_image_alt: "%{title}の画像"
-        placeholder_image_alt: "画像はありません"
-
+        placeholder_image_alt: "画像がありません"
       detail:
-        add_to_cart: "カートに追加"
+        add_to_cart: "カートに入れる"
         main_image_alt: "%{title}のメイン画像"
         thumb_image_alt: "%{title}のサムネイル画像"
-        placeholder_image_alt: "画像はありません"
-
+        placeholder_image_alt: "画像がありません"
       product:
-        image_label: "画像："
-        title_label: "タイトル："
-        description_label: "説明："
-        price_label: "価格："
-        status_label: "ステータス："
-        user_label: "ユーザー："
+        image_label: "画像:"
+        title_label: "タイトル:"
+        description_label: "説明:"
+        price_label: "価格:"
+        status_label: "ステータス:"
+        user_label: "ユーザー:"
         product_image_alt: "%{title}の画像"
-        placeholder_image_alt: "画像はありません"
+        placeholder_image_alt: "画像がありません"
+    edit:
+      title: "商品編集"
+      heading: "商品編集"
+      delete: "商品を削除する"
+      confirm_delete: "本当に削除しますか？"
+      back: "商品一覧に戻る"
+    index:
+      results_for: "検索結果："
+      none: "商品が見つかりませんでした。"
+    new:
+      title: "新しい商品"
+      heading: "新しい商品"
+      back: "商品一覧に戻る"
+    show:
+      title: "%{title} - 商品詳細"
+      edit: "商品を編集する"
+    search:
+      category: "カテゴリ"
+      status: "ステータス"
+      all: "すべて"
+      apply: "検索"
+
+  common:
+    not_authorized: "権限がありません。"
+
+  favorites:
+    create:
+      added: "お気に入りに追加しました"
+    destroy:
+      removed: "お気に入りから削除しました"
+    index:
+      title: "いいねした商品"
+      heading: "いいねした商品"
+      back: "商品一覧に戻る"
+      empty: "まだいいねした商品がありません。"
+
+  orders:
+    new:
+      empty: "カートは空です。"
+      title: "チェックアウト"
+      heading: "チェックアウト"
+      shipping_name: "氏名"
+      shipping_phone: "電話番号"
+      shipping_postal_code: "郵便番号"
+      shipping_prefecture: "都道府県"
+      prefecture_prompt: "都道府県を選択してください"
+      shipping_city: "市区町村"
+      shipping_address1: "住所1"
+      shipping_address2: "住所2（任意）"
+      submit: "注文を確定する"
+    create:
+      success: "注文が完了しました。"
+    show:
+      title: "注文 #%{id}"
+      heading: "注文"
+      items_heading: "商品"
+      quantity_label: "× %{quantity}"
+      shipping_heading: "配送先"
+      subtotal: "小計"
+      shipping: "送料"
+      total: "合計"
+
+  cart:
+    show:
+      title: "カート"
+      heading: "カート"
+      empty: "カートは空です。"
+      continue: "買い物を続ける"
+      no_image: "画像なし"
+      each: "/個"
+      update: "更新"
+      remove: "削除"
+      subtotal_label: "小計:"
+      checkout: "チェックアウト"
+
+  messages:
+    blank_error: "メッセージを入力してください"
+
+  navbar:
+    hi: "こんにちは,"
+    edit_account: "アカウント編集"
+    sign_out: "ログアウト"
+    sign_up: "新規登録"
+    log_in: "ログイン"
+    home: "ホーム"
+    categories: "カテゴリ"
+    search_placeholder: "検索..."
+    search_button: "検索"
+    cart: "カート"
+    add_product: "商品を出品する"
+
+  users:
+    show:
+      favorites: "❤️ お気に入り"
+      add_product: "➕ 商品を出品する"
+      edit_profile: "✏️ プロフィール編集"
+      log_out: "🚪 ログアウト"
+
+  devise:
+    confirmations:
+      new:
+        title: "確認メールを再送"
+        heading: "確認メールを再送"
+        email: "メールアドレス"
+        submit: "確認メールを再送する"
+    mailer:
+      confirmation_instructions:
+        greeting: "%{email} さん、ようこそ！"
+        instructions: "以下のリンクからメールアドレスを確認できます。"
+        action: "アカウントを確認する"
+      email_changed:
+        greeting: "%{email} さん、こんにちは！"
+        being_changed: "メールアドレスが %{email} に変更されようとしています。"
+        changed: "メールアドレスが %{email} に変更されました。"
+      password_change:
+        greeting: "%{email} さん、こんにちは！"
+        notice: "パスワードが変更されたことをお知らせします。"
+      reset_password_instructions:
+        greeting: "%{email} さん、こんにちは！"
+        requested: "パスワード変更のリクエストがありました。以下のリンクから変更できます。"
+        action: "パスワードを変更する"
+        ignore: "心当たりがない場合は、このメールを無視してください。"
+        notice: "上記リンクにアクセスして新しいパスワードを設定するまで、パスワードは変更されません。"
+      unlock_instructions:
+        greeting: "%{email} さん、こんにちは！"
+        locked: "ログイン失敗が一定回数を超えたため、アカウントがロックされました。"
+        instructions: "アカウントのロックを解除するには、以下のリンクをクリックしてください。"
+        action: "アカウントのロックを解除する"
+    passwords:
+      new:
+        title: "パスワードをお忘れですか？"
+        heading: "パスワードをお忘れですか？"
+        email: "メールアドレス"
+        submit: "パスワード再設定用のメールを送信"
+      edit:
+        title: "パスワードを変更"
+        heading: "パスワードを変更"
+        new_password: "新しいパスワード"
+        confirm_new_password: "新しいパスワード（確認）"
+        minimum_length: "(最低 %{count} 文字)"
+        submit: "パスワードを変更する"
+    registrations:
+      new:
+        title: "新規登録"
+        heading: "新規登録"
+        email: "メールアドレス"
+        email_placeholder: "name@example.com"
+        username: "ユーザー名"
+        username_placeholder: "username"
+        password: "パスワード"
+        minimum_length: "(最低 %{count} 文字)"
+        password_confirmation: "パスワード（確認用）"
+        submit: "新規登録"
+        already_member: "すでにアカウントをお持ちですか？"
+        log_in: "ログイン"
+      edit:
+        title: "アカウント編集"
+        heading: "アカウント編集"
+        email: "メールアドレス"
+        pending_reconfirmation: "現在、次のメールアドレスの確認待ちです: %{email}"
+        password: "パスワード"
+        password_hint: "変更しない場合は空のままにしてください"
+        minimum_length: "最低 %{count} 文字"
+        password_confirmation: "パスワード（確認用）"
+        current_password: "現在のパスワード"
+        current_password_hint: "変更を反映するために現在のパスワードが必要です"
+        avatar: "アバター"
+        update: "更新する"
+        back_to_home: "ホームに戻る"
+        danger_zone: "危険ゾーン"
+        delete_warning: "アカウントを削除すると元に戻すことはできません。"
+        delete_button: "アカウントを完全に削除する"
+        delete_confirm: "本当に削除しますか？"
+    sessions:
+      new:
+        title: "ログイン"
+        heading: "ログイン"
+        email: "メールアドレス"
+        email_placeholder: "name@example.com"
+        password: "パスワード"
+        remember_me: "ログイン状態を保持する"
+        forgot_password: "パスワードをお忘れですか？"
+        submit: "ログイン"
+        no_account: "アカウントをお持ちでないですか？"
+        sign_up: "新規登録"
+    shared:
+      links:
+        log_in: "ログイン"
+        sign_up: "新規登録"
+        forgot_password: "パスワードをお忘れですか？"
+        resend_confirmation: "確認メールが届いていませんか？"
+        resend_unlock: "ロック解除メールが届いていませんか？"
+        sign_in_with: "%{provider} でログイン"
+    unlocks:
+      new:
+        title: "ロック解除メールを再送"
+        heading: "ロック解除メールを再送"
+        email: "メールアドレス"
+        submit: "ロック解除メールを再送する"
+
+  conversations:
+    index:
+      title: "メッセージ"
+      heading: "メッセージ"
+      empty: "まだ会話がありません。"
+    new:
+      title: "新しい会話を開始"
+      heading: "新しい会話を開始"
+      invalid: "不正な参加者または商品です。"
+      back: "戻る"
+    show:
+      title: "%{product} のメッセージ"
+      participants_label: "参加者:"
+      empty: "まだメッセージがありません。最初のメッセージを送りましょう 👋"
+      form_heading: "新しいメッセージ"
+      placeholder: "メッセージを書く..."
+      send: "送信"
+      back: "会話一覧に戻る"
+
+  categories:
+    index:
+      title: "カテゴリー"
+      heading: "カテゴリー"
+    show:
+      title: "%{name} - カテゴリー"
+      empty: "このカテゴリーにはまだ商品がありません。"

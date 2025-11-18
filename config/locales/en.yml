@@ -7,28 +7,6 @@ en:
       updated: "Product was successfully updated"
     destroy:
       destroyed: "Product was successfully destroyed"
-
-  common:
-    not_authorized: "Not authorized."
-
-  favorites:
-    create:
-      added: "Added to favorites"
-    destroy:
-      removed: "Removed from favorites"
-
-  orders:
-    new:
-      empty: "Your cart is empty."
-    create:
-      success: "Order placed."
-
-  messages:
-    blank_error: "Message can't be blank"
-
-  # config/locales/en.yml
-en:
-  products:
     form:
       error_header: "prohibited this product from being saved:"
       title: "Title"
@@ -40,19 +18,16 @@ en:
       category: "Category"
       category_placeholder: "Select a Category"
       save: "Save Product"
-
     shared:
       card:
         add_to_cart: "Add to cart"
         product_image_alt: "Image of %{title}"
         placeholder_image_alt: "No image available"
-
       detail:
         add_to_cart: "Add to cart"
         main_image_alt: "Main image of %{title}"
         thumb_image_alt: "Thumbnail image of %{title}"
         placeholder_image_alt: "No image available"
-
       product:
         image_label: "Image:"
         title_label: "Title:"
@@ -62,4 +37,229 @@ en:
         user_label: "User:"
         product_image_alt: "Image of %{title}"
         placeholder_image_alt: "No image available"
-  
+    edit:
+      title: "Editing product"
+      heading: "Editing product"
+      delete: "Delete Product"
+      confirm_delete: "Are you sure?"
+      back: "Back to products"
+    index:
+      results_for: "Results for"
+      none: "No products found."
+    new:
+      title: "New product"
+      heading: "New product"
+      back: "Back to products"
+    show:
+      title: "%{title} - Product detail"
+      edit: "Edit Product"
+    search:
+      category: "Category"
+      status: "Status"
+      all: "All"
+      apply: "Apply"
+
+  common:
+    not_authorized: "Not authorized."
+
+  favorites:
+    create:
+      added: "Added to favorites"
+    destroy:
+      removed: "Removed from favorites"
+    index:
+      title: "Liked Items"
+      heading: "Liked Items"
+      back: "Back to Products"
+      empty: "No liked items yet."
+
+  orders:
+    new:
+      empty: "Your cart is empty."
+      title: "Checkout"
+      heading: "Checkout"
+      shipping_name: "Full name"
+      shipping_phone: "Phone"
+      shipping_postal_code: "Postal code"
+      shipping_prefecture: "Prefecture"
+      prefecture_prompt: "Select Prefecture"
+      shipping_city: "City"
+      shipping_address1: "Address line 1"
+      shipping_address2: "Address line 2 (optional)"
+      submit: "Place order"
+    create:
+      success: "Order placed."
+    show:
+      title: "Order #%{id}"
+      heading: "Order"
+      items_heading: "Items"
+      quantity_label: "x %{quantity}"
+      shipping_heading: "Shipping"
+      subtotal: "Subtotal"
+      shipping: "Shipping"
+      total: "Total"
+
+  cart:
+    show:
+      title: "Your Cart"
+      heading: "Your Cart"
+      empty: "Your cart is empty."
+      continue: "Continue shopping"
+      no_image: "No image"
+      each: "each"
+      update: "Update"
+      remove: "Remove"
+      subtotal_label: "Subtotal:"
+      checkout: "Checkout"
+
+  messages:
+    blank_error: "Message can't be blank"
+
+  navbar:
+    hi: "Hi,"
+    edit_account: "Edit Account"
+    sign_out: "Sign Out"
+    sign_up: "Sign Up"
+    log_in: "Log In"
+    home: "Home"
+    categories: "Categories"
+    search_placeholder: "Search..."
+    search_button: "Search"
+    cart: "Cart"
+    add_product: "Add Product"
+
+  users:
+    show:
+      favorites: "❤️ Favorites"
+      add_product: "➕ Add a Product"
+      edit_profile: "✏️ Edit Profile"
+      log_out: "🚪 Log Out"
+
+  devise:
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        heading: "Resend confirmation instructions"
+        email: "Email"
+        submit: "Resend confirmation instructions"
+    mailer:
+      confirmation_instructions:
+        greeting: "Welcome %{email}!"
+        instructions: "You can confirm your account email through the link below:"
+        action: "Confirm my account"
+      email_changed:
+        greeting: "Hello %{email}!"
+        being_changed: "We're contacting you to notify you that your email is being changed to %{email}."
+        changed: "We're contacting you to notify you that your email has been changed to %{email}."
+      password_change:
+        greeting: "Hello %{email}!"
+        notice: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        greeting: "Hello %{email}!"
+        requested: "Someone has requested a link to change your password. You can do this through the link below."
+        action: "Change my password"
+        ignore: "If you didn't request this, please ignore this email."
+        notice: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        greeting: "Hello %{email}!"
+        locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        instructions: "Click the link below to unlock your account:"
+        action: "Unlock my account"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        heading: "Forgot your password?"
+        email: "Email"
+        submit: "Send me reset password instructions"
+      edit:
+        title: "Change your password"
+        heading: "Change your password"
+        new_password: "New password"
+        confirm_new_password: "Confirm new password"
+        minimum_length: "(%{count} characters minimum)"
+        submit: "Change my password"
+    registrations:
+      new:
+        title: "Sign up"
+        heading: "Sign up"
+        email: "Email"
+        email_placeholder: "name@example.com"
+        username: "Username"
+        username_placeholder: "username"
+        password: "Password"
+        minimum_length: "(%{count} characters minimum)"
+        password_confirmation: "Confirm Password"
+        submit: "Sign up"
+        already_member: "Already a member?"
+        log_in: "Log in"
+      edit:
+        title: "Edit Account"
+        heading: "Edit Account"
+        email: "Email"
+        pending_reconfirmation: "Currently waiting confirmation for: %{email}"
+        password: "Password"
+        password_hint: "Leave blank if you don't want to change it"
+        minimum_length: "%{count} characters minimum"
+        password_confirmation: "Confirm Password"
+        current_password: "Current password"
+        current_password_hint: "We need your current password to confirm your changes"
+        avatar: "Avatar"
+        update: "Update"
+        back_to_home: "Back to Home"
+        danger_zone: "Danger Zone"
+        delete_warning: "Deleting your account is permanent and cannot be undone."
+        delete_button: "Permanently delete my account"
+        delete_confirm: "Are you sure?"
+    sessions:
+      new:
+        title: "Log in"
+        heading: "Log in"
+        email: "Email"
+        email_placeholder: "name@example.com"
+        password: "Password"
+        remember_me: "Remember me"
+        forgot_password: "Forgot your password?"
+        submit: "Log in"
+        no_account: "Don't have an account?"
+        sign_up: "Sign up"
+    shared:
+      links:
+        log_in: "Log in"
+        sign_up: "Sign up"
+        forgot_password: "Forgot your password?"
+        resend_confirmation: "Didn't receive confirmation instructions?"
+        resend_unlock: "Didn't receive unlock instructions?"
+        sign_in_with: "Sign in with %{provider}"
+    unlocks:
+      new:
+        title: "Resend unlock instructions"
+        heading: "Resend unlock instructions"
+        email: "Email"
+        submit: "Resend unlock instructions"
+    
+  conversations:
+    index:
+      title: "Conversations"
+      heading: "Conversations"
+      empty: "You have no conversations yet."
+    new:
+      title: "Start a Conversation"
+      heading: "Start a Conversation"
+      invalid: "Invalid participants or product."
+      back: "Back"
+    show:
+      title: "%{product} - Conversation"
+      participants_label: "Participants:"
+      empty: "No messages yet. Start the conversation 👋"
+      form_heading: "New message"
+      placeholder: "Write a message..."
+      send: "Send"
+      back: "Back to Conversations"
+
+  categories:
+    index:
+      title: "Categories"
+      heading: "Categories"
+    show:
+      title: "%{name} - Category"
+      empty: "No products in this category yet."
