@@ -140,6 +140,8 @@ ja:
     add_product: "商品を出品する"
 
   users:
+    email:
+      signed_in_with_facebook: "Facebookでログインしています"
     show:
       favorites: "❤️ お気に入り"
       add_product: "➕ 商品を出品する"
@@ -203,6 +205,8 @@ ja:
         submit: "新規登録"
         already_member: "すでにアカウントをお持ちですか？"
         log_in: "ログイン"
+        facebook: "Facebookでサインアップ"
+        or: "または"
       edit:
         title: "アカウント編集"
         heading: "アカウント編集"
@@ -233,6 +237,7 @@ ja:
         submit: "ログイン"
         no_account: "アカウントをお持ちでないですか？"
         sign_up: "新規登録"
+        facebook: "Facebookでログイン"
     shared:
       links:
         log_in: "ログイン"
@@ -247,6 +252,9 @@ ja:
         heading: "ロック解除メールを再送"
         email: "メールアドレス"
         submit: "ロック解除メールを再送する"
+    omniauth_callbacks:
+      success: "%{kind}アカウントでログインしました。"
+      failure: "%{kind}でのログインに失敗しました。もう一度お試しください。"
 
   conversations:
     index:

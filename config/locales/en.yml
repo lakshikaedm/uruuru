@@ -139,6 +139,8 @@ en:
     add_product: "Add Product"
 
   users:
+    email:
+      signed_in_with_facebook: "Signed in with Facebook"
     show:
       favorites: "❤️ Favorites"
       add_product: "➕ Add a Product"
@@ -202,6 +204,8 @@ en:
         submit: "Sign up"
         already_member: "Already a member?"
         log_in: "Log in"
+        facebook: "Sign up with Facebook"
+        or: "OR"
       edit:
         title: "Edit Account"
         heading: "Edit Account"
@@ -232,6 +236,7 @@ en:
         submit: "Log in"
         no_account: "Don't have an account?"
         sign_up: "Sign up"
+        facebook: "Login with Facebook"
     shared:
       links:
         log_in: "Log in"
@@ -246,6 +251,9 @@ en:
         heading: "Resend unlock instructions"
         email: "Email"
         submit: "Resend unlock instructions"
+    omniauth_callbacks:
+      success: "%{kind} account connected successfully."
+      failure: "%{kind} login failed. Please try again."
     
   conversations:
     index:

@@ -140,6 +140,8 @@ si:
     add_product: "නිෂ්පාදනය එකතු කරන්න"
 
   users:
+    email:
+      signed_in_with_facebook: "Facebook හරහා ලොග් වී තිබේ"
     show:
       favorites: "❤️ මනාප"
       add_product: "➕ නිෂ්පාදනය එක් කරන්න"
@@ -203,6 +205,8 @@ si:
         submit: "ගිණුම සෑදීම"
         already_member: "දැනටමත් සාමාජිකයෙක් ද?"
         log_in: "ලොග් වන්න"
+        facebook: "Facebook හරහා ගිණුමක් තැනීමට"
+        or: "හෝ"
       edit:
         title: "ගිණුම සංස්කරණය"
         heading: "ගිණුම සංස්කරණය"
@@ -233,6 +237,7 @@ si:
         submit: "ලොග් වන්න"
         no_account: "ගිණුමක් නැද්ද?"
         sign_up: "ගිණුමක් තනන්න"
+        facebook: "Facebook හරහා ලොග් වන්න"
     shared:
       links:
         log_in: "ලොග් වන්න"
@@ -247,6 +252,9 @@ si:
         heading: "අගුළු හැරීමේ උපදෙස් නැවත එවන්න"
         email: "ඊමේල්"
         submit: "අගුළු හැරීමේ උපදෙස් නැවත එවන්න"
+    omniauth_callbacks:
+      success: "%{kind} හරහා සාර්ථකව ලොග් වුණා."
+      failure: "%{kind} හරහා ලොග් වීම අසාර්ථක වුණා. නැවත උත්සාහ කරන්න."
 
   conversations:
     index:
