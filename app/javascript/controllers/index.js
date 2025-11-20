@@ -2,3 +2,6 @@
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
+
+import PostalCodeLookupController from "./postal_code_lookup_controller"
+application.register("postal-code-lookup", PostalCodeLookupController)
