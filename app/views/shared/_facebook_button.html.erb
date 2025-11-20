@@ -1,0 +1,10 @@
+<%= link_to user_facebook_omniauth_authorize_path,
+            data: { turbo: false },
+            class: "flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg" do %>
+
+  <%= image_tag "facebook.svg",
+        class: "w-5 h-5",
+        alt: "Facebook logo" %>
+
+  <span><%= local_assigns[:label] || "Continue with Facebook" %></span>
+<% end %>
