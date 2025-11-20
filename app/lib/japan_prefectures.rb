@@ -21,10 +21,16 @@ module JapanPrefectures
     福岡県 佐賀県 長崎県 熊本県 大分県 宮崎県 鹿児島県 沖縄県
   ].freeze
 
+  MAP_JA_TO_EN = LIST_JA.zip(LIST_EN).to_h.freeze
+
   def self.list_for(locale)
     case locale.to_s
     when "ja" then LIST_JA
     else           LIST_EN
     end
+  end
+
+  def self.to_en(ja_name)
+    MAP_JA_TO_EN[ja_name] || ja_name
   end
 end
