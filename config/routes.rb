@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
+  get "postal_code", to: "postal_codes#show"
+
   root "products#index"
 
   get "up" => "rails/health#show", as: :rails_health_check
