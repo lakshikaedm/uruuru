@@ -85,6 +85,7 @@ ja:
       shipping_name: "氏名"
       shipping_phone: "電話番号"
       shipping_postal_code: "郵便番号"
+      postal_code_hint: "郵便番号を入力してからフォーカスを外すと住所が自動入力されます。"
       shipping_prefecture: "都道府県"
       prefecture_prompt: "都道府県を選択してください"
       shipping_city: "市区町村"
@@ -102,6 +103,12 @@ ja:
       subtotal: "小計"
       shipping: "送料"
       total: "合計"
+
+  postal_codes:
+    errors:
+      missing_postal_code: "郵便番号を入力してください。"
+      not_found: "その郵便番号に該当する住所が見つかりませんでした。番号をご確認のうえ、再度お試しください。"
+      service_unavailable: "現在、郵便番号検索サービスを利用できません。お手数ですが住所を直接入力してください。"
 
   cart:
     show:

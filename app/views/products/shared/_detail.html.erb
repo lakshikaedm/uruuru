@@ -76,7 +76,7 @@
 
       <!-- Chat -->
       <% if user_signed_in? && current_user != @product.user %>
-        <%= button_to t("products.detail.ask_seller"),
+        <%= button_to t("products.shared.detail.ask_seller"),
               conversations_path,
               method: :post,
               params: {
@@ -87,10 +87,10 @@
 
       <% elsif !user_signed_in? %>
         <p class="mt-4 text-sm text-gray-600">
-          <%= link_to t("products.detail.sign_in"),
+          <%= link_to t("products.shared.detail.sign_in"),
                 new_user_session_path,
                 class: "text-blue-600 underline" %>
-            <%= t("products.detail.ask_prompt") %>
+          <%= t("products.shared.detail.ask_prompt") %>
         </p>
       <% end %>
 

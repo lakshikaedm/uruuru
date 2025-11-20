@@ -84,6 +84,7 @@ en:
       shipping_name: "Full name"
       shipping_phone: "Phone"
       shipping_postal_code: "Postal code"
+      postal_code_hint: "After entering your postal code and leaving the field, your address will be filled in automatically."
       shipping_prefecture: "Prefecture"
       prefecture_prompt: "Select Prefecture"
       shipping_city: "City"
@@ -101,6 +102,12 @@ en:
       subtotal: "Subtotal"
       shipping: "Shipping"
       total: "Total"
+
+  postal_codes:
+    errors:
+      missing_postal_code: "Postal code is required."
+      not_found: "We couldn't find an address for that postal code. Please check and try again."
+      service_unavailable: "Postal code search is temporarily unavailable. Please enter your address manually."
 
   cart:
     show:

@@ -84,6 +84,7 @@ si:
       shipping_name: "සම්පූර්ණ නම"
       shipping_phone: "දුරකථන අංකය"
       shipping_postal_code: "තැපැල් කේතය"
+      postal_code_hint: "තැපැල් කේතය ඇතුල් කර ක්ෂේත්‍රයෙන් පිටතට ගිය විට ලිපිනය ස්වයංක්‍රීයව පිරේ."
       shipping_prefecture: "ප්‍රාන්තය"
       prefecture_prompt: "ප්‍රාන්තයක් තෝරන්න"
       shipping_city: "නගරය / ප්‍රදේශය"
@@ -102,11 +103,18 @@ si:
       shipping: "අපනයන ගාස්තුව"
       total: "මුළු එකතුව"
 
+  si:
+  postal_codes:
+    errors:
+      missing_postal_code: "තැපැල් කේතය ඇතුල් කරන්න."
+      not_found: "ඒ තැපැල් කේතයට ගැලපෙන ලිපිනයක් සොයාගත නොහැකි විය. කරුණාකර කේතය පිළ පරික්ෂා කර නැවත උත්සාහ කරන්න."
+      service_unavailable: "දැනට තැපැල් කේත සෙවීම භාවිතයට ගත නොහැක."
+
   cart:
     show:
-      title: "ඔබගේ කරත්තය"
-      heading: "ඔබගේ කරත්තය"
-      empty: "ඔබගේ කරත්තය හිස්යි."
+      title: "ඔබගේ කූඩය"
+      heading: "ඔබගේ කූඩය"
+      empty: "ඔබගේ කූඩය හිස්යි."
       continue: "මිලදී ගැනීම් දිගටම කරන්න"
       no_image: "රූපයක් නැහැ"
       each: "එකකට"
