@@ -4,7 +4,7 @@
   <h1 class="text-2xl font-semibold mb-4"><%= t("orders.new.heading") %></h1>
 
   <%= form_with model: @order, url: orders_path, class: "space-y-4" do |f| %>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 gap-4">
       <div>
         <%= f.label :shipping_name, t("orders.new.shipping_name"), class: "block text-sm font-medium" %>
         <%= f.text_field :shipping_name, class: "mt-1 block w-full border rounded p-2" %>
@@ -15,35 +15,59 @@
         <%= f.text_field :shipping_phone, class: "mt-1 block w-full border rounded p-2" %>
       </div>
 
-      <div>
-        <%= f.label :shipping_postal_code, t("orders.new.shipping_postal_code"), class: "block text-sm font-medium" %>
-        <%= f.text_field :shipping_postal_code, class: "mt-1 block w-full border rounded p-2" %>
-      </div>
+      <div
+        data-controller="postal-code-lookup"
+        data-postal-code-lookup-url-value="<%= postal_code_path %>"
+        data-postal-code-lookup-error-message-value="<%= t('postal_codes.errors.service_unavailable') %>">
+        <div>
+          <%= f.label :shipping_postal_code, t("orders.new.shipping_postal_code"), class: "block text-sm font-medium" %>
+          <%= f.text_field :shipping_postal_code,
+                class: "mt-1 block w-full border rounded p-2",
+                placeholder: "例: 1500001",
+                maxlength: 8,
+                data: {
+                  "postal-code-lookup-target": "postalCode",
+                  action: "blur->postal-code-lookup#lookup"
+                } %>
+        </div>
 
-      <div>
-        <%= f.label :shipping_prefecture, t("orders.new.shipping_prefecture"), class: "block text-sm font-medium" %>
-        <%= f.select :shipping_prefecture,
-             JapanPrefectures.list_for(I18n.locale),
-             { prompt: t("orders.new.prefecture_prompt") },
-             class: "mt-1 block w-full rounded border border-gray-600 bg-white p-2.5 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500" %>
-      </div>
+        <p data-postal-code-lookup-target="error"
+          class="mt-1 text-xs text-red-500"></p>
+        <p class="mt-1 text-xs text-gray-500">
+          <%= t("orders.new.postal_code_hint") %>
+        </p>
 
-      <div class="md:col-span-2">
-        <%= f.label :shipping_city, t("orders.new.shipping_city"), class: "block text-sm font-medium" %>
-        <%= f.text_field :shipping_city, class: "mt-1 block w-full border rounded p-2" %>
-      </div>
+        <div>
+          <%= f.label :shipping_prefecture, t("orders.new.shipping_prefecture"), class: "block text-sm font-medium" %>
+          <%= f.select :shipping_prefecture,
+              JapanPrefectures.list_for(I18n.locale),
+              { prompt: t("orders.new.prefecture_prompt") },
+              class: "mt-1 block w-full rounded border border-gray-600 bg-white p-2.5 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500",
+              data: { "postal-code-lookup-target": "prefecture" } %>
+        </div>
 
-      <div class="md:col-span-2">
-        <%= f.label :shipping_address1, t("orders.new.shipping_address1"), class: "block text-sm font-medium" %>
-        <%= f.text_field :shipping_address1, class: "mt-1 block w-full border rounded p-2" %>
-      </div>
+        <div class="md:col-span-2">
+          <%= f.label :shipping_city, t("orders.new.shipping_city"), class: "block text-sm font-medium" %>
+          <%= f.text_field :shipping_city,
+                class: "mt-1 block w-full border rounded p-2",
+                data: { "postal-code-lookup-target": "city" } %>
+        </div>
 
-      <div class="md:col-span-2">
-        <%= f.label :shipping_address2, t("orders.new.shipping_address2"), class: "block text-sm font-medium" %>
-        <%= f.text_field :shipping_address2, class: "mt-1 block w-full border rounded p-2" %>
+        <div class="md:col-span-2">
+          <%= f.label :shipping_address1, t("orders.new.shipping_address1"), class: "block text-sm font-medium" %>
+          <%= f.text_field :shipping_address1,
+                class: "mt-1 block w-full border rounded p-2",
+                data: { "postal-code-lookup-target": "address1" } %>
+        </div>
+
+        <div class="md:col-span-2">
+          <%= f.label :shipping_address2, t("orders.new.shipping_address2"), class: "block text-sm font-medium" %>
+          <%= f.text_field :shipping_address2,
+                class: "mt-1 block w-full border rounded p-2",
+                data: { "postal-code-lookup-target": "address2" } %>
+        </div>
       </div>
     </div>
-
     <div class="mt-6">
       <%= f.submit t("orders.new.submit"), class: "px-4 py-2 rounded bg-black text-white" %>
     </div>
