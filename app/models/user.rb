@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook]
 
   enum :role, { user: 0, admin: 1 }
 
@@ -15,4 +16,15 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: 30 }
+
+  def self.from_omniauth(auth)
+    user = where(provider: auth.provider, uid: auth.uid).first_or_initialize
+
+    user.email = auth.info.email.presence || "facebook-#{auth.uid}@example.com"
+    user.username = auth.info.name.presence || "fb-user-#{auth.uid}"
+    user.password ||= Devise.friendly_token[0, 20]
+
+    user.save!
+    user
+  end
 end
