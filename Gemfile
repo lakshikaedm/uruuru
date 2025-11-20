@@ -17,6 +17,9 @@ gem "tailwindcss-rails"
 
 # Authentication / Authorization
 gem "devise", "~> 4.9"
+gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-rails_csrf_protection"
 gem "pundit"
 gem "pundit-matchers"
 
@@ -45,6 +48,7 @@ end
 # Development & Test
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
+  gem 'dotenv-rails'
   gem "factory_bot_rails", "~> 6.5"
   gem "rspec-rails", "~> 7.1"
   gem "rubocop", "~> 1.80"
