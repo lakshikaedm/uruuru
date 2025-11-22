@@ -157,6 +157,7 @@ en:
     search_button: "Search"
     cart: "Cart"
     add_product: "Add Product"
+    recruiter_demo_login: "Recruiter login"
 
   users:
     email:
@@ -247,6 +248,8 @@ en:
     sessions:
       signed_in: "Logged in"
       signed_out: "You have been signed out successfully."
+      recruiter_demo_signed_in: "Signed in as recruiter demo user."
+      recruiter_demo_missing: "Recruiter demo user is not configured."
       new:
         title: "Log in"
         heading: "Log in"

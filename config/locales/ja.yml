@@ -158,6 +158,7 @@ ja:
     search_button: "検索"
     cart: "カート"
     add_product: "商品を出品する"
+    recruiter_demo_login: "採用担当者用ログイン"
 
   users:
     email:
@@ -248,6 +249,8 @@ ja:
     sessions:
       signed_in: "ログインしました。"
       signed_out: "正常にログアウトしました。"
+      recruiter_demo_signed_in: "採用担当者ユーザーとしてログインしました。"
+      recruiter_demo_missing: "採用担当者ユーザーが設定されていません。"
       new:
         title: "ログイン"
         heading: "ログイン"
