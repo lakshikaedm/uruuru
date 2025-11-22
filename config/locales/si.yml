@@ -243,6 +243,8 @@ si:
         delete_button: "මගේ ගිණුම සම්පූර්ණයෙන්ම මකන්න"
         delete_confirm: "ඔබට විශ්වාසද?"
     sessions:
+      signed_in: "ඔබ සාර්ථකව ලොග් වුණා."
+      signed_out: "ඔබ සාර්ථකව පිටවිය."
       new:
         title: "ලොග් වන්න"
         heading: "ලොග් වන්න"

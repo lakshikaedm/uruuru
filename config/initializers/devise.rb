@@ -15,6 +15,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
+  config.mailer_sender = "no-reply@uruuru.example.com"
   config.omniauth :facebook,
                   ENV.fetch("FACEBOOK_CLIENT_ID", nil),
                   ENV.fetch("FACEBOOK_CLIENT_SECRET", nil),
