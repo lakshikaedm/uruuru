@@ -1,4 +1,7 @@
 en:
+  date:
+    formats:
+      default: "%Y-%m-%d %H:%M"
   products:
     not_authorized: "Not authorized"
     create:
@@ -300,3 +303,17 @@ en:
     show:
       title: "%{name} - Category"
       empty: "No products in this category yet."
+
+  order_mailer:
+    confirmation:
+      subject: "Your Uruuru order #%{order_id} is confirmed"
+      heading: "Order confirmed"
+      thank_you: "Thank you for shopping with Uruuru."
+      order_summary: "Order summary"
+      order_id: "Order ID"
+      order_date: "Order date"
+      subtotal: "Subtotal"
+      shipping: "Shipping"
+      total: "Total"
+      shipping_address: "Shipping address"
+      footer: "If you have any questions, please reply to this email."

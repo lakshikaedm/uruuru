@@ -1,4 +1,7 @@
 si:
+  date:
+    formats:
+      default: "%Y-%m-%d %H:%M"
   products:
     not_authorized: "ඔබට අයිතිය නොමැත"
     create:
@@ -329,3 +332,17 @@ si:
               blank: "නගරය ඇතුළත් කරන්න."
             shipping_address1:
               blank: "ලිපිනය ඇතුළත් කරන්න."
+
+  order_mailer:
+    confirmation:
+      subject: "ඔබගේ Uruuru ඇණවුම #%{order_id} තහවුරු කර ඇත"
+      heading: "ඇණවුම තහවුරු විය"
+      thank_you: "Uruuru වෙතින් මිලදී ගත්තාට බොහොම ස්තුතියි."
+      order_summary: "ඇණවුම් සාරාංශය"
+      order_id: "ඇණවුම් අංකය"
+      order_date: "ඇණවුම් දිනය"
+      subtotal: "ඇතෙමු එකතුව"
+      shipping: "කැපවීම/සියවීම"
+      total: "මුළු එකතුව"
+      shipping_address: "බෙදාහැරීමේ ලිපිනය"
+      footer: "කිසිදු විමසීමක් තිබේ නම්, මෙම විද්‍යුත් තැපැලට පිළිතුරු දෙන්න."

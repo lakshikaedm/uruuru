@@ -1,0 +1,17 @@
+<%= t("order_mailer.confirmation.heading") %>
+
+<%= t("order_mailer.confirmation.thank_you") %>
+
+<%= t("order_mailer.confirmation.order_summary") %>
+<%= t("order_mailer.confirmation.order_id") %>: #<%= @order.id %>
+<%= t("order_mailer.confirmation.order_date") %>: <%= I18n.l(@order.created_at.to_date) %>
+<%= t("order_mailer.confirmation.subtotal") %>: ¥<%= @order.subtotal_yen.to_i %>
+<%= t("order_mailer.confirmation.shipping") %>: ¥<%= @order.shipping_yen.to_i %>
+<%= t("order_mailer.confirmation.total") %>: ¥<%= @order.total_yen.to_i %>
+
+<%= t("order_mailer.confirmation.shipping_address") %>:
+<%= @order.shipping_prefecture %>
+<%= @order.shipping_address1 %>
+<%= @order.shipping_address2 %>
+
+<%= t("order_mailer.confirmation.footer") %>
