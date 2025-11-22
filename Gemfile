@@ -29,6 +29,9 @@ gem "image_processing", "~> 1.2"
 # Models / Data Helpers
 gem "ancestry", "~> 4.3"
 
+# Payments
+gem "stripe"
+
 # Development Only
 group :development do
   gem "bootsnap", require: false
