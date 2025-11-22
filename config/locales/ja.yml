@@ -91,9 +91,10 @@ ja:
       shipping_city: "市区町村"
       shipping_address1: "住所1"
       shipping_address2: "住所2（任意）"
-      submit: "注文を確定する"
+      submit: "支払いへ進む"
     create:
       success: "注文が完了しました。"
+      empty: "カートには商品が入っていません。"
     show:
       title: "注文 #%{id}"
       heading: "注文"
@@ -103,6 +104,22 @@ ja:
       subtotal: "小計"
       shipping: "送料"
       total: "合計"
+      complete_payment: "確認して支払う"
+      edit: "注文を編集"
+    success:
+      title: "お支払いが完了しました 🎉"
+      message_html: "ご購入ありがとうございます。ご注文番号は <span class='font-mono font-semibold'>%{order_id}</span> です。"
+      back_to_home: "マイページへ戻る"
+    cancel:
+      title: "支払いがキャンセルされました"
+      message: "お支払いは行われていません。カートの内容を変更して、もう一度お試しください。"
+      back_to_cart: "カートへ戻る"
+    update:
+      notice: "注文内容を更新しました。"
+    errors:
+      header:
+        one:   "1件のエラーにより、この注文は保存できませんでした。"
+        other: "%{count}件のエラーにより、この注文は保存できませんでした。"
 
   postal_codes:
     errors:
@@ -282,3 +299,31 @@ ja:
     show:
       title: "%{name} - カテゴリー"
       empty: "このカテゴリーにはまだ商品がありません。"
+
+  activerecord:
+    attributes:
+      order:
+        shipping_name: "氏名"
+        shipping_phone: "電話番号"
+        shipping_postal_code: "郵便番号"
+        shipping_prefecture: "都道府県"
+        shipping_city: "市区町村"
+        shipping_address1: "住所1"
+        shipping_address2: "住所2"
+
+    errors:
+      models:
+        order:
+          attributes:
+            shipping_name:
+              blank: "氏名を入力してください。"
+            shipping_phone:
+              blank: "電話番号を入力してください。"
+            shipping_postal_code:
+              blank: "郵便番号を入力してください。"
+            shipping_prefecture:
+              blank: "都道府県を選択してください。"
+            shipping_city:
+              blank: "市区町村を入力してください。"
+            shipping_address1:
+              blank: "住所1を入力してください。"

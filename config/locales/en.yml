@@ -90,9 +90,10 @@ en:
       shipping_city: "City"
       shipping_address1: "Address line 1"
       shipping_address2: "Address line 2 (optional)"
-      submit: "Place order"
+      submit: "Proceed to Payment"
     create:
       success: "Order placed."
+      empty: "Your cart is empty."
     show:
       title: "Order #%{id}"
       heading: "Order"
@@ -102,6 +103,22 @@ en:
       subtotal: "Subtotal"
       shipping: "Shipping"
       total: "Total"
+      complete_payment: "Confirm & Pay"
+      edit: "Edit Order"
+    success:
+      title: "Payment complete 🎉"
+      message_html: "Thank you for your purchase. Your order number is <span class='font-mono font-semibold'>%{order_id}</span>."
+      back_to_home: "Back to My Page"
+    cancel:
+      title: "Payment cancelled"
+      message: "Your order was not charged. You can adjust your items and try again."
+      back_to_cart: "Back to cart"
+    update:
+      notice: "Order updated."
+    errors:
+      header:
+        one:   "1 error prevented this order from being saved:"
+        other: "%{count} errors prevented this order from being saved:"
 
   postal_codes:
     errors:
