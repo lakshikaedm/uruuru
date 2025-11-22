@@ -20,7 +20,7 @@ RSpec.describe "Shipping checkout", type: :system do
     fill_in "City", with: "Shibuya"
     fill_in "Address line 1", with: "1-2-3"
 
-    click_button "Place order"
+    click_button "Proceed to Payment"
   end
 
   it "places an order successfully" do

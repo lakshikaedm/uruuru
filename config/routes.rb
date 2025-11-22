@@ -22,7 +22,13 @@ Rails.application.routes.draw do
     delete ":product_id", to: "cart_items#destroy", as: :destroy
   end
 
-  resources :orders, only: %i[new create show]
+  resources :orders, only: %i[index new create show edit update] do
+    member do
+      post :pay
+      get :success
+      get :cancel
+    end
+  end
 
   resources :conversations, only: %i[index show create] do
     resources :messages, only: :create

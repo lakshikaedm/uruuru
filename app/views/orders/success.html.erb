@@ -1,0 +1,11 @@
+<div class="max-w-xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
+  <h1 class="text-2xl font-semibold mb-4"><%= t(".title") %></h1>
+
+  <p class="mb-4">
+    <%= t(".message_html", order_id: @order.id) %>
+  </p>
+
+  <%= link_to t(".back_to_home"),
+              root_path,
+              class: "inline-block px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700" %>
+</div>

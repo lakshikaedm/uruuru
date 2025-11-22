@@ -49,4 +49,16 @@
       </div>
     </div>
   </div>
+  <div class="mt-6 text-right space-x-3">
+    <%= link_to t("orders.show.edit_order"),
+        edit_order_path(@order),
+        class: "btn btn-secondary" %>
+
+    <%= button_to t("orders.show.complete_payment"),
+          pay_order_path(@order),
+          method: :post,
+          data: { turbo: false },
+          class: "btn btn-primary inline-block",
+          form_class: "inline-block" %>
+  </div>
 </div>
