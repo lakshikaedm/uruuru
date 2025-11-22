@@ -242,6 +242,8 @@ en:
         delete_button: "Permanently delete my account"
         delete_confirm: "Are you sure?"
     sessions:
+      signed_in: "Logged in"
+      signed_out: "You have been signed out successfully."
       new:
         title: "Log in"
         heading: "Log in"

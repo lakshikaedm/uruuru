@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   get "postal_code", to: "postal_codes#show"
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   root "products#index"
 
   get "up" => "rails/health#show", as: :rails_health_check

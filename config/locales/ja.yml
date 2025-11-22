@@ -243,6 +243,8 @@ ja:
         delete_button: "アカウントを完全に削除する"
         delete_confirm: "本当に削除しますか？"
     sessions:
+      signed_in: "ログインしました。"
+      signed_out: "正常にログアウトしました。"
       new:
         title: "ログイン"
         heading: "ログイン"
