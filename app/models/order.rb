@@ -2,9 +2,16 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items, dependent: :destroy
 
-  STATUSES = %w[pending placed cancelled].freeze
+  enum :status, { pending: 0, paid: 1, cancelled: 2 }, default: :pending
 
-  validates :status, inclusion: { in: STATUSES }
+  validates :shipping_name,
+            :shipping_phone,
+            :shipping_postal_code,
+            :shipping_prefecture,
+            :shipping_city,
+            :shipping_address1,
+            presence: true
+
   validates :subtotal_yen, :shipping_yen, :total_yen, numericality: { greater_than_or_equal_to: 0 }
 
   def recalculate_totals!
