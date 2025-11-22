@@ -21,3 +21,13 @@ product.assign_attributes(
   category: tees
 )
 product.save!
+
+# Recruiter demo user for interviews
+recruiter_email = ENV.fetch("RECRUITER_DEMO_EMAIL", "recruiter@example.com")
+
+User.find_or_create_by!(email: recruiter_email) do |user|
+  user.password = "recruiter-demo-password"
+  user.password_confirmation = "recruiter-demo-password"
+  user.name = "Recruiter Demo" if user.respond_to?(:name)
+  user.username = "recruiter_demo"
+end

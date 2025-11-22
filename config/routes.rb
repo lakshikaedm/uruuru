@@ -5,6 +5,13 @@ Rails.application.routes.draw do
                sessions: "users/sessions",
                omniauth_callbacks: "users/omniauth_callbacks"
              }
+
+  devise_scope :user do
+    post "users/recruiter_demo_sign_in",
+         to: "users/sessions#recruiter_demo",
+         as: :recruiter_demo_sign_in
+  end
+
   resources :categories, only: %i[show index]
 
   resources :products, only: %i[index show] do
