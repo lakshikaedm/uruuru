@@ -30,9 +30,9 @@ RSpec.describe "OrdersController#create (shipping)", type: :request do
 
     expect(Orders::CreateFromCart).to have_received(:new) do |args|
       expect(args[:shipping_params].to_h).to include(
-        "shipping_name" => "Taro",
-        "shipping_prefecture" => "Tokyo",
-        "shipping_yen" => 500
+        shipping_name: "Taro",
+        shipping_prefecture: "Tokyo",
+        shipping_yen: 500
       )
     end
     expect(response).to redirect_to(order_path(fake_order))
@@ -45,7 +45,7 @@ RSpec.describe "OrdersController#create (shipping)", type: :request do
     post orders_path, params: blank_pref_params
 
     expect(Orders::CreateFromCart).to have_received(:new) do |args|
-      expect(args[:shipping_params].to_h).not_to include("shipping_yen")
+      expect(args[:shipping_params].to_h).not_to have_key(:shipping_yen)
     end
     expect(response).to have_http_status(:redirect)
   end

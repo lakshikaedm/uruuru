@@ -62,9 +62,9 @@ RSpec.describe "Orders", type: :request do
       expect(order.total_yen).to eq(order.subtotal_yen + order.shipping_yen)
     end
 
-    it "clears cart" do
+    it "does not clear cart yet (cart is cleared on success)" do
       follow_redirect!
-      expect(user.cart.reload.cart_items).to be_empty
+      expect(user.cart.reload.cart_items).not_to be_empty
     end
   end
 end
