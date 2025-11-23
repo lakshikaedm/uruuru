@@ -2,7 +2,9 @@
   Category.find_or_create_by!(name: name)
 end
 
-# db/seeds.rb
+%w[Apple Google Samsung Sony Canon Nike Jordan Supreme GU Zara Wijaya MD Munchee].each do |name|
+  Brand.find_or_create_by!(name: name)
+end
 
 # --- Categories (ancestry) ---
 clothing = Category.find_or_create_by!(name: "Clothing")

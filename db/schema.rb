@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_20_051909) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_23_042451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_20_051909) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_brands_on_name", unique: true
+    t.index ["slug"], name: "index_brands_on_slug", unique: true
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -154,6 +163,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_20_051909) do
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
     t.integer "favorites_count", default: 0, null: false
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -193,6 +204,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_20_051909) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
 end

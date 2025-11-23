@@ -1,6 +1,4 @@
-class Category < ApplicationRecord
-  has_ancestry
-
+class Brand < ApplicationRecord
   has_many :products, dependent: :nullify
 
   validates :name, presence: true, uniqueness: true
@@ -9,8 +7,8 @@ class Category < ApplicationRecord
 
   scope :top_for_homepage, lambda {
     left_joins(:products)
-      .group("categories.id")
-      .order(Arel.sql("COUNT(products.id) DESC, categories.created_at DESC"))
+      .group(:id)
+      .order(Arel.sql("COUNT(products.id) DESC, brands.created_at DESC"))
       .limit(6)
   }
 
