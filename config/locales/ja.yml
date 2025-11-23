@@ -20,6 +20,8 @@ ja:
       status: "ステータス"
       category: "カテゴリ"
       category_placeholder: "カテゴリを選択してください"
+      brand: "ブランド"
+      brand_placeholder: "ブランドを選択してください"
       save: "商品を保存する"
       description_prompt: "AI説明文ヘルプ"
       description_placeholder: "シンプルなメモを書くだけで、AIが説明文を作成します。"
@@ -65,6 +67,9 @@ ja:
     index:
       results_for: "検索結果："
       none: "商品が見つかりませんでした。"
+      categories: "カテゴリー"
+      brands: "ブランド"
+      latest_items: "新着商品"
     new:
       title: "新しい商品"
       heading: "新しい商品"
@@ -166,6 +171,7 @@ ja:
     log_in: "ログイン"
     home: "ホーム"
     categories: "カテゴリ"
+    brands: "ブランド"
     search_placeholder: "検索..."
     search_button: "検索"
     cart: "カート"
@@ -180,6 +186,8 @@ ja:
       add_product: "➕ 商品を出品する"
       edit_profile: "✏️ プロフィール編集"
       log_out: "🚪 ログアウト"
+      user_products: "出品した商品"
+      no_products: "まだ商品を出品していません。"
 
   devise:
     confirmations:
@@ -319,6 +327,14 @@ ja:
     show:
       title: "%{name} - カテゴリー"
       empty: "このカテゴリーにはまだ商品がありません。"
+
+  brands:
+    index:
+      title: "ブランド"
+      heading: "ブランド一覧"
+    show:
+      title: "%{name} - ブランド"
+      empty: "このブランドの商品はまだありません。"
 
   activerecord:
     attributes:

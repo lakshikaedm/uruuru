@@ -20,6 +20,8 @@ en:
       status: "Status"
       category: "Category"
       category_placeholder: "Select a Category"
+      brand: "Brand"
+      brand_placeholder: "Select a Brand"
       save: "Save Product"
       description_prompt: "AI help for description"
       description_placeholder: "Write rough notes here and Generate using AI."
@@ -64,6 +66,10 @@ en:
     index:
       results_for: "Results for"
       none: "No products found."
+      index:
+      categories: "Categories"
+      brands: "Brands"
+      latest_items: "Latest items"
     new:
       title: "New product"
       heading: "New product"
@@ -179,6 +185,8 @@ en:
       add_product: "➕ Add a Product"
       edit_profile: "✏️ Edit Profile"
       log_out: "🚪 Log Out"
+      user_products: "Your Products"
+      no_products: "You have not listed any products yet."
 
   devise:
     confirmations:
@@ -318,6 +326,14 @@ en:
     show:
       title: "%{name} - Category"
       empty: "No products in this category yet."
+    
+  brands:
+    index:
+      title: "Brands"
+      heading: "Brands"
+    show:
+      title: "%{name} - Brand"
+      empty: "No products in this Brand yet."
 
   order_mailer:
     confirmation:
