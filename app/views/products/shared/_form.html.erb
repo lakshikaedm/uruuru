@@ -36,12 +36,36 @@
     </p>
   </div>
 
-  <%# Description %>
+  <%# Description + AI %>
   <div class="mb-5">
     <%= form.label :description, t("products.form.description"), class: "form-label" %>
     <%= form.text_area :description,
+          id: "product_description",
           rows: 4,
-          class: "#{base_field_classes} #{field_state_classes(product, :description)}" %>
+          class: "#{base_field_classes} #{field_state_classes(product, :description)}",
+          placeholder: t("products.form.description_placeholder") %>
+
+    <div class="mt-2 flex items-center gap-3">
+      <button
+        type="button"
+        class="rounded-md px-3.5 py-2.5 bg-gray-900 hover:bg-gray-700 text-white text-sm font-medium"
+        data-ai-description-button="true"
+        data-url="<%= generate_description_products_path %>"
+        data-prompt-field-id="product_description"
+        data-description-field-id="product_description"
+        data-loading-message="<%= t("products.ai_description.status.loading") %>"
+        data-success-message="<%= t("products.ai_description.status.success") %>"
+        data-error-message="<%= t("products.ai_description.status.error") %>"
+        data-blank-prompt-message="<%= t("products.ai_description.errors.blank_prompt") %>">
+        <%= t("products.form.generate_description") %>
+      </button>
+
+      <span
+        class="text-xs text-gray-600"
+        data-ai-description-status="true">
+        <%= t("products.form.description_prompt") %>
+      </span>
+    </div>
   </div>
 
   <%# Price %>
