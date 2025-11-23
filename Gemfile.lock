@@ -253,6 +253,8 @@ GEM
     omniauth-rails_csrf_protection (1.0.2)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    openai (0.36.1)
+      connection_pool
     orm_adapter (0.5.0)
     parallel (1.27.0)
     parser (3.3.9.0)
@@ -486,6 +488,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-rails_csrf_protection
+  openai (~> 0.36.1)
   pg (~> 1.1)
   puma (>= 5.0)
   pundit

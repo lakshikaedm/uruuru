@@ -29,6 +29,9 @@ gem "image_processing", "~> 1.2"
 # Models / Data Helpers
 gem "ancestry", "~> 4.3"
 
+# AI / Machine Learning
+gem "openai", "~> 0.36.1"
+
 # Payments
 gem "stripe"
 
