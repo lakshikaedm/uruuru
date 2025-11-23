@@ -1,94 +1,195 @@
-<nav class="bg-white border-gray-200">
-    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-        <!-- Logo -->
-        <%= link_to products_path, class: "flex items-center space-x-3" do %>
-          <%= image_tag "uruuru.png", class: "h-7", alt: "UruUru Logo" %>
-        <% end %>
+<nav class="bg-white border-b border-gray-200" data-controller="mobile-nav">
+  <!-- Top bar -->
+  <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Left: logo -->
+    <div class="flex items-center gap-3">
+      <%= link_to products_path, class: "flex items-center space-x-2" do %>
+        <%= image_tag "uruuru.png", class: "h-7", alt: "UruUru Logo" %>
+      <% end %>
+    </div>
 
-        <!-- Language -->
-        <% language_labels = { en: "English", si: "සිංහල", ja: "日本語" } %>
+    <!-- Right: language + cart + auth + hamburger -->
+    <% language_labels = { en: "English", si: "සිංහල", ja: "日本語" } %>
 
-        <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
+      <!-- Language (hide on very small screens) -->
+      <div class="hidden sm:flex items-center gap-2">
         <% language_labels.each do |loc, label| %>
-            <% active = I18n.locale == loc %>
-            <%= link_to label,
-                        url_for(locale: loc),
-                        class: [
+          <% active = I18n.locale == loc %>
+          <%= link_to label,
+                      url_for(locale: loc),
+                      class: [
                         "px-2 py-1 rounded text-xs border",
                         (active ? "bg-slate-900 text-white border-slate-900"
                                 : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100")
-                        ].join(" ") %>
+                      ].join(" ") %>
         <% end %>
-        </div>
-        <!-- Auth -->
-        <div class="flex items-center space-x-6">
-          <% if user_signed_in? %>
-            <span class="text-sm text-gray-600">
-              <%= t("navbar.hi") %>
-              <%= link_to display_name(current_user), profile_path, class: "btn-link" %>
+      </div>
+
+      <!-- Cart (mobile only) -->
+      <%= link_to cart_path, class: "inline-flex items-center text-sm font-medium btn btn-cart md:hidden" do %>
+        <span><%= t("navbar.cart") %></span>
+        <span class="btn-cart">
+          <%= header_cart_count %>
+        </span>
+      <% end %>
+
+      <!-- Auth (desktop and tablet) -->
+      <div class="hidden md:flex items-center gap-4 text-sm">
+        <% if user_signed_in? %>
+          <span class="text-gray-600">
+            <%= t("navbar.hi") %>
+            <%= link_to display_name(current_user), profile_path, class: "btn-link" %>
+          </span>
+          <%= link_to t("navbar.edit_account"), edit_user_registration_path,
+                      class: "btn-link" %>
+          <%= button_to t("navbar.sign_out"), destroy_user_session_path,
+                        method: :delete,
+                        class: "btn-link" %>
+        <% else %>
+          <%= button_to t("navbar.recruiter_demo_login"),
+                        recruiter_demo_sign_in_path,
+                        method: :post,
+                        class: "btn btn-outline mr-2" %>
+          <%= link_to t("navbar.sign_up"), new_user_registration_path,
+                      class: "btn-link" %>
+          <%= link_to t("navbar.log_in"), new_user_session_path,
+                      class: "btn-link" %>
+        <% end %>
+      </div>
+
+      <!-- Hamburger (mobile only) -->
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded-md p-2 md:hidden border border-gray-300"
+        aria-label="Toggle navigation menu"
+        data-action="click->mobile-nav#toggle">
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <!-- Desktop / tablet nav row -->
+  <div class="border-t border-gray-100 hidden md:block">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto flex items-center gap-6">
+      <!-- Main navigation -->
+      <ul class="flex flex-row font-medium space-x-6 text-sm">
+        <li>
+          <%= link_to t("navbar.home"), products_path, class: "text-gray-900 hover:underline" %>
+        </li>
+        <li>
+          <%= link_to t("navbar.categories"), categories_path, class: "text-gray-900 hover:underline" %>
+        </li>
+        <li>
+          <%= link_to t("navbar.brands"), brands_path, class: "text-gray-900 hover:underline" %>
+        </li>
+      </ul>
+
+      <!-- Search -->
+      <div class="ml-6 flex-1">
+        <%= form_with url: products_path, method: :get, local: true, class: "flex items-center gap-2" do %>
+          <%= text_field_tag :q,
+                            params[:q],
+                            placeholder: t("navbar.search_placeholder"),
+                            class: "w-full text-gray-900 rounded-md border border-orange-400 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
+          <%= submit_tag t("navbar.search_button"),
+                        class: "rounded-md bg-orange-500 hover:bg-orange-400 px-3 py-1 text-sm text-white font-medium cursor-pointer whitespace-nowrap" %>
+        <% end %>
+      </div>
+
+      <!-- Cart & Add product -->
+      <ul class="flex items-center font-medium space-x-4 text-sm">
+        <li>
+          <%= link_to cart_path, class: "btn btn-cart" do %>
+            <span><%= t("navbar.cart") %></span>
+            <span class="btn-cart">
+              <%= header_cart_count %>
             </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to t("navbar.add_product"), new_product_path,
+                      class: "btn btn-cart" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div
+    class="md:hidden border-t border-gray-100 hidden"
+    data-mobile-nav-target="panel">
+    <div class="px-4 py-3 space-y-4">
+      <!-- Search full-width -->
+      <div>
+        <%= form_with url: products_path, method: :get, local: true, class: "flex items-center gap-2" do %>
+          <%= text_field_tag :q,
+                            params[:q],
+                            placeholder: t("navbar.search_placeholder"),
+                            class: "w-full text-gray-900 rounded-md border border-orange-400 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
+          <%= submit_tag t("navbar.search_button"),
+                        class: "rounded-md bg-orange-500 hover:bg-orange-400 px-3 py-2 text-sm text-white font-medium cursor-pointer whitespace-nowrap" %>
+        <% end %>
+      </div>
+
+      <!-- Main nav vertical -->
+      <ul class="space-y-2 text-sm font-medium">
+        <li>
+          <%= link_to t("navbar.home"), products_path, class: "block text-gray-900 hover:underline" %>
+        </li>
+        <li>
+          <%= link_to t("navbar.categories"), categories_path, class: "block text-gray-900 hover:underline" %>
+        </li>
+        <li>
+          <%= link_to t("navbar.brands"), brands_path, class: "block text-gray-900 hover:underline" %>
+        </li>
+      </ul>
+
+      <!-- Language buttons -->
+      <div class="flex flex-wrap gap-2">
+        <% language_labels.each do |loc, label| %>
+          <% active = I18n.locale == loc %>
+          <%= link_to label,
+                      url_for(locale: loc),
+                      class: [
+                        "px-2 py-1 rounded text-xs border",
+                        (active ? "bg-slate-900 text-white border-slate-900"
+                                : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100")
+                      ].join(" ") %>
+        <% end %>
+      </div>
+
+      <!-- Auth + Add product (mobile) -->
+      <div class="space-y-2 text-sm">
+        <% if user_signed_in? %>
+          <div>
+            <span class="text-gray-600 mr-2"><%= t("navbar.hi") %></span>
+            <%= link_to display_name(current_user), profile_path, class: "btn-link" %>
+          </div>
+          <div class="flex flex-wrap gap-2">
             <%= link_to t("navbar.edit_account"), edit_user_registration_path,
                         class: "btn-link" %>
             <%= button_to t("navbar.sign_out"), destroy_user_session_path,
                           method: :delete,
                           class: "btn-link" %>
-          <% else %>
+          </div>
+          <div>
+            <%= link_to t("navbar.add_product"), new_product_path,
+                        class: "btn btn-cart w-full text-center" %>
+          </div>
+        <% else %>
+          <div class="space-y-2">
             <%= button_to t("navbar.recruiter_demo_login"),
-                   recruiter_demo_sign_in_path,
-                   method: :post,
-                   class: "btn btn-outline mr-2" %>
+                          recruiter_demo_sign_in_path,
+                          method: :post,
+                          class: "btn btn-outline w-full" %>
             <%= link_to t("navbar.sign_up"), new_user_registration_path,
-                        class: "btn-link" %>
+                        class: "btn-link block" %>
             <%= link_to t("navbar.log_in"), new_user_session_path,
-                        class: "btn-link" %>
-          <% end %>
-        </div>
+                        class: "btn-link block" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-</nav>
-
-<nav class="bg-white border-b border-gray-200">
-    <div class="max-w-screen-xl px-4 py-3 mx-auto">
-        <div class="flex items-center">
-            <!-- Main navigation -->
-            <ul class="flex flex-row font-medium mt-0 space-x-8 text-sm">
-              <li>
-                <%= link_to t("navbar.home"), products_path, class: "text-gray-900 hover:underline" %>
-              </li>
-              <li>
-                <%= link_to t("navbar.categories"), categories_path, class: "text-gray-900 hover:underline" %>
-              </li>
-              <li>
-                <%= link_to t("navbar.brands"), brands_path, class: "text-gray-900 hover:underline" %>
-              </li>
-            </ul>
-
-            <!-- Search -->
-            <ul class="flex items-center space-x-2 ml-6">
-              <%= form_with url: products_path, method: :get, local: true, class: "flex items-center space-x-2" do %>
-                <%= text_field_tag :q,
-                                  params[:q],
-                                  placeholder: t("navbar.search_placeholder"),
-                                  class: "text-gray-900 rounded-md border border-orange-400 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500" %>
-                <%= submit_tag t("navbar.search_button"),
-                              class: "rounded-md bg-orange-500 hover:bg-orange-400 px-3 py-1 text-sm text-white font-medium cursor-pointer" %>
-              <% end %>
-            </ul>
-
-            <!-- Cart & Add product -->
-            <ul class="flex font-medium mt-0 space-x-8 text-sm ml-auto">
-              <li>
-                <%= link_to cart_path, class: "btn btn-cart" do %>
-                  <span><%= t("navbar.cart") %></span>
-                  <span class="btn-cart">
-                    <%= header_cart_count %>
-                  </span>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to t("navbar.add_product"), new_product_path,
-                            class: "btn btn-cart" %>
-              </li>
-            </ul>
-        </div>
-    </div>
+  </div>
 </nav>

@@ -6,35 +6,35 @@
 
     <!-- Category -->
     <div class="flex items-center gap-2 w-full sm:w-1/3">
-      <label class="text-sm font-medium whitespace-nowrap">
+      <label class="text-[12px] md:text-sm font-medium whitespace-nowrap">
         <%= t("products.search.category") %>
       </label>
       <div class="flex-1">
         <%= f.collection_select :category_id,
               Category.order(:name), :id, :name,
               { include_blank: t("products.search.all") },
-              class: "w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+              class: "w-full rounded-md border border-gray-300 px-2 py-1 text-[12px] md:text-sm md:px-3 md:py-2
                       focus:outline-none focus:ring-2 focus:ring-orange-500" %>
       </div>
     </div>
 
     <!-- Status -->
     <div class="flex items-center gap-2 w-full sm:w-1/3">
-      <label class="text-sm font-medium whitespace-nowrap">
+      <label class="text-[12px] md:text-sm font-medium whitespace-nowrap">
         <%= t("products.search.status") %>
       </label>
       <div class="flex-1">
         <%= f.select :status,
               options_for_select(Product.statuses.keys.map { |s| [s.humanize, s] }, selected: params[:status]),
               { include_blank: t("products.search.all") },
-              class: "w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+              class: "w-full rounded-md border border-gray-300 px-2 py-1 text-[12px] md:text-sm md:px-3 md:py-2
                       focus:outline-none focus:ring-2 focus:ring-orange-500" %>
       </div>
     </div>
 
     <!-- Button -->
     <div class="w-full sm:w-auto sm:ml-auto">
-      <%= f.submit t("products.search.apply"), class: "btn btn-primary" %>
+      <%= f.submit t("products.search.apply"), class: "btn btn-primary !px-3 !py-1 text-[13px] md:text-sm md:!px-4 md:!py-2" %>
     </div>
 
   <% end %>

@@ -1,31 +1,35 @@
-<div class="mx-auto max-w-3xl p-6">
+<div class="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-6">
   <div class="flex items-center gap-4">
     <%= avatar_for(@user, size: 96) %>
-    <div>
-      <h1 class="text-xl font-semibold"><%= display_name(@user) %></h1>
-      <p class="text-gray-600"><%= display_email(@user) %></p>
+    <div class="min-w-0">
+      <h1 class="text-lg md:text-xl font-semibold truncate">
+        <%= display_name(@user) %>
+      </h1>
+      <p class="text-gray-600 text-[13px] md:text-sm truncate">
+        <%= display_email(@user) %>
+      </p>
     </div>
   </div>
 
-  <div class="mt-6 grid gap-3 sm:grid-cols-2">
+  <div class="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-2">
     <%= link_to t("users.show.favorites"), favorites_path,
-        class: "block rounded-xl border p-4 hover:shadow" %>
+        class: "block rounded-xl border p-3 text-[13px] md:p-4 md:text-sm hover:shadow" %>
 
     <%= link_to t("users.show.add_product"), new_product_path,
-        class: "block rounded-xl border p-4 hover:shadow" %>
+        class: "block rounded-xl border p-3 text-[13px] md:p-4 md:text-sm hover:shadow" %>
 
     <%= link_to t("users.show.edit_profile"), edit_user_registration_path,
-        class: "block rounded-xl border p-4 hover:shadow" %>
+        class: "block rounded-xl border p-3 text-[13px] md:p-4 md:text-sm hover:shadow" %>
 
     <%= button_to t("users.show.log_out"),
         destroy_user_session_path,
         method: :delete,
-        class: "block w-full rounded-xl border p-4 text-left hover:shadow" %>
+        class: "block w-full rounded-xl border p-3 text-[13px] md:p-4 md:text-sm text-left hover:shadow" %>
   </div>
   <div class="mt-10">
     <h2 class="text-lg font-semibold mb-4"><%= t("users.show.user_products") %></h2>
     <% if @user.products.any? %>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-stretch mt-6">
         <%= render partial: "products/shared/card",
                    collection: @user.products.order(created_at: :desc),
                    as: :product %>

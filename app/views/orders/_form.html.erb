@@ -77,12 +77,12 @@
       </div>
     </div>
   </div>
-  <div class="mt-6 flex justify-between">
-    <%= link_to t("orders.form.cancel_order"),
-          cart_path,
-          class: "px-4 py-2 rounded bg-gray-200 text-gray-800" %>
+<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
+  <%= link_to t("orders.form.cancel_order"),
+        cart_path,
+        class: "px-4 py-2 rounded bg-gray-200 text-gray-800 w-full sm:w-auto text-center" %>
 
-    <%= f.submit t("orders.new.submit"),
-          class: "px-4 py-2 rounded bg-black text-white" %>
-  </div>
+  <%= f.submit t("orders.new.submit"),
+        class: "px-4 py-2 rounded bg-black text-white w-full sm:w-auto" %>
+</div>
 <% end %>

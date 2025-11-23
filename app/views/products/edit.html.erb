@@ -5,12 +5,14 @@
 
   <%= render "products/shared/form", product: @product %>
 
-  <div class="flex flex-wrap items-center gap-3">
-    <%= button_to t("products.edit.delete"),
-          @product,
-          method: :delete,
-          data: { turbo_confirm: t("products.edit.confirm_delete") },
-          class: "btn-danger" %>
+<div class="flex flex-wrap items-center gap-3 mt-2 justify-between w-full">
+    <% if user_signed_in? && current_user == @product.user %>
+      <%= button_to t("products.edit.delete"),
+            @product,
+            method: :delete,
+            data: { turbo_confirm: t("products.edit.confirm_delete") },
+            class: "btn-danger" %>
+    <% end %>
 
     <%= link_to t("products.edit.back"),
           products_path,

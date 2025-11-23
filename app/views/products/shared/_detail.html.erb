@@ -10,7 +10,7 @@
             <% product.images.each do |img| %>
               <%= image_tag img.variant(resize_to_limit: [100, 100]),
                     data: {
-                      full: url_for(img.variant(resize_to_limit: [1200, 1200])),
+                      full: url_for(img.variant(resize_to_limit: [700, 700])),
                       action: "click->product-gallery#switch",
                       product_gallery_target: "thumb"
                     },
@@ -32,14 +32,14 @@
         <!-- Thumbnails row (mobile) -->
         <div class="flex md:hidden gap-2 mt-3">
           <% product.images.each do |img| %>
-            <%= image_tag img.variant(resize_to_limit: [80, 80]),
+            <%= image_tag img.variant(resize_to_limit: [64, 64]),
                   data: {
                     full: url_for(img.variant(resize_to_limit: [1200, 1200])),
                     action: "click->product-gallery#switch",
                     product_gallery_target: "thumb"
                   },
                   alt: t(".thumb_image_alt", title: product.title),
-                  class: "rounded-md w-20 h-20 object-cover border border-gray-200 cursor-pointer hover:opacity-80" %>
+                  class: "rounded-md w-16 h-16 object-cover border border-gray-200 cursor-pointer hover:opacity-80" %>
           <% end %>
         </div>
       <% else %>
@@ -50,13 +50,20 @@
     </div>
 
     <div class="w-full md:w-1/2 flex flex-col">
-      <h1 class="text-2xl font-bold text-slate-900"><%= product.title %></h1>
+      <h1 class="text-lg md:text-2xl font-bold text-slate-900"><%= product.title %></h1>
 
       <div class="mt-3 flex items-center justify-between gap-3">
-        <span class="text-3xl font-bold text-slate-900">
+        <span class="text-xl md:text-3xl font-bold text-slate-900">
           ¥<%= number_to_currency(product.price, unit: "", precision: 0) %>
         </span>
         <%= avatar_for(product.user, size: 42) %>
+      </div>
+
+      <%= turbo_frame_tag dom_id(product, :favorite_button) do %>
+        <%= render "favorites/button", product: product %>
+      <% end %>
+
+      <div class="mt-3">
         <%= form_with url: create_cart_item_path(product),
                       method: :post,
                       local: true,
@@ -69,10 +76,6 @@
                 class: "btn btn-primary" %>
         <% end %>
       </div>
-
-      <%= turbo_frame_tag dom_id(product, :favorite_button) do %>
-        <%= render "favorites/button", product: product %>
-      <% end %>
 
       <!-- Chat -->
       <% if user_signed_in? && current_user != @product.user %>
@@ -94,7 +97,7 @@
         </p>
       <% end %>
 
-      <p class="mt-4 text-slate-700 leading-7">
+      <p class="mt-4 text-slate-700 leading-5 text-sm md:text-base">
         <%= product.description %>
       </p>
 
