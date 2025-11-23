@@ -56,7 +56,7 @@
         <span class="text-3xl font-bold text-slate-900">
           ¥<%= number_to_currency(product.price, unit: "", precision: 0) %>
         </span>
-
+        <%= avatar_for(product.user, size: 42) %>
         <%= form_with url: create_cart_item_path(product),
                       method: :post,
                       local: true,

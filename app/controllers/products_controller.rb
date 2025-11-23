@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class ProductsController < ApplicationController
   protect_from_forgery except: :generate_description
   before_action :authenticate_user!, except: %i[index show]
@@ -5,10 +6,16 @@ class ProductsController < ApplicationController
   before_action :authorize_owner!, only: %i[edit update destroy]
 
   def index
-    @products = Product.search(params[:q])
-                       .by_category(params[:category_id])
-                       .by_status(params[:status])
-                       .order(created_at: :desc)
+    @top_categories = Category.top_for_homepage
+    @top_brands     = Brand.top_for_homepage
+
+    @products = Product
+                .includes(:category, :brand, :user)
+                .search(params[:q])
+                .by_category(params[:category_id])
+                .by_status(params[:status])
+                .order(created_at: :desc)
+                .page(params[:page])
   end
 
   def show
@@ -25,12 +32,11 @@ class ProductsController < ApplicationController
 
   def create
     attrs = product_params.to_h
-    files = attrs.delete("images") || []
-    files = Array.wrap(files).compact_blank
+    files = attrs.delete("images")
     @product = current_user.products.build(attrs)
     authorize @product
     if @product.save
-      files.each { |f| @product.images.attach(f) } if files.present?
+      Products::AttachImages.new(record: @product, files: files).call
       redirect_to @product, notice: t('.created')
     else
       render :new, status: :unprocessable_entity
@@ -40,11 +46,10 @@ class ProductsController < ApplicationController
   def update
     authorize @product
     attrs = product_params.to_h
-    files = attrs.delete("images") || []
-    files = Array.wrap(files).compact_blank
+    files = attrs.delete("images")
     respond_to do |format|
       if @product.update(attrs)
-        files.each { |f| @product.images.attach(f) } if files.present?
+        Products::AttachImages.new(record: @product, files: files).call
         format.html { redirect_to @product, notice: t('.updated'), status: :see_other }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -103,7 +108,7 @@ class ProductsController < ApplicationController
 
     def product_params
       permitted = params.require(:product).permit(
-        :title, :description, :price, :status, :category_id, 
+        :title, :description, :price, :status, :category_id, :brand_id,
         images: []
         )
       if permitted[:images].is_a?(Array)
@@ -116,3 +121,5 @@ class ProductsController < ApplicationController
       permitted
     end
 end
+
+# rubocop:enable Metrics/ClassLength

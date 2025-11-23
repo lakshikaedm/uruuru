@@ -28,21 +28,29 @@
       </h3>
     <% end %>
 
-    <div class="mt-auto flex items-center justify-between gap-3">
-      <span class="text-xl font-bold text-slate-900">
-        ¥<%= number_to_currency(product.price, unit: "", precision: 0) %>
-      </span>
+    <div class="mt-auto flex flex-col gap-2">
+      <div class="flex items-center justify-between gap-3">
+        <span class="text-xl font-bold text-slate-900">
+          ¥<%= number_to_currency(product.price, unit: "", precision: 0) %>
+        </span>
+
+        <div class="flex items-center gap-2">
+          <%= avatar_for(product.user, size: 32) %>
+        </div>
+      </div>
 
       <%= form_with url: create_cart_item_path(product),
                     method: :post,
                     local: true,
-                    class: "flex items-center gap-2" do |f| %>
-        <%= number_field_tag "cart_item[quantity]", 1, min: 1,
-              class: "w-16 rounded-md border border-gray-300 px-2 py-1 text-sm
-                      focus:outline-none focus:ring-2 focus:ring-orange-500" %>
+                    class: "w-full" do |f| %>
+        <div class="flex items-center gap-2">
+          <%= number_field_tag "cart_item[quantity]", 1, min: 1,
+                class: "w-16 rounded-md border border-gray-300 px-2 py-1 text-sm
+                        focus:outline-none focus:ring-2 focus:ring-orange-500" %>
 
-        <%= f.submit t(".add_to_cart"),
-              class: "btn btn-primary" %>
+          <%= f.submit t(".add_to_cart"),
+                class: "btn btn-primary flex-1" %>
+        </div>
       <% end %>
     </div>
   </div>

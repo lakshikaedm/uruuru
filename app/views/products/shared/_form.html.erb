@@ -97,6 +97,15 @@
           class: base_field_classes %>
   </div>
 
+  <%# Brand %>
+  <div class="mb-5">
+    <%= form.label :brand_id, t("products.form.brand"), class: "form-label" %>
+    <%= form.collection_select :brand_id,
+          Brand.order(:name), :id, :name,
+          { include_blank: t("products.form.brand_placeholder") },
+          class: base_field_classes %>
+  </div>
+
   <%# Submit %>
   <div class="inline">
     <%= form.submit t("products.form.save"),

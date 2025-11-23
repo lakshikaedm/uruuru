@@ -22,4 +22,16 @@
         method: :delete,
         class: "block w-full rounded-xl border p-4 text-left hover:shadow" %>
   </div>
+  <div class="mt-10">
+    <h2 class="text-lg font-semibold mb-4"><%= t("users.show.user_products") %></h2>
+    <% if @user.products.any? %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <%= render partial: "products/shared/card",
+                   collection: @user.products.order(created_at: :desc),
+                   as: :product %>
+      </div>
+    <% else %>
+      <p class="text-gray-500"><%= t("users.show.no_products") %></p>
+    <% end %>
+  </div>
 </div>

@@ -7,6 +7,9 @@
   </h2>
 <% end %>
 
+<%= render "products/shared/category_row", top_categories: @top_categories %>
+<%= render "products/shared/brand_row", top_brands: @top_brands %>
+
 <% if @products.any? %>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-stretch mt-6">
     <%= render partial: "products/shared/card",
@@ -18,3 +21,6 @@
     <%= t("products.index.none") %>
   </p>
 <% end %>
+<div class="mt-6">
+  <%= paginate @products %>
+</div>
