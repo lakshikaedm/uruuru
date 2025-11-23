@@ -25,4 +25,18 @@ module BreadcrumbsHelper
 
     items
   end
+
+  def breadcrumb_items_for_brand(brand)
+    items = [{ label: "Home", url: root_path, current: false }]
+
+    if brand
+      items << {
+        label: brand.name,
+        url: brand_path(brand),
+        current: true
+      }
+    end
+
+    items
+  end
 end

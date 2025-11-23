@@ -1,4 +1,3 @@
-# Renders category pages and their product listings.
 class CategoriesController < ApplicationController
   def index
     @categories = Category.order(:name)

@@ -1,8 +1,8 @@
-<% content_for :title, t("categories.show.title", name: @category.name) %>
+<% content_for :title, t("brands.show.title", name: @brand.name) %>
 
-<%= render "shared/breadcrumbs", items: breadcrumb_items_for_category(@category) %>
+<%= render "shared/breadcrumbs", items: breadcrumb_items_for_brand(@brand) %>
 
-<h1 class="text-2xl font-semibold mb-4"><%= @category.name %></h1>
+<h1 class="text-2xl font-semibold mb-4"><%= @brand.name %></h1>
 
 <% if @products.any? %>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-stretch mt-6">
@@ -12,6 +12,6 @@
   </div>
 <% else %>
   <p class="text-gray-600">
-    <%= t("categories.show.empty") %>
+    <%= t("brands.show.empty") %>
   </p>
 <% end %>

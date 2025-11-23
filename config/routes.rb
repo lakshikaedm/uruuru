@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :categories, only: %i[show index]
 
+  resources :brands, only: %i[show index]
+
   resources :products, only: %i[index show] do
     resource :favorite, only: %i[create destroy], controller: 'favorites'
   end
