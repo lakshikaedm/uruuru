@@ -21,6 +21,18 @@ si:
       category: "ප්‍රවර්ගය"
       category_placeholder: "ප්‍රවර්ගයක් තෝරන්න"
       save: "නිෂ්පාදනය සුරකින්න"
+      description_prompt: "AI උදව්වෙන් විස්තර ලියන්න"
+      description_placeholder: "Simple note ටිකක් ලියලා දුන්නොත් AI එකෙන් හොඳ විස්තරයක් හදවලා දෙනවා."
+      generate_description: "AI එකෙන් ලියන්න"
+    ai_description:
+      status:
+        loading: "AI එක විස්තර සෑදුවෙනෙයි..."
+        success: "විස්තරය update කලා."
+        error: "AI එකෙන් විස්තර ගන්න ලෙඩ වුනා."
+      errors:
+        blank_prompt: "පළමුවෙන් product දත්ත ටිකක් ලියන්න."
+        missing_api_key: "මේ environment එකේ AI key set කරලා නැහැ."
+        generic: "AI call එකකදි error එකක් වුනා."
     shared:
       card:
         add_to_cart: "කූඩයට දාන්න"

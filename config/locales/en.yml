@@ -21,6 +21,18 @@ en:
       category: "Category"
       category_placeholder: "Select a Category"
       save: "Save Product"
+      description_prompt: "AI help for description"
+      description_placeholder: "Write rough notes here and Generate using AI."
+      generate_description: "Generate with AI"
+    ai_description:
+      status:
+        loading: "Generating description..."
+        success: "Description generated."
+        error: "Could not generate description."
+      errors:
+        blank_prompt: "Please enter some product specs first."
+        missing_api_key: "AI is not configured on this environment."
+        generic: "Something went wrong while calling AI."
     shared:
       card:
         add_to_cart: "Add to cart"

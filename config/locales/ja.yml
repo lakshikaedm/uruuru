@@ -21,6 +21,18 @@ ja:
       category: "カテゴリ"
       category_placeholder: "カテゴリを選択してください"
       save: "商品を保存する"
+      description_prompt: "AI説明文ヘルプ"
+      description_placeholder: "シンプルなメモを書くだけで、AIが説明文を作成します。"
+      generate_description: "AIで説明文を作成"
+    ai_description:
+      status:
+        loading: "AIが説明文を作成しています..."
+        success: "説明文を更新しました。"
+        error: "説明文の作成に失敗しました。"
+      errors:
+        blank_prompt: "まず商品の情報を入力してください。"
+        missing_api_key: "AIの設定がこの環境で有効になっていません。"
+        generic: "AI連携中にエラーが発生しました。"
     shared:
       card:
         add_to_cart: "カートに入れる"
