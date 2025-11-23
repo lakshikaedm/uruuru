@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :products
+  resources :products do
+    collection do
+      post :generate_description
+    end
+  end
+
   devise_for :users,
              controllers: {
                sessions: "users/sessions",

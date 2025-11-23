@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  protect_from_forgery except: :generate_description
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :authorize_owner!, only: %i[edit update destroy]
@@ -61,6 +62,34 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_path, notice: t('.destroyed'), status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  def generate_description
+    prompt = params[:prompt].to_s
+
+    description = Products::GenerateDescription.new(
+      prompt: prompt,
+      locale: I18n.locale
+    ).call
+
+    error_status =
+      case description
+      when I18n.t("products.ai_description.errors.blank_prompt"),
+           I18n.t("products.ai_description.errors.missing_api_key")
+        :unprocessable_content
+      when I18n.t("products.ai_description.errors.generic")
+        :internal_server_error
+      end
+
+    if error_status
+      render json: { error: description }, status: error_status
+    else
+      render json: { description: description }, status: :ok
+    end
+  rescue StandardError => e
+    Rails.logger.error("[AI_DESCRIPTION_CONTROLLER] #{e.class}: #{e.message}")
+    render json: { error: I18n.t("products.ai_description.errors.generic") },
+           status: :internal_server_error
   end
 
   private
