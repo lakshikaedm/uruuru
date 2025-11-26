@@ -5,12 +5,10 @@
 </h1>
 
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-  <% @categories.each do |cat| %>
-    <%= link_to category_path(cat),
-          class: "block rounded-lg border bg-white p-4 shadow-sm hover:shadow-md transition" do %>
-      <span class="text-base font-semibold text-gray-800 block truncate">
-        <%= cat.name %>
-      </span>
-    <% end %>
+  <% @categories.each do |category| %>
+    <div>
+      <%= link_to category_label(category), category_path(category),
+            class: "block rounded-lg border bg-white p-4 shadow-sm hover:shadow-md transition" %>
+    </div>
   <% end %>
 </div>

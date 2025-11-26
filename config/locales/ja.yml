@@ -321,6 +321,14 @@ ja:
       back: "会話一覧に戻る"
 
   categories:
+    clothings: "服"
+    electronics: "家電"
+    furniture: "家具"
+    foods: "食品"
+    cosmetics: "化粧品"
+    books: "本"
+    uncategorized: "未分類"
+
     index:
       title: "カテゴリー"
       heading: "カテゴリー"
@@ -329,6 +337,19 @@ ja:
       empty: "このカテゴリーにはまだ商品がありません。"
 
   brands:
+    sony: "ソニー"
+    apple: "アップル"
+    samsung: "サムスン"
+    canon: "キヤノン"
+    nike: "ナイキ"
+    zara: "ザラ"
+    adidas: "アディダス"
+    ikea: "イケア"
+    wijaya: "Wijaya"
+    md: "MD"
+    munchee: "Munchee"
+    unbranded: "ブランドなし"
+    
     index:
       title: "ブランド"
       heading: "ブランド一覧"

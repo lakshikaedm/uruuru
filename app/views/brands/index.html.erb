@@ -6,11 +6,9 @@
 
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
   <% @brands.each do |brand| %>
-    <%= link_to brand_path(brand),
-          class: "block rounded-lg border bg-white p-4 shadow-sm hover:shadow-md transition" do %>
-      <span class="text-base font-semibold text-gray-800 block truncate">
-        <%= brand.name %>
-      </span>
-    <% end %>
+    <div>
+      <%= link_to brand_label(brand), brand_path(brand),
+            class: "block rounded-lg border bg-white p-4 shadow-sm hover:shadow-md transition" %>
+    </div>
   <% end %>
 </div>

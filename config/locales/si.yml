@@ -321,6 +321,14 @@ si:
       back: "සාකච්ඡා ලැයිස්තුවට ආපසු"
 
   categories:
+    clothings: "ඇඳුම්"
+    electronics: "ඉලෙක්ට්‍රොනික භාණ්ඩ"
+    furniture: "ගෙයිසරණි"
+    foods: "ආහාර"
+    cosmetics: "අලංකාර වස්තු"
+    books: "පොත්"
+    uncategorized: "වර්ගීකරණය නොකළ"
+
     index:
       title: "වර්ග"
       heading: "වර්ග"
@@ -329,6 +337,19 @@ si:
       empty: "මෙම ප්‍රවර්ගයේ තවම නිෂ්පාදන නැහැ."
 
   brands:
+    sony: "Sony"
+    apple: "Apple"
+    samsung: "Samsung"
+    canon: "Canon"
+    nike: "Nike"
+    zara: "Zara"
+    adidas: "Adidas"
+    ikea: "IKEA"
+    wijaya: "Wijaya"
+    md: "MD"
+    munchee: "Munchee"
+    unbranded: "වෙළඳ නාම නැත"
+    
     index:
       title: "වෙළඳ නම"
       heading: "වෙළඳ නාමේ ලැයිස්තුව"

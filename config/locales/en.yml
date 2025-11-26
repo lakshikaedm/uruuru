@@ -320,6 +320,14 @@ en:
       back: "Back to Conversations"
 
   categories:
+    clothings: "Clothings"
+    electronics: "Electronics"
+    furniture: "Furniture"
+    foods: "Foods"
+    cosmetics: "Cosmetics"
+    books: "Books"
+    uncategorized: "Uncategorized"
+
     index:
       title: "Categories"
       heading: "Categories"
@@ -328,6 +336,19 @@ en:
       empty: "No products in this category yet."
     
   brands:
+    sony: "Sony"
+    apple: "Apple"
+    samsung: "Samsung"
+    canon: "Canon"
+    nike: "Nike"
+    zara: "Zara"
+    adidas: "Adidas"
+    ikea: "IKEA"
+    wijaya: "Wijaya"
+    md: "MD"
+    munchee: "Munchee"
+    unbranded: "Unbranded"
+    
     index:
       title: "Brands"
       heading: "Brands"
