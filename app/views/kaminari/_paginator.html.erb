@@ -1,0 +1,41 @@
+<%= paginator.render do %>
+  <nav
+    aria-label="Pagination"
+    class="mt-8 flex justify-center"
+  >
+    <div class="inline-flex items-center gap-1 rounded-full bg-white/80 px-2 py-1 shadow-sm ring-1 ring-gray-200 backdrop-blur">
+      <%# Prev button %>
+      <% unless current_page.first? %>
+        <span class="inline-flex items-center justify-center rounded-full px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 cursor-pointer">
+          <%= prev_page_tag %>
+        </span>
+      <% end %>
+
+      <%# Page numbers %>
+      <% each_page do |page| %>
+        <% if page.left_outer? || page.right_outer? || page.inside_window? %>
+          <% base_classes = "inline-flex items-center justify-center rounded-full px-3 py-1 text-xs transition-colors cursor-pointer " %>
+          <% classes =
+               if page.current?
+                 base_classes + "bg-gray-900 text-white font-semibold shadow-sm"
+               else
+                 base_classes + "text-gray-700 hover:bg-gray-100"
+               end %>
+
+          <%= content_tag :span, class: classes do %>
+            <%= page_tag page %>
+          <% end %>
+        <% elsif !page.was_truncated? %>
+          <span class="px-1 text-xs text-gray-400">…</span>
+        <% end %>
+      <% end %>
+
+      <%# Next button %>
+      <% unless current_page.last? %>
+        <span class="inline-flex items-center justify-center rounded-full px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 cursor-pointer">
+          <%= next_page_tag %>
+        </span>
+      <% end %>
+    </div>
+  </nav>
+<% end %>
