@@ -25,6 +25,7 @@ gem "pundit"
 gem "pundit-matchers"
 
 # File Processing
+gem "aws-sdk-s3", require: false
 gem "image_processing", "~> 1.2"
 
 # Models / Data Helpers
