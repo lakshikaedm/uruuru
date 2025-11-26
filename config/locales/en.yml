@@ -348,3 +348,11 @@ en:
       total: "Total"
       shipping_address: "Shipping address"
       footer: "If you have any questions, please reply to this email."
+
+  views:
+    pagination:
+      previous: "‹ Prev"
+      next: "Next ›"
+      first: "« First"
+      last: "Last »"
+      truncate: "…"

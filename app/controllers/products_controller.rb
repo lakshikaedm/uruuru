@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
                 .by_category(params[:category_id])
                 .by_status(params[:status])
                 .order(created_at: :desc)
-                .page(params[:page])
+                .page(params[:page]).per(9)
   end
 
   def show

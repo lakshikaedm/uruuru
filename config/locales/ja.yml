@@ -377,3 +377,11 @@ ja:
       total: "合計金額"
       shipping_address: "お届け先住所"
       footer: "本メールにご返信いただくか、マイページよりお問い合わせください。"
+
+  views:
+    pagination:
+      previous: "‹ 前へ"
+      next: "次へ ›"
+      first: "« 最初"
+      last: "最後 »"
+      truncate: "…"
