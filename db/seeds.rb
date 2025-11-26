@@ -5,8 +5,8 @@ end
 
 # --- Categories (ancestry) ---
 clothings = Category.find_or_create_by!(name: "Clothings")
-tops     = clothings.children.find_or_create_by!(name: "Tops")
-tees     = tops.children.find_or_create_by!(name: "T-Shirts")
+tops = clothings.children.find_or_create_by!(name: "Tops")
+tops.children.find_or_create_by!(name: "T-Shirts")
 
 #--Brands--
 %w[Apple Samsung Sony Canon Nike Zara Adidas IKEA Wijaya MD Munchee Unbranded].each do |name|
@@ -34,7 +34,7 @@ users_data = [
       {
         title: "中古ソニーカメラ 良好な状態",
         description: "ストラップ付き・バッテリー良好。すぐに撮影できます。",
-        price: 25000,
+        price: 25_000,
         category: "Electronics",
         brand: "Sony",
         status: :publish,
@@ -69,7 +69,7 @@ users_data = [
       {
         title: "Canon 単焦点レンズ 50mm",
         description: "ポートレートに最適。動作確認済み・カビなし。",
-        price: 18000,
+        price: 18_000,
         category: "Electronics",
         brand: "Canon",
         status: :publish,
@@ -87,7 +87,7 @@ users_data = [
       {
         title: "Nike Air Jordan 1",
         description: "コレクション整理のため出品。キズ・欠けなし",
-        price: 25500,
+        price: 25_500,
         category: "Clothings",
         brand: "Nike",
         status: :publish,
@@ -104,7 +104,7 @@ users_data = [
       {
         title: "Apple AirPods Pro(2nd gen)",
         description: "Used for about 6 months, fully working, includes charging case.",
-        price: 17000,
+        price: 17_000,
         category: "Electronics",
         brand: "Apple",
         status: :publish,
@@ -122,7 +122,7 @@ users_data = [
       {
         title: "Samsung 24\" monitor",
         description: "Full HD, no dead pixels, HDMI cable included.",
-        price: 15500,
+        price: 15_500,
         category: "Electronics",
         brand: "Samsung",
         status: :sold,
@@ -130,7 +130,7 @@ users_data = [
       }
     ]
   },
-  #English user 2
+  # English user 2
   {
     email: "david@example.com",
     username: "david-seller",
@@ -165,7 +165,7 @@ users_data = [
       }
     ]
   },
-  #Sinhala user 1
+  # Sinhala user 1
   {
     email: "chanuka@example.com",
     username: "chanuka-seller",
@@ -270,20 +270,19 @@ users_data.each do |data|
       prod.brand       = brand
     end
 
-    if p[:image].present?
-      next if product.images.attached?
+    next if p[:image].blank?
+    next if product.images.attached?
 
-      path = Rails.root.join("db/seeds/images/#{p[:image]}")
-      next unless File.exist?(path)
+    path = Rails.root.join("db/seeds/images/#{p[:image]}")
+    next unless File.exist?(path)
 
-      content_type = Marcel::MimeType.for(path)
+    content_type = Marcel::MimeType.for(path)
 
-      product.images.attach(
-        io: File.open(path),
-        filename: p[:image],
-        content_type: content_type
-      )
-    end
+    product.images.attach(
+      io: File.open(path),
+      filename: p[:image],
+      content_type: content_type
+    )
   end
 end
 
@@ -299,6 +298,6 @@ users.each do |user|
   end
 end
 
-puts "Seeded #{Favorite.count} favorites."
+Rails.logger.debug { "Seeded #{Favorite.count} favorites." }
 
-puts "Seeded #{User.count} users and #{Product.count} products."
+Rails.logger.debug { "Seeded #{User.count} users and #{Product.count} products." }
