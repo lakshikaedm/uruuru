@@ -41,6 +41,7 @@ group :development do
   gem "bootsnap", require: false
   gem "letter_opener"
   gem "letter_opener_web"
+  gem "rails-erd"
   gem "web-console"
 end
 
