@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 # Core Rails & Server
+gem "bootsnap", ">= 1.16.0", require: false
 gem 'kaminari', '~> 1.2.2'
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
@@ -39,7 +40,6 @@ gem "stripe"
 
 # Development Only
 group :development do
-  gem "bootsnap", require: false
   gem "letter_opener"
   gem "letter_opener_web"
   gem "rails-erd"

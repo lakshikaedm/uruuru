@@ -514,7 +514,7 @@ PLATFORMS
 DEPENDENCIES
   ancestry (~> 4.3)
   aws-sdk-s3
-  bootsnap
+  bootsnap (>= 1.16.0)
   capybara
   debug
   devise (~> 4.9)
