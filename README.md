@@ -180,3 +180,12 @@ https://uruuru-0ff5c50baf18.herokuapp.com/
 Ruby on Rails 開発者
 静岡 / 日本
 使用言語: 英語 / 日本語 / シンハラ語
+
+## 開発環境での実行方法（任意）
+
+```bash
+git clone https://github.com/lakshikaedm/uruuru.git
+cd uruuru
+bundle install
+bin/rails db:setup
+bin/dev
