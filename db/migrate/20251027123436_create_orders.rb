@@ -11,7 +11,6 @@ class CreateOrders < ActiveRecord::Migration[7.1]
       t.string :status, null: false, default: "pending"
 
       # shipping address
-      t.string :status, null: false
       t.string :shipping_name, null: false
       t.string :shipping_phone, null: false
       t.string :shipping_postal_code, null: false
