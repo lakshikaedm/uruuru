@@ -6,7 +6,7 @@ ruby "3.3.0"
 gem "bootsnap", ">= 1.16.0", require: false
 gem 'kaminari', '~> 1.2.2'
 gem "pg", "~> 1.1"
-gem "puma", ">= 5.0"
+gem "puma", ">= 7.0.3"
 gem "rails", "~> 7.1.3"
 gem "sprockets-rails"
 gem "turbo-rails"
