@@ -54,6 +54,8 @@ Rails.application.routes.draw do
 
   get "about", to: "pages#about"
   get "release-notes", to: "pages#release_notes"
+  get "privacy", to: "pages#privacy"
+  get "data_deletion", to: "pages#data_deletion"
 
   root "products#index"
 
