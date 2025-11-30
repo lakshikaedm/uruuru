@@ -23,8 +23,7 @@ Devise.setup do |config|
     config.omniauth :facebook,
                     facebook_client_id,
                     facebook_client_secret,
-                    scope: "email",
-                    info_fields: "email,name"
+                    info_fields: "name"
   else
     Rails.logger.warn "Facebook OmniAuth is not configured. FACEBOOK_CLIENT_ID / FACEBOOK_CLIENT_SECRET missing."
   end
