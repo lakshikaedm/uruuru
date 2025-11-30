@@ -3,8 +3,8 @@ class AddOmniauthToUsers < ActiveRecord::Migration[7.1]
     add_column :users, :provider, :string unless column_exists?(:users, :provider)
     add_column :users, :uid, :string unless column_exists?(:users, :uid)
 
-    unless index_exists?(:users, [:provider, :uid])
-      add_index :users, [:provider, :uid], unique: true
-    end
+    return if index_exists?(:users, %i[provider uid])
+
+    add_index :users, %i[provider uid], unique: true
   end
 end

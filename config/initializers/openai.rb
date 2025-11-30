@@ -1,8 +1,8 @@
 require "openai"
 
-OPENAI_API_KEY = ENV["OPENAI_API_KEY"]
+OPENAI_API_KEY = ENV.fetch("OPENAI_API_KEY", nil)
 
-OpenAIClient =
+OPENAI_CLIENT =
   if OPENAI_API_KEY.present?
     OpenAI::Client.new(api_key: OPENAI_API_KEY)
   else

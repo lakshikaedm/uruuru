@@ -16,9 +16,9 @@ Devise.setup do |config|
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
   config.mailer_sender = "no-reply@uruuru.example.com"
-  facebook_client_id     = ENV["FACEBOOK_CLIENT_ID"]
-  facebook_client_secret = ENV["FACEBOOK_CLIENT_SECRET"]
-  
+  facebook_client_id     = ENV.fetch("FACEBOOK_CLIENT_ID", nil)
+  facebook_client_secret = ENV.fetch("FACEBOOK_CLIENT_SECRET", nil)
+
   if facebook_client_id.present? && facebook_client_secret.present?
     config.omniauth :facebook,
                     facebook_client_id,
