@@ -1,0 +1,12 @@
+<footer class="mt-10 border-t py-6 text-center text-sm text-gray-500">
+  <%= t(
+        "footer.copyright_html",
+        year: Time.current.year,
+        app_name: "Uruuru",
+        owner: "Lakshika"
+      ).html_safe %>
+  |
+  <%= link_to t("footer.about"), about_path, class: "underline hover:text-gray-700" %>
+  |
+  <%= link_to t("footer.release_notes"), release_notes_path, class: "underline hover:text-gray-700" %>
+</footer>

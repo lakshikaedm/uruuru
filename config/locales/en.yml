@@ -377,3 +377,20 @@ en:
       first: "« First"
       last: "Last »"
       truncate: "…"
+
+  footer:
+    copyright_html: "© %{year} %{app_name} by %{owner}"
+    about: "About"
+    release_notes: "Release Notes"
+
+  pages:
+    about:
+      title: "About Uruuru"
+      body_html: >
+        Uruuru is a personal portfolio e-commerce project inspired by Mercari,
+        built with Ruby on Rails 7, Tailwind CSS, Stripe, AWS S3, and OpenAI.
+      built_by_html: "Built by <strong>Lakshika</strong> in 2025 🇯🇵"
+
+    release_notes:
+      title: "Release Notes"
+      intro: "Here you can track all updates I’ve added to Uruuru after launch."

@@ -406,3 +406,20 @@ ja:
       first: "« 最初"
       last: "最後 »"
       truncate: "…"
+
+  footer:
+    copyright_html: "© %{year} %{app_name} by %{owner}"
+    about: "Uruuruについて"
+    release_notes: "リリースノート"
+
+  pages:
+    about:
+      title: "Uruuruについて"
+      body_html: >
+        Uruuruはメルカリ風の個人ポートフォリオECサイトです。
+        Ruby on Rails 7、Tailwind CSS、Stripe、AWS S3、OpenAIなどを使って構築しています。
+      built_by_html: "2025年に<strong>Lakshika</strong>が作成しました 🇯🇵"
+
+    release_notes:
+      title: "リリースノート"
+      intro: "Uruuruに追加したアップデートの履歴をまとめています。"

@@ -406,3 +406,21 @@ si:
       first: "« පළමු"
       last: "අවසාන »"
       truncate: "…"
+
+  footer:
+    copyright_html: "© %{year} %{app_name} by %{owner}"
+    about: "Uruuru ගැන"
+    release_notes: "නිකුත් කිරීමේ සටහන්"
+
+  pages:
+    about:
+      title: "Uruuru ගැන"
+      body_html: >
+        Uruuru කියන්නේ මම Ruby on Rails 7, Tailwind CSS, Stripe, AWS S3,
+        OpenAI වගේ tech use කරලා හදපු පුද්ගලික e-commerce
+        portfolio project එකක්.
+      built_by_html: "මෙය 2025 දී <strong>Lakshika</strong> විසින් සෑදූ එකක් 🇯🇵"
+
+    release_notes:
+      title: "නිකුත් කිරීමේ සටහන්"
+      intro: "Uruuru project එකට මම එකතු කරපු update history එක මෙහි තියෙනවා."

@@ -52,6 +52,9 @@ Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
+  get "about", to: "pages#about"
+  get "release-notes", to: "pages#release_notes"
+
   root "products#index"
 
   get "up" => "rails/health#show", as: :rails_health_check
