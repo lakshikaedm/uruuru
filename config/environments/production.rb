@@ -73,14 +73,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name: "apikey",
-    password: ENV["SENDGRID_API_KEY"],
+    password: ENV.fetch("SENDGRID_API_KEY"),
     domain: "uruuru.herokuapp.com",
     address: "smtp.sendgrid.net",
     port: 587,
     authentication: :plain,
     enable_starttls_auto: true
   }
-  Rails.logger.info("[MAILER CONFIG] address=#{config.action_mailer.smtp_settings[:address]} port=#{config.action_mailer.smtp_settings[:port]}")
   config.action_mailer.default_url_options = { host: "uruuru.herokuapp.com", protocol: "https" }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
