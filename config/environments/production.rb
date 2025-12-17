@@ -80,6 +80,7 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
+  Rails.logger.info("[MAILER CONFIG] address=#{config.action_mailer.smtp_settings[:address]} port=#{config.action_mailer.smtp_settings[:port]}")
   config.action_mailer.default_url_options = { host: "uruuru.herokuapp.com", protocol: "https" }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
