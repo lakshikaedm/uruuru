@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_23_042451) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_18_105855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -139,7 +139,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_23_042451) do
     t.integer "subtotal_yen"
     t.integer "shipping_yen"
     t.integer "total_yen"
-    t.string "status"
     t.string "shipping_name"
     t.string "shipping_phone"
     t.string "shipping_postal_code"
@@ -150,6 +149,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_23_042451) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "shipping_fee_yen", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
