@@ -130,6 +130,9 @@ ja:
       title: "お支払いが完了しました 🎉"
       message_html: "ご購入ありがとうございます。ご注文番号は <span class='font-mono font-semibold'>%{order_id}</span> です。"
       back_to_home: "マイページへ戻る"
+      refresh: "更新"
+      confirming: "お支払いを確認中です"
+      confirm_html: "Stripeにてお支払いを処理しています。確認が取れ次第、このページが更新されます。"
     cancel:
       title: "支払いがキャンセルされました"
       message: "お支払いは行われていません。カートの内容を変更して、もう一度お試しください。"

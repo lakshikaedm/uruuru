@@ -130,6 +130,9 @@ en:
       title: "Payment complete 🎉"
       message_html: "Thank you for your purchase. Your order number is <span class='font-mono font-semibold'>%{order_id}</span>."
       back_to_home: "Back to My Page"
+      refresh: "Refresh"
+      confirming: "Confirming payment"
+      confirm_html: "Stripe is processing your payment. This page will update once we receive confirmation."
     cancel:
       title: "Payment cancelled"
       message: "Your order was not charged. You can adjust your items and try again."

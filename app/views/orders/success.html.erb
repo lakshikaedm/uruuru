@@ -1,11 +1,19 @@
 <div class="max-w-xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
-  <h1 class="text-2xl font-semibold mb-4"><%= t(".title") %></h1>
+  <% if @order.paid? %>
+    <h1 class="text-2xl font-semibold mb-4"><%= t(".title") %></h1>
 
-  <p class="mb-4">
-    <%= t(".message_html", order_id: @order.id) %>
-  </p>
+    <p class="mb-4">
+      <%= t(".message_html", order_id: @order.id) %>
+    </p>
+  <% else %>
+    <h1 class="text-2xl font-semibold mb-4"><%= t(".confirming") %></h1>
+    <p class="mb-4">
+      <%= t(".confirm_html", order_id: @order.id) %>
+    </p>
+  <% end %>
 
   <%= link_to t(".back_to_home"),
               root_path,
               class: "inline-block px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700" %>
+  <%= link_to t(".refresh"), success_order_path(@order), class: "inline-block px-4 py-2 rounded bg-black text-white" %>
 </div>
