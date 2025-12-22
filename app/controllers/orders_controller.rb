@@ -100,6 +100,8 @@ class OrdersController < ApplicationController
     Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
       mode: "payment",
+      client_reference_id: order.id.to_s,
+      metadata: { order_id: order.id.to_s },
       line_items: [
         {
           price_data: {

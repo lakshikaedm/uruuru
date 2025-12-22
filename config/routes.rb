@@ -44,6 +44,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :webhooks do
+    post "stripe", to: "stripe#create"
+  end
+
   resources :conversations, only: %i[index show create] do
     resources :messages, only: :create
   end
