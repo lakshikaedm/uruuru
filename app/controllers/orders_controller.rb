@@ -49,9 +49,7 @@ class OrdersController < ApplicationController
 
   def success
     @order = current_user.orders.find(params[:id])
-    @order.update!(status: :paid) if @order.respond_to?(:status)
     current_cart.clear if current_cart.respond_to?(:clear)
-    OrderMailer.with(locale: I18n.locale).confirmation(@order).deliver_later
   end
 
   def cancel

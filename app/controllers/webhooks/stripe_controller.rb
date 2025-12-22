@@ -32,7 +32,10 @@ module Webhooks
         order = Order.find_by(id: order_id)
         return unless order
 
+        return if order.paid?
+
         Orders::MarkPaid.new(order: order).call
+        OrderMailer.with(locale: I18n.locale).confirmation(order).deliver_later
       end
     end
   end
