@@ -8,7 +8,16 @@
      class="w-full max-w-sm bg-white border border-gray-400 rounded-lg shadow-sm flex flex-col h-full overflow-hidden">
 
   <%= link_to product_path(product) do %>
-    <div class="mx-auto mt-2 h-48 w-full flex items-center justify-center border border-gray-300 rounded-md bg-white">
+    <div class="relative mx-auto mt-2 h-48 w-full flex items-center justify-center rounded-md bg-white">
+      <% if product.sold? %>
+        <div class="absolute 
+                    text-center text-2xl font-bold py-2 w-full text-white
+                    pointer-events-none"
+            style="background: rgba(229, 54, 15, 0.83);">
+          SOLD
+        </div>
+      <% end %>
+         
       <% if thumb %>
         <%= image_tag thumb,
               class: "h-44 object-contain",
