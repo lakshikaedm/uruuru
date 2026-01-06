@@ -39,18 +39,29 @@
         </div>
       </div>
 
-      <%= form_with url: create_cart_item_path(product),
-                    method: :post,
-                    local: true,
-                    class: "w-full" do |f| %>
-        <div class="flex items-center gap-2">
-          <%= number_field_tag "cart_item[quantity]", 1, min: 1,
-                class: "w-16 rounded-md border border-gray-300 px-2 py-1 text-sm
-                        focus:outline-none focus:ring-2 focus:ring-orange-500" %>
-
-          <%= f.submit t(".add_to_cart"),
-                class: "btn btn-primary flex-1" %>
+      <% if product.sold? %>
+        <div class="w-full">
+          <button
+            type="button"
+            disabled
+            class="btn btn-danger flex-1 w-full cursor-not-allowed opacity-70">
+            SOLD
+          </button>
         </div>
+      <% else %>
+        <%= form_with url: create_cart_item_path(product),
+                      method: :post,
+                      local: true,
+                      class: "w-full" do |f| %>
+          <div class="flex items-center gap-2">
+            <%= number_field_tag "cart_item[quantity]", 1, min: 1,
+                  class: "w-16 rounded-md border border-gray-300 px-2 py-1 text-sm
+                          focus:outline-none focus:ring-2 focus:ring-orange-500" %>
+
+            <%= f.submit t(".add_to_cart"),
+                  class: "btn btn-primary flex-1" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
