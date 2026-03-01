@@ -17,7 +17,7 @@
       "environment": [
         { "name": "RAILS_ENV", "value": "production" },
         { "name": "RAILS_LOG_TO_STDOUT", "value": "true" },
-        { "name": "FORCE_SSL", "value": "false" },
+        { "name": "FORCE_SSL", "value": "true" },
         { "name": "AWS_EC2_METADATA_DISABLED", "value": "true" }
       ],
       "secrets": [
