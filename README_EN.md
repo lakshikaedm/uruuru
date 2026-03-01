@@ -34,7 +34,7 @@ To address these issues, I designed and developed a marketplace that foreign res
 
 3. Service URL
 
-https://uruuru-0ff5c50baf18.herokuapp.com/
+https://uru-uru.com
 (Recruiter demo login available)
 
 ⸻
