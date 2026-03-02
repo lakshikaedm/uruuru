@@ -25,6 +25,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.filter_rails_from_backtrace!
+  config.use_transactional_fixtures = true
 
   # Devise helpers
   config.include Devise::Test::IntegrationHelpers, type: :request
