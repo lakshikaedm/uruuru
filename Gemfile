@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "~> 3.3.0"
 
 # Core Rails & Server
 gem "bootsnap", ">= 1.16.0", require: false
