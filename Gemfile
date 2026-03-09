@@ -63,11 +63,12 @@ group :development, :test do
   gem 'dotenv-rails'
   gem "factory_bot_rails", "~> 6.5"
   gem "rspec-rails", "~> 7.1"
-  gem "rubocop", "~> 1.80"
-  gem "rubocop-capybara", "~> 2.22"
-  gem "rubocop-factory_bot", "~> 2.27"
-  gem "rubocop-rails", "~> 2.33"
-  gem "rubocop-rspec", "~> 3.7"
+
+  gem "rubocop", "~> 1.80", require: false
+  gem "rubocop-capybara", "~> 2.22", require: false
+  gem "rubocop-factory_bot", "~> 2.27", require: false
+  gem "rubocop-rails", "~> 2.33", require: false
+  gem "rubocop-rspec", "~> 3.7", require: false
 end
 
 # OS-specific
