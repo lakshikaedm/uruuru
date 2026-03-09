@@ -25,7 +25,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.filter_rails_from_backtrace!
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # Devise helpers
   config.include Devise::Test::IntegrationHelpers, type: :request
@@ -38,6 +38,18 @@ RSpec.configure do |config|
   # Capybara for system tests
   config.before(:each, type: :system) do
     driven_by :rack_test
+  end
+
+  # database-cleaner after tests
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+  config.before(:each, type: :system, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end
 

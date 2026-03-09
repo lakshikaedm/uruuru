@@ -49,6 +49,7 @@ end
 # Test Only
 group :test do
   gem "capybara"
+  gem "database_cleaner-active_record"
   gem "faker", "~> 3.5"
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 5.3"
