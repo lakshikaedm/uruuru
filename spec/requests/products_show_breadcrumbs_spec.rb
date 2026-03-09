@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe "Products#show breadcrumbs", type: :request do
   it "shows Home -> category path -> product" do
-    clothing = Category.create!(name: "Clothing")
-    tees = clothing.children.create!(name: "T-Shirts")
+    clothing = Category.create!(name: "Clothing Breadcrumb Spec")
+    tees = clothing.children.create!(name: "T-Shirts Breadcrumb Spec")
 
     user = User.create!(
       email: "demo@example.com",
@@ -21,6 +21,6 @@ RSpec.describe "Products#show breadcrumbs", type: :request do
 
     get product_path(product)
     expect(response).to have_http_status(:ok)
-    expect(response.body).to include("Home", "Clothing", "T-Shirts", "Demo Tee")
+    expect(response.body).to include("Home", "Clothing Breadcrumb Spec", "T-Shirts Breadcrumb Spec", "Demo Tee")
   end
 end
