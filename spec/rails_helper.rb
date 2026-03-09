@@ -22,10 +22,9 @@ end
 
 RSpec.configure do |config|
   config.fixture_paths = [Rails.root.join('spec/fixtures')]
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   config.filter_rails_from_backtrace!
-  config.use_transactional_fixtures = false
 
   # Devise helpers
   config.include Devise::Test::IntegrationHelpers, type: :request
@@ -41,14 +40,14 @@ RSpec.configure do |config|
   end
 
   # database-cleaner after tests
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
   end
-  config.before(:each, type: :system, js: true) do
+  config.before(:each, :js, type: :system) do
     DatabaseCleaner.strategy = :truncation
   end
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 end
