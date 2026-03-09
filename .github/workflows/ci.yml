@@ -43,5 +43,8 @@ jobs:
       - name: Set up DB
         run: bundle exec rails db:schema:load
 
+      - name: Run Rubocop
+        run: bundle exec rubocop
+
       - name: Run tests
         run: bundle exec rspec
