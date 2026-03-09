@@ -6,7 +6,7 @@ RSpec.describe "Profile", type: :system do
   it "links from navbar to profile" do
     sign_in user
     visit root_path
-    within("nav") do
+    within('[data-testid="main-nav"]') do
       click_link "User1", match: :first
     end
     expect(page).to have_current_path(profile_path)

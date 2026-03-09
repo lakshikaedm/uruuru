@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "~> 3.3.0"
 
 # Core Rails & Server
 gem "bootsnap", ">= 1.16.0", require: false
@@ -49,6 +49,7 @@ end
 # Test Only
 group :test do
   gem "capybara"
+  gem "database_cleaner-active_record"
   gem "faker", "~> 3.5"
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 5.3"
@@ -62,11 +63,12 @@ group :development, :test do
   gem 'dotenv-rails'
   gem "factory_bot_rails", "~> 6.5"
   gem "rspec-rails", "~> 7.1"
-  gem "rubocop", "~> 1.80"
-  gem "rubocop-capybara", "~> 2.22"
-  gem "rubocop-factory_bot", "~> 2.27"
-  gem "rubocop-rails", "~> 2.33"
-  gem "rubocop-rspec", "~> 3.7"
+
+  gem "rubocop", "~> 1.80", require: false
+  gem "rubocop-capybara", "~> 2.22", require: false
+  gem "rubocop-factory_bot", "~> 2.27", require: false
+  gem "rubocop-rails", "~> 2.33", require: false
+  gem "rubocop-rspec", "~> 3.7", require: false
 end
 
 # OS-specific

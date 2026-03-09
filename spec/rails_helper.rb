@@ -22,7 +22,7 @@ end
 
 RSpec.configure do |config|
   config.fixture_paths = [Rails.root.join('spec/fixtures')]
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   config.filter_rails_from_backtrace!
 
@@ -37,6 +37,18 @@ RSpec.configure do |config|
   # Capybara for system tests
   config.before(:each, type: :system) do
     driven_by :rack_test
+  end
+
+  # database-cleaner after tests
+  config.before do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+  config.before(:each, :js, type: :system) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.after do
+    DatabaseCleaner.clean
   end
 end
 
