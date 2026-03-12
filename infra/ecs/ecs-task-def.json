@@ -26,7 +26,14 @@
         { "name": "AWS_REGION", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/AWS_REGION" },
         { "name": "AWS_S3_BUCKET", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/AWS_S3_BUCKET" },
         { "name": "ACTIVE_STORAGE_SERVICE", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/ACTIVE_STORAGE_SERVICE" },
-        { "name": "DATABASE_URL", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/DATABASE_URL" }
+        { "name": "DATABASE_URL", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/DATABASE_URL" },
+        { "name": "FACEBOOK_CLIENT_ID", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/FACEBOOK_CLIENT_ID" },
+        { "name": "FACEBOOK_CLIENT_SECRET", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/FACEBOOK_CLIENT_SECRET" },
+        { "name": "OPENAI_API_KEY", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/OPENAI_API_KEY" },
+        { "name": "STRIPE_SECRET_KEY", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/STRIPE_SECRET_KEY" },
+        { "name": "STRIPE_PUBLIC_KEY", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/STRIPE_PUBLIC_KEY" },
+        { "name": "STRIPE_WEBHOOK_SECRET", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/STRIPE_WEBHOOK_SECRET" },
+        { "name": "SENDGRID_API_KEY", "valueFrom": "arn:aws:ssm:ap-northeast-1:639261426101:parameter/uruuru/SENDGRID_API_KEY" }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
